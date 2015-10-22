@@ -1,17 +1,34 @@
 ﻿Imports System.Threading
 
+' Developer note
+' to Use this form as auto search form
+' use the Variable SearchStr to hold
+' your search variable and use .show
+' to display the form with result.
+' eg:
+'  frmClient.SearchStr = "Eskie"
+'  frmClient.Show()
+' Version
+' 1.1
+' - Auto Search Form
+
 Public Class frmClient
 
     Friend SearchStr As String = ""
 
     Private Sub frmClient_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        Dim th As Thread
-        th = New Thread(AddressOf LoadClients)
-        th.Start()
+        If SearchStr = "" Then
+            Dim th As Thread
+            th = New Thread(AddressOf LoadClients)
+            th.Start()
+        End If
 
         ClearField()
         txtSearch.Focus()
         txtSearch.Text = IIf(SearchStr <> "", SearchStr, "")
+        If txtSearch.Text <> "" Then
+            btnSearch.PerformClick()
+        End If
     End Sub
 
     Private Sub AddItem(ByVal cl As Client)
@@ -31,7 +48,7 @@ Public Class frmClient
     End Sub
 
     Private Delegate Sub LoadClient_delegate()
-    Private Sub LoadClients()
+    Friend Sub LoadClients()
         If lvClient.InvokeRequired Then
             lvClient.Invoke(New LoadClient_delegate(AddressOf LoadClients))
         Else
@@ -78,8 +95,11 @@ Public Class frmClient
         clientID = lvClient.FocusedItem.Text
         Console.WriteLine("ClientID : " & clientID)
 
+        Dim tmpCl As New Client
+        tmpCl.LoadClient(clientID)
+
         frmClientInformation.Show()
-        'frmClientInformation.LoadClient(clientID)
+        frmClientInformation.LoadClientInForm(tmpCl)
     End Sub
 
     Private Sub lvClient_DoubleClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles lvClient.DoubleClick
@@ -102,14 +122,14 @@ Public Class frmClient
         Dim src As String = txtSearch.Text
         Dim mySql As String = "SELECT * FROM tblClient " & vbCrLf
         mySql &= " WHERE "
-        mySql &= String.Format("FirstName LIKE '%{0}%' OR " & vbCrLf, src)
-        mySql &= String.Format("MiddleName LIKE '%{0}%' OR " & vbCrLf, src)
-        mySql &= String.Format("LastName LIKE '%{0}%' OR " & vbCrLf, src)
-        mySql &= String.Format("Addr_Brgy LIKE '%{0}%' OR " & vbCrLf, src)
-        mySql &= String.Format("Addr_City LIKE '%{0}%' OR " & vbCrLf, src)
-        mySql &= String.Format("Phone1 LIKE '%{0}%' OR " & vbCrLf, src)
-        mySql &= String.Format("Phone2 LIKE '%{0}%' OR " & vbCrLf, src)
-        mySql &= String.Format("Phone_Others LIKE '%{0}%' " & vbCrLf, src)
+        mySql &= String.Format("UPPER(FirstName) LIKE UPPER('%{0}%') OR " & vbCrLf, src)
+        mySql &= String.Format("UPPER(MiddleName) LIKE UPPER('%{0}%') OR " & vbCrLf, src)
+        mySql &= String.Format("UPPER(LastName) LIKE UPPER('%{0}%') OR " & vbCrLf, src)
+        mySql &= String.Format("UPPER(Addr_Brgy) LIKE UPPER('%{0}%') OR " & vbCrLf, src)
+        mySql &= String.Format("UPPER(Addr_City) LIKE UPPER('%{0}%') OR " & vbCrLf, src)
+        mySql &= String.Format("UPPER(Phone1) LIKE UPPER('%{0}%') OR " & vbCrLf, src)
+        mySql &= String.Format("UPPER(Phone2) LIKE UPPER('%{0}%') OR " & vbCrLf, src)
+        mySql &= String.Format("UPPER(Phone_Others) LIKE UPPER('%{0}%') " & vbCrLf, src)
         mySql &= "ORDER BY LastName ASC, FirstName ASC"
 
         Console.WriteLine("SQL: " & mySql)
