@@ -97,11 +97,6 @@ Partial Class frmClient
         Me.lvClient.UseCompatibleStateImageBehavior = False
         Me.lvClient.View = System.Windows.Forms.View.Details
         '
-        'ColumnHeader4
-        '
-        Me.ColumnHeader4.Text = "ID"
-        Me.ColumnHeader4.Width = 52
-        '
         'ColumnHeader1
         '
         Me.ColumnHeader1.Text = "Fullname"

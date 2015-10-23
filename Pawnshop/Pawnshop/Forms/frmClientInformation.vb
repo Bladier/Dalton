@@ -294,5 +294,4 @@ Public Class frmClientInformation
         txtRemarks.Text = ""
     End Sub
     'END - ID Group===================
->>>>>>> refs/remotes/origin/ClientManagement
 End Class
