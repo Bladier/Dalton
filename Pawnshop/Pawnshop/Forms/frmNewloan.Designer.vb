@@ -46,12 +46,6 @@ Partial Class frmNewloan
         Me.grpTicket = New System.Windows.Forms.GroupBox()
         Me.txtNticket = New System.Windows.Forms.TextBox()
         Me.lblNticket = New System.Windows.Forms.Label()
-        Me.txtTotal = New System.Windows.Forms.TextBox()
-        Me.lblNet = New System.Windows.Forms.Label()
-        Me.txtPrincipal = New System.Windows.Forms.TextBox()
-        Me.Label14 = New System.Windows.Forms.Label()
-        Me.txtAppraisal = New System.Windows.Forms.TextBox()
-        Me.Label13 = New System.Windows.Forms.Label()
         Me.Auction = New System.Windows.Forms.DateTimePicker()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Expiry = New System.Windows.Forms.DateTimePicker()
@@ -75,7 +69,7 @@ Partial Class frmNewloan
         Me.Label18 = New System.Windows.Forms.Label()
         Me.txtRedeemDue = New System.Windows.Forms.TextBox()
         Me.lblRedeemDue = New System.Windows.Forms.Label()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.txtAppraisal2 = New System.Windows.Forms.TextBox()
         Me.Label21 = New System.Windows.Forms.Label()
         Me.Receiptdate = New System.Windows.Forms.DateTimePicker()
         Me.TextBox3 = New System.Windows.Forms.TextBox()
@@ -85,7 +79,7 @@ Partial Class frmNewloan
         Me.Label23 = New System.Windows.Forms.Label()
         Me.TextBox9 = New System.Windows.Forms.TextBox()
         Me.Label24 = New System.Windows.Forms.Label()
-        Me.TextBox11 = New System.Windows.Forms.TextBox()
+        Me.txtinterest = New System.Windows.Forms.TextBox()
         Me.Label25 = New System.Windows.Forms.Label()
         Me.txtOverDue = New System.Windows.Forms.TextBox()
         Me.Label26 = New System.Windows.Forms.Label()
@@ -93,11 +87,19 @@ Partial Class frmNewloan
         Me.Label29 = New System.Windows.Forms.Label()
         Me.lblTranstype = New System.Windows.Forms.Label()
         Me.btnLess = New System.Windows.Forms.Button()
+        Me.grpAmount = New System.Windows.Forms.GroupBox()
+        Me.txtNet = New System.Windows.Forms.TextBox()
+        Me.lblNet = New System.Windows.Forms.Label()
+        Me.txtPrincipal = New System.Windows.Forms.TextBox()
+        Me.lblPrincipal = New System.Windows.Forms.Label()
+        Me.txtAppraisal = New System.Windows.Forms.TextBox()
+        Me.lblAppraisal = New System.Windows.Forms.Label()
         Me.grpPawner.SuspendLayout()
         Me.grpItem.SuspendLayout()
         Me.grpTicket.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         Me.grpReceipt.SuspendLayout()
+        Me.grpAmount.SuspendLayout()
         Me.SuspendLayout()
         '
         'grpPawner
@@ -336,12 +338,6 @@ Partial Class frmNewloan
         '
         Me.grpTicket.Controls.Add(Me.txtNticket)
         Me.grpTicket.Controls.Add(Me.lblNticket)
-        Me.grpTicket.Controls.Add(Me.txtTotal)
-        Me.grpTicket.Controls.Add(Me.lblNet)
-        Me.grpTicket.Controls.Add(Me.txtPrincipal)
-        Me.grpTicket.Controls.Add(Me.Label14)
-        Me.grpTicket.Controls.Add(Me.txtAppraisal)
-        Me.grpTicket.Controls.Add(Me.Label13)
         Me.grpTicket.Controls.Add(Me.Auction)
         Me.grpTicket.Controls.Add(Me.Label10)
         Me.grpTicket.Controls.Add(Me.Expiry)
@@ -354,7 +350,7 @@ Partial Class frmNewloan
         Me.grpTicket.Controls.Add(Me.Label12)
         Me.grpTicket.Location = New System.Drawing.Point(508, 66)
         Me.grpTicket.Name = "grpTicket"
-        Me.grpTicket.Size = New System.Drawing.Size(265, 282)
+        Me.grpTicket.Size = New System.Drawing.Size(265, 179)
         Me.grpTicket.TabIndex = 6
         Me.grpTicket.TabStop = False
         Me.grpTicket.Text = "Ticket Information"
@@ -377,63 +373,6 @@ Partial Class frmNewloan
         Me.lblNticket.Size = New System.Drawing.Size(89, 16)
         Me.lblNticket.TabIndex = 46
         Me.lblNticket.Text = "New Ticket:"
-        '
-        'txtTotal
-        '
-        Me.txtTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtTotal.Location = New System.Drawing.Point(132, 226)
-        Me.txtTotal.Name = "txtTotal"
-        Me.txtTotal.ReadOnly = True
-        Me.txtTotal.Size = New System.Drawing.Size(113, 22)
-        Me.txtTotal.TabIndex = 41
-        '
-        'lblNet
-        '
-        Me.lblNet.AutoSize = True
-        Me.lblNet.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblNet.Location = New System.Drawing.Point(5, 229)
-        Me.lblNet.Name = "lblNet"
-        Me.lblNet.Size = New System.Drawing.Size(91, 16)
-        Me.lblNet.TabIndex = 42
-        Me.lblNet.Text = "Net Amount:"
-        '
-        'txtPrincipal
-        '
-        Me.txtPrincipal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPrincipal.Location = New System.Drawing.Point(133, 200)
-        Me.txtPrincipal.Name = "txtPrincipal"
-        Me.txtPrincipal.ReadOnly = True
-        Me.txtPrincipal.Size = New System.Drawing.Size(113, 22)
-        Me.txtPrincipal.TabIndex = 35
-        '
-        'Label14
-        '
-        Me.Label14.AutoSize = True
-        Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.Location = New System.Drawing.Point(6, 203)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(73, 16)
-        Me.Label14.TabIndex = 36
-        Me.Label14.Text = "Principal:"
-        '
-        'txtAppraisal
-        '
-        Me.txtAppraisal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtAppraisal.Location = New System.Drawing.Point(133, 175)
-        Me.txtAppraisal.Name = "txtAppraisal"
-        Me.txtAppraisal.ReadOnly = True
-        Me.txtAppraisal.Size = New System.Drawing.Size(113, 22)
-        Me.txtAppraisal.TabIndex = 33
-        '
-        'Label13
-        '
-        Me.Label13.AutoSize = True
-        Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(6, 178)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(79, 16)
-        Me.Label13.TabIndex = 34
-        Me.Label13.Text = "Appraisal:"
         '
         'Auction
         '
@@ -564,7 +503,6 @@ Partial Class frmNewloan
         '
         'btnSave
         '
-        Me.btnSave.Enabled = False
         Me.btnSave.Location = New System.Drawing.Point(92, 432)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(74, 35)
@@ -599,7 +537,7 @@ Partial Class frmNewloan
         Me.grpReceipt.Controls.Add(Me.Label18)
         Me.grpReceipt.Controls.Add(Me.txtRedeemDue)
         Me.grpReceipt.Controls.Add(Me.lblRedeemDue)
-        Me.grpReceipt.Controls.Add(Me.TextBox2)
+        Me.grpReceipt.Controls.Add(Me.txtAppraisal2)
         Me.grpReceipt.Controls.Add(Me.Label21)
         Me.grpReceipt.Controls.Add(Me.Receiptdate)
         Me.grpReceipt.Controls.Add(Me.TextBox3)
@@ -609,7 +547,7 @@ Partial Class frmNewloan
         Me.grpReceipt.Controls.Add(Me.Label23)
         Me.grpReceipt.Controls.Add(Me.TextBox9)
         Me.grpReceipt.Controls.Add(Me.Label24)
-        Me.grpReceipt.Controls.Add(Me.TextBox11)
+        Me.grpReceipt.Controls.Add(Me.txtinterest)
         Me.grpReceipt.Controls.Add(Me.Label25)
         Me.grpReceipt.Controls.Add(Me.txtOverDue)
         Me.grpReceipt.Controls.Add(Me.Label26)
@@ -684,14 +622,14 @@ Partial Class frmNewloan
         Me.lblRedeemDue.Text = "Redeem Due:"
         Me.lblRedeemDue.Visible = False
         '
-        'TextBox2
+        'txtAppraisal2
         '
-        Me.TextBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox2.Location = New System.Drawing.Point(132, 65)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.ReadOnly = True
-        Me.TextBox2.Size = New System.Drawing.Size(113, 22)
-        Me.TextBox2.TabIndex = 47
+        Me.txtAppraisal2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtAppraisal2.Location = New System.Drawing.Point(132, 65)
+        Me.txtAppraisal2.Name = "txtAppraisal2"
+        Me.txtAppraisal2.ReadOnly = True
+        Me.txtAppraisal2.Size = New System.Drawing.Size(113, 22)
+        Me.txtAppraisal2.TabIndex = 47
         '
         'Label21
         '
@@ -780,14 +718,14 @@ Partial Class frmNewloan
         Me.Label24.TabIndex = 38
         Me.Label24.Text = "Service Charge:"
         '
-        'TextBox11
+        'txtinterest
         '
-        Me.TextBox11.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox11.Location = New System.Drawing.Point(134, 187)
-        Me.TextBox11.Name = "TextBox11"
-        Me.TextBox11.ReadOnly = True
-        Me.TextBox11.Size = New System.Drawing.Size(113, 22)
-        Me.TextBox11.TabIndex = 35
+        Me.txtinterest.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtinterest.Location = New System.Drawing.Point(134, 187)
+        Me.txtinterest.Name = "txtinterest"
+        Me.txtinterest.ReadOnly = True
+        Me.txtinterest.Size = New System.Drawing.Size(113, 22)
+        Me.txtinterest.TabIndex = 35
         '
         'Label25
         '
@@ -846,8 +784,9 @@ Partial Class frmNewloan
         Me.lblTranstype.ForeColor = System.Drawing.Color.Red
         Me.lblTranstype.Location = New System.Drawing.Point(12, 9)
         Me.lblTranstype.Name = "lblTranstype"
-        Me.lblTranstype.Size = New System.Drawing.Size(0, 47)
+        Me.lblTranstype.Size = New System.Drawing.Size(210, 47)
         Me.lblTranstype.TabIndex = 14
+        Me.lblTranstype.Text = "NEW LOAN"
         '
         'btnLess
         '
@@ -859,11 +798,84 @@ Partial Class frmNewloan
         Me.btnLess.UseVisualStyleBackColor = True
         Me.btnLess.Visible = False
         '
+        'grpAmount
+        '
+        Me.grpAmount.Controls.Add(Me.txtNet)
+        Me.grpAmount.Controls.Add(Me.lblNet)
+        Me.grpAmount.Controls.Add(Me.txtPrincipal)
+        Me.grpAmount.Controls.Add(Me.lblPrincipal)
+        Me.grpAmount.Controls.Add(Me.txtAppraisal)
+        Me.grpAmount.Controls.Add(Me.lblAppraisal)
+        Me.grpAmount.Location = New System.Drawing.Point(508, 245)
+        Me.grpAmount.Name = "grpAmount"
+        Me.grpAmount.Size = New System.Drawing.Size(265, 106)
+        Me.grpAmount.TabIndex = 16
+        Me.grpAmount.TabStop = False
+        Me.grpAmount.Text = "Amount"
+        '
+        'txtNet
+        '
+        Me.txtNet.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtNet.Location = New System.Drawing.Point(138, 69)
+        Me.txtNet.Name = "txtNet"
+        Me.txtNet.ReadOnly = True
+        Me.txtNet.Size = New System.Drawing.Size(113, 22)
+        Me.txtNet.TabIndex = 47
+        '
+        'lblNet
+        '
+        Me.lblNet.AutoSize = True
+        Me.lblNet.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblNet.Location = New System.Drawing.Point(11, 72)
+        Me.lblNet.Name = "lblNet"
+        Me.lblNet.Size = New System.Drawing.Size(91, 16)
+        Me.lblNet.TabIndex = 48
+        Me.lblNet.Text = "Net Amount:"
+        '
+        'txtPrincipal
+        '
+        Me.txtPrincipal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtPrincipal.Location = New System.Drawing.Point(139, 43)
+        Me.txtPrincipal.Name = "txtPrincipal"
+        Me.txtPrincipal.ReadOnly = True
+        Me.txtPrincipal.Size = New System.Drawing.Size(113, 22)
+        Me.txtPrincipal.TabIndex = 45
+        '
+        'lblPrincipal
+        '
+        Me.lblPrincipal.AutoSize = True
+        Me.lblPrincipal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblPrincipal.Location = New System.Drawing.Point(12, 46)
+        Me.lblPrincipal.Name = "lblPrincipal"
+        Me.lblPrincipal.Size = New System.Drawing.Size(73, 16)
+        Me.lblPrincipal.TabIndex = 46
+        Me.lblPrincipal.Text = "Principal:"
+        '
+        'txtAppraisal
+        '
+        Me.txtAppraisal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtAppraisal.Location = New System.Drawing.Point(139, 18)
+        Me.txtAppraisal.Name = "txtAppraisal"
+        Me.txtAppraisal.ReadOnly = True
+        Me.txtAppraisal.Size = New System.Drawing.Size(113, 22)
+        Me.txtAppraisal.TabIndex = 43
+        '
+        'lblAppraisal
+        '
+        Me.lblAppraisal.AutoSize = True
+        Me.lblAppraisal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAppraisal.Location = New System.Drawing.Point(12, 21)
+        Me.lblAppraisal.Name = "lblAppraisal"
+        Me.lblAppraisal.Size = New System.Drawing.Size(79, 16)
+        Me.lblAppraisal.TabIndex = 44
+        Me.lblAppraisal.Text = "Appraisal:"
+        '
         'frmNewloan
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1096, 494)
+        Me.Controls.Add(Me.grpAmount)
         Me.Controls.Add(Me.btnLess)
         Me.Controls.Add(Me.lblTranstype)
         Me.Controls.Add(Me.grpReceipt)
@@ -875,6 +887,7 @@ Partial Class frmNewloan
         Me.Controls.Add(Me.grpItem)
         Me.Controls.Add(Me.grpPawner)
         Me.Name = "frmNewloan"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "New Loan"
         Me.grpPawner.ResumeLayout(False)
         Me.grpPawner.PerformLayout()
@@ -886,6 +899,8 @@ Partial Class frmNewloan
         Me.GroupBox4.PerformLayout()
         Me.grpReceipt.ResumeLayout(False)
         Me.grpReceipt.PerformLayout()
+        Me.grpAmount.ResumeLayout(False)
+        Me.grpAmount.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -911,12 +926,6 @@ Partial Class frmNewloan
     Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents TextBox4 As System.Windows.Forms.TextBox
     Friend WithEvents Label12 As System.Windows.Forms.Label
-    Friend WithEvents txtTotal As System.Windows.Forms.TextBox
-    Friend WithEvents lblNet As System.Windows.Forms.Label
-    Friend WithEvents txtPrincipal As System.Windows.Forms.TextBox
-    Friend WithEvents Label14 As System.Windows.Forms.Label
-    Friend WithEvents txtAppraisal As System.Windows.Forms.TextBox
-    Friend WithEvents Label13 As System.Windows.Forms.Label
     Friend WithEvents Auction As System.Windows.Forms.DateTimePicker
     Friend WithEvents Label10 As System.Windows.Forms.Label
     Friend WithEvents Expiry As System.Windows.Forms.DateTimePicker
@@ -939,7 +948,7 @@ Partial Class frmNewloan
     Friend WithEvents Label18 As System.Windows.Forms.Label
     Friend WithEvents txtRedeemDue As System.Windows.Forms.TextBox
     Friend WithEvents lblRedeemDue As System.Windows.Forms.Label
-    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
+    Friend WithEvents txtAppraisal2 As System.Windows.Forms.TextBox
     Friend WithEvents Label21 As System.Windows.Forms.Label
     Friend WithEvents Receiptdate As System.Windows.Forms.DateTimePicker
     Friend WithEvents TextBox3 As System.Windows.Forms.TextBox
@@ -949,7 +958,7 @@ Partial Class frmNewloan
     Friend WithEvents Label23 As System.Windows.Forms.Label
     Friend WithEvents TextBox9 As System.Windows.Forms.TextBox
     Friend WithEvents Label24 As System.Windows.Forms.Label
-    Friend WithEvents TextBox11 As System.Windows.Forms.TextBox
+    Friend WithEvents txtinterest As System.Windows.Forms.TextBox
     Friend WithEvents Label25 As System.Windows.Forms.Label
     Friend WithEvents txtOverDue As System.Windows.Forms.TextBox
     Friend WithEvents Label26 As System.Windows.Forms.Label
@@ -961,4 +970,11 @@ Partial Class frmNewloan
     Friend WithEvents TextBox5 As System.Windows.Forms.TextBox
     Friend WithEvents Label15 As System.Windows.Forms.Label
     Friend WithEvents btnLess As System.Windows.Forms.Button
+    Friend WithEvents grpAmount As System.Windows.Forms.GroupBox
+    Friend WithEvents txtNet As System.Windows.Forms.TextBox
+    Friend WithEvents lblNet As System.Windows.Forms.Label
+    Friend WithEvents txtPrincipal As System.Windows.Forms.TextBox
+    Friend WithEvents lblPrincipal As System.Windows.Forms.Label
+    Friend WithEvents txtAppraisal As System.Windows.Forms.TextBox
+    Friend WithEvents lblAppraisal As System.Windows.Forms.Label
 End Class

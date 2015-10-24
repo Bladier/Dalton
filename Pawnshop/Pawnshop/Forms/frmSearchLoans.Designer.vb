@@ -22,7 +22,7 @@ Partial Class frmSearchLoans
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim ListViewItem2 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("")
+        Dim ListViewItem6 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("")
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
@@ -37,9 +37,11 @@ Partial Class frmSearchLoans
         Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader6 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.Button4 = New System.Windows.Forms.Button()
-        Me.Button5 = New System.Windows.Forms.Button()
-        Me.Button7 = New System.Windows.Forms.Button()
+        Me.btnRedeem = New System.Windows.Forms.Button()
+        Me.btnView = New System.Windows.Forms.Button()
+        Me.btnClose = New System.Windows.Forms.Button()
+        Me.Button8 = New System.Windows.Forms.Button()
+        Me.btnRenew = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -124,7 +126,7 @@ Partial Class frmSearchLoans
         Me.lvClient.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4, Me.ColumnHeader5, Me.ColumnHeader6})
         Me.lvClient.FullRowSelect = True
         Me.lvClient.GridLines = True
-        Me.lvClient.Items.AddRange(New System.Windows.Forms.ListViewItem() {ListViewItem2})
+        Me.lvClient.Items.AddRange(New System.Windows.Forms.ListViewItem() {ListViewItem6})
         Me.lvClient.Location = New System.Drawing.Point(17, 86)
         Me.lvClient.Name = "lvClient"
         Me.lvClient.Size = New System.Drawing.Size(760, 308)
@@ -162,44 +164,66 @@ Partial Class frmSearchLoans
         Me.ColumnHeader6.Text = "Renew Due"
         Me.ColumnHeader6.Width = 180
         '
-        'Button4
+        'btnRedeem
         '
-        Me.Button4.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button4.Location = New System.Drawing.Point(546, 412)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(75, 23)
-        Me.Button4.TabIndex = 13
-        Me.Button4.Text = "&Select"
-        Me.Button4.UseVisualStyleBackColor = True
+        Me.btnRedeem.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnRedeem.Location = New System.Drawing.Point(95, 412)
+        Me.btnRedeem.Name = "btnRedeem"
+        Me.btnRedeem.Size = New System.Drawing.Size(75, 23)
+        Me.btnRedeem.TabIndex = 13
+        Me.btnRedeem.Text = "&Redeem"
+        Me.btnRedeem.UseVisualStyleBackColor = True
         '
-        'Button5
+        'btnView
         '
-        Me.Button5.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button5.Location = New System.Drawing.Point(627, 412)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(75, 23)
-        Me.Button5.TabIndex = 12
-        Me.Button5.Text = "&View"
-        Me.Button5.UseVisualStyleBackColor = True
+        Me.btnView.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnView.Location = New System.Drawing.Point(627, 412)
+        Me.btnView.Name = "btnView"
+        Me.btnView.Size = New System.Drawing.Size(75, 23)
+        Me.btnView.TabIndex = 12
+        Me.btnView.Text = "&View"
+        Me.btnView.UseVisualStyleBackColor = True
         '
-        'Button7
+        'btnClose
         '
-        Me.Button7.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button7.Location = New System.Drawing.Point(708, 412)
-        Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(75, 23)
-        Me.Button7.TabIndex = 11
-        Me.Button7.Text = "&Close"
-        Me.Button7.UseVisualStyleBackColor = True
+        Me.btnClose.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnClose.Location = New System.Drawing.Point(708, 412)
+        Me.btnClose.Name = "btnClose"
+        Me.btnClose.Size = New System.Drawing.Size(75, 23)
+        Me.btnClose.TabIndex = 11
+        Me.btnClose.Text = "&Close"
+        Me.btnClose.UseVisualStyleBackColor = True
+        '
+        'Button8
+        '
+        Me.Button8.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button8.Location = New System.Drawing.Point(17, 412)
+        Me.Button8.Name = "Button8"
+        Me.Button8.Size = New System.Drawing.Size(72, 23)
+        Me.Button8.TabIndex = 14
+        Me.Button8.Text = "New &Loan"
+        Me.Button8.UseVisualStyleBackColor = True
+        '
+        'btnRenew
+        '
+        Me.btnRenew.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnRenew.Location = New System.Drawing.Point(176, 412)
+        Me.btnRenew.Name = "btnRenew"
+        Me.btnRenew.Size = New System.Drawing.Size(75, 23)
+        Me.btnRenew.TabIndex = 15
+        Me.btnRenew.Text = "R&enew"
+        Me.btnRenew.UseVisualStyleBackColor = True
         '
         'frmSearchLoans
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(825, 447)
-        Me.Controls.Add(Me.Button4)
-        Me.Controls.Add(Me.Button5)
-        Me.Controls.Add(Me.Button7)
+        Me.Controls.Add(Me.btnRenew)
+        Me.Controls.Add(Me.Button8)
+        Me.Controls.Add(Me.btnRedeem)
+        Me.Controls.Add(Me.btnView)
+        Me.Controls.Add(Me.btnClose)
         Me.Controls.Add(Me.Button6)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
@@ -223,10 +247,12 @@ Partial Class frmSearchLoans
     Friend WithEvents ColumnHeader1 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader2 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader3 As System.Windows.Forms.ColumnHeader
-    Friend WithEvents Button4 As System.Windows.Forms.Button
-    Friend WithEvents Button5 As System.Windows.Forms.Button
-    Friend WithEvents Button7 As System.Windows.Forms.Button
+    Friend WithEvents btnRedeem As System.Windows.Forms.Button
+    Friend WithEvents btnView As System.Windows.Forms.Button
+    Friend WithEvents btnClose As System.Windows.Forms.Button
     Friend WithEvents ColumnHeader4 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader5 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader6 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents Button8 As System.Windows.Forms.Button
+    Friend WithEvents btnRenew As System.Windows.Forms.Button
 End Class

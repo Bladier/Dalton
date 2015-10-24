@@ -22,406 +22,300 @@ Partial Class frmInsurance
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmInsurance))
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.dtpBday = New System.Windows.Forms.DateTimePicker()
-        Me.Label17 = New System.Windows.Forms.Label()
-        Me.txtSenderID = New System.Windows.Forms.TextBox()
-        Me.txtSenderIDNum = New System.Windows.Forms.TextBox()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.txtSenderAddr = New System.Windows.Forms.TextBox()
+        Me.grpClient = New System.Windows.Forms.GroupBox()
+        Me.txtContact = New System.Windows.Forms.TextBox()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.txtBirthdate = New System.Windows.Forms.TextBox()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.txtAddress = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.btnSearch = New System.Windows.Forms.Button()
-        Me.txtHolder = New System.Windows.Forms.TextBox()
+        Me.txtClient = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.grpInsurance = New System.Windows.Forms.GroupBox()
+        Me.txtCOI = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.dtpDate = New System.Windows.Forms.DateTimePicker()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.dtpExpiry = New System.Windows.Forms.DateTimePicker()
+        Me.txtExpiry = New System.Windows.Forms.TextBox()
+        Me.txtAmount = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.txtDate = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.btnBrowse = New System.Windows.Forms.Button()
-        Me.btnNew = New System.Windows.Forms.Button()
         Me.btnVoid = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.btnClose = New System.Windows.Forms.Button()
         Me.btnSave = New System.Windows.Forms.Button()
-        Me.GroupBox1.SuspendLayout()
-        Me.GroupBox2.SuspendLayout()
-        Me.GroupBox3.SuspendLayout()
+        Me.grpClient.SuspendLayout()
+        Me.grpInsurance.SuspendLayout()
         Me.SuspendLayout()
         '
-        'GroupBox1
+        'grpClient
         '
-        Me.GroupBox1.BackColor = System.Drawing.Color.Transparent
-        Me.GroupBox1.Controls.Add(Me.dtpBday)
-        Me.GroupBox1.Controls.Add(Me.Label17)
-        Me.GroupBox1.Controls.Add(Me.txtSenderID)
-        Me.GroupBox1.Controls.Add(Me.txtSenderIDNum)
-        Me.GroupBox1.Controls.Add(Me.Label4)
-        Me.GroupBox1.Controls.Add(Me.txtSenderAddr)
-        Me.GroupBox1.Controls.Add(Me.Label3)
-        Me.GroupBox1.Controls.Add(Me.btnSearch)
-        Me.GroupBox1.Controls.Add(Me.txtHolder)
-        Me.GroupBox1.Controls.Add(Me.Label2)
-        Me.GroupBox1.Font = New System.Drawing.Font("Segoe UI Symbol", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(1, 94)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(499, 193)
-        Me.GroupBox1.TabIndex = 4
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Policy Holder"
+        Me.grpClient.Controls.Add(Me.txtContact)
+        Me.grpClient.Controls.Add(Me.Label16)
+        Me.grpClient.Controls.Add(Me.txtBirthdate)
+        Me.grpClient.Controls.Add(Me.Label15)
+        Me.grpClient.Controls.Add(Me.txtAddress)
+        Me.grpClient.Controls.Add(Me.Label3)
+        Me.grpClient.Controls.Add(Me.btnSearch)
+        Me.grpClient.Controls.Add(Me.txtClient)
+        Me.grpClient.Controls.Add(Me.Label2)
+        Me.grpClient.Location = New System.Drawing.Point(12, 12)
+        Me.grpClient.Name = "grpClient"
+        Me.grpClient.Size = New System.Drawing.Size(479, 181)
+        Me.grpClient.TabIndex = 5
+        Me.grpClient.TabStop = False
+        Me.grpClient.Text = "Policy Holder"
         '
-        'dtpBday
+        'txtContact
         '
-        Me.dtpBday.Enabled = False
-        Me.dtpBday.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dtpBday.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpBday.Location = New System.Drawing.Point(119, 159)
-        Me.dtpBday.Name = "dtpBday"
-        Me.dtpBday.Size = New System.Drawing.Size(108, 25)
-        Me.dtpBday.TabIndex = 23
+        Me.txtContact.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtContact.Location = New System.Drawing.Point(141, 140)
+        Me.txtContact.Name = "txtContact"
+        Me.txtContact.ReadOnly = True
+        Me.txtContact.Size = New System.Drawing.Size(250, 22)
+        Me.txtContact.TabIndex = 18
         '
-        'Label17
+        'Label16
         '
-        Me.Label17.AutoSize = True
-        Me.Label17.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label17.ForeColor = System.Drawing.SystemColors.Desktop
-        Me.Label17.Location = New System.Drawing.Point(44, 160)
-        Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(66, 17)
-        Me.Label17.TabIndex = 24
-        Me.Label17.Text = "Birthday: "
+        Me.Label16.AutoSize = True
+        Me.Label16.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label16.Location = New System.Drawing.Point(5, 143)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(122, 16)
+        Me.Label16.TabIndex = 19
+        Me.Label16.Text = "Contact Number:"
         '
-        'txtSenderID
+        'txtBirthdate
         '
-        Me.txtSenderID.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtSenderID.Location = New System.Drawing.Point(120, 108)
-        Me.txtSenderID.Name = "txtSenderID"
-        Me.txtSenderID.ReadOnly = True
-        Me.txtSenderID.Size = New System.Drawing.Size(296, 25)
-        Me.txtSenderID.TabIndex = 4
-        Me.txtSenderID.Text = "Driver's License"
+        Me.txtBirthdate.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtBirthdate.Location = New System.Drawing.Point(142, 109)
+        Me.txtBirthdate.Name = "txtBirthdate"
+        Me.txtBirthdate.ReadOnly = True
+        Me.txtBirthdate.Size = New System.Drawing.Size(250, 22)
+        Me.txtBirthdate.TabIndex = 16
         '
-        'txtSenderIDNum
+        'Label15
         '
-        Me.txtSenderIDNum.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtSenderIDNum.Location = New System.Drawing.Point(120, 134)
-        Me.txtSenderIDNum.Name = "txtSenderIDNum"
-        Me.txtSenderIDNum.ReadOnly = True
-        Me.txtSenderIDNum.Size = New System.Drawing.Size(296, 25)
-        Me.txtSenderIDNum.TabIndex = 5
-        Me.txtSenderIDNum.Text = "MMMMMMMMMMMMMMMMMMM"
+        Me.Label15.AutoSize = True
+        Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label15.Location = New System.Drawing.Point(6, 112)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(74, 16)
+        Me.Label15.TabIndex = 17
+        Me.Label15.Text = "Birthdate:"
         '
-        'Label4
+        'txtAddress
         '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.ForeColor = System.Drawing.SystemColors.Desktop
-        Me.Label4.Location = New System.Drawing.Point(-1, 108)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(100, 17)
-        Me.Label4.TabIndex = 17
-        Me.Label4.Text = "ID Information:"
-        '
-        'txtSenderAddr
-        '
-        Me.txtSenderAddr.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtSenderAddr.Location = New System.Drawing.Point(121, 37)
-        Me.txtSenderAddr.Multiline = True
-        Me.txtSenderAddr.Name = "txtSenderAddr"
-        Me.txtSenderAddr.ReadOnly = True
-        Me.txtSenderAddr.Size = New System.Drawing.Size(296, 67)
-        Me.txtSenderAddr.TabIndex = 3
-        Me.txtSenderAddr.Text = "Eskie Cirrus James Maquilang"
+        Me.txtAddress.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtAddress.Location = New System.Drawing.Point(142, 39)
+        Me.txtAddress.Multiline = True
+        Me.txtAddress.Name = "txtAddress"
+        Me.txtAddress.ReadOnly = True
+        Me.txtAddress.Size = New System.Drawing.Size(250, 66)
+        Me.txtAddress.TabIndex = 3
+        Me.txtAddress.Text = "Eskie Cirrus James Maquilang"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.ForeColor = System.Drawing.SystemColors.Desktop
-        Me.Label3.Location = New System.Drawing.Point(14, 40)
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(6, 42)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(85, 17)
+        Me.Label3.Size = New System.Drawing.Size(99, 16)
         Me.Label3.TabIndex = 15
         Me.Label3.Text = "Full Address:"
         '
         'btnSearch
         '
-        Me.btnSearch.Location = New System.Drawing.Point(438, 13)
+        Me.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnSearch.Location = New System.Drawing.Point(398, 13)
         Me.btnSearch.Name = "btnSearch"
-        Me.btnSearch.Size = New System.Drawing.Size(55, 23)
+        Me.btnSearch.Size = New System.Drawing.Size(75, 23)
         Me.btnSearch.TabIndex = 2
         Me.btnSearch.Text = "Search"
         Me.btnSearch.UseVisualStyleBackColor = True
         '
-        'txtHolder
+        'txtClient
         '
-        Me.txtHolder.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtHolder.Location = New System.Drawing.Point(120, 13)
-        Me.txtHolder.Name = "txtHolder"
-        Me.txtHolder.ReadOnly = True
-        Me.txtHolder.Size = New System.Drawing.Size(296, 25)
-        Me.txtHolder.TabIndex = 1
-        Me.txtHolder.Text = "Eskie Cirrus James Maquilang"
+        Me.txtClient.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtClient.Location = New System.Drawing.Point(142, 13)
+        Me.txtClient.Name = "txtClient"
+        Me.txtClient.ReadOnly = True
+        Me.txtClient.Size = New System.Drawing.Size(250, 22)
+        Me.txtClient.TabIndex = 1
+        Me.txtClient.Text = "Eskie Cirrus James Maquilang"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.ForeColor = System.Drawing.SystemColors.Desktop
-        Me.Label2.Location = New System.Drawing.Point(52, 13)
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(6, 16)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(47, 17)
+        Me.Label2.Size = New System.Drawing.Size(53, 16)
         Me.Label2.TabIndex = 2
         Me.Label2.Text = "Name:"
         '
-        'Label7
+        'grpInsurance
         '
-        Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.ForeColor = System.Drawing.SystemColors.Desktop
-        Me.Label7.Location = New System.Drawing.Point(47, 14)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(55, 17)
-        Me.Label7.TabIndex = 2
-        Me.Label7.Text = "COI No:"
+        Me.grpInsurance.Controls.Add(Me.txtCOI)
+        Me.grpInsurance.Controls.Add(Me.Label1)
+        Me.grpInsurance.Controls.Add(Me.txtExpiry)
+        Me.grpInsurance.Controls.Add(Me.txtAmount)
+        Me.grpInsurance.Controls.Add(Me.Label4)
+        Me.grpInsurance.Controls.Add(Me.Label5)
+        Me.grpInsurance.Controls.Add(Me.txtDate)
+        Me.grpInsurance.Controls.Add(Me.Label6)
+        Me.grpInsurance.Location = New System.Drawing.Point(12, 199)
+        Me.grpInsurance.Name = "grpInsurance"
+        Me.grpInsurance.Size = New System.Drawing.Size(479, 131)
+        Me.grpInsurance.TabIndex = 6
+        Me.grpInsurance.TabStop = False
+        Me.grpInsurance.Text = "Insurance Information"
         '
-        'Label5
+        'txtCOI
         '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.ForeColor = System.Drawing.SystemColors.Desktop
-        Me.Label5.Location = New System.Drawing.Point(45, 86)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(61, 17)
-        Me.Label5.TabIndex = 17
-        Me.Label5.Text = "Amount:"
-        '
-        'TextBox1
-        '
-        Me.TextBox1.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(121, 87)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.ReadOnly = True
-        Me.TextBox1.Size = New System.Drawing.Size(107, 25)
-        Me.TextBox1.TabIndex = 4
+        Me.txtCOI.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCOI.Location = New System.Drawing.Point(141, 13)
+        Me.txtCOI.Name = "txtCOI"
+        Me.txtCOI.ReadOnly = True
+        Me.txtCOI.Size = New System.Drawing.Size(125, 22)
+        Me.txtCOI.TabIndex = 21
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.SystemColors.Desktop
-        Me.Label1.Location = New System.Drawing.Point(6, 33)
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(5, 16)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(93, 17)
-        Me.Label1.TabIndex = 24
-        Me.Label1.Text = "Current Date: "
+        Me.Label1.Size = New System.Drawing.Size(61, 16)
+        Me.Label1.TabIndex = 22
+        Me.Label1.Text = "COI No:"
         '
-        'dtpDate
+        'txtExpiry
         '
-        Me.dtpDate.Enabled = False
-        Me.dtpDate.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpDate.Location = New System.Drawing.Point(120, 33)
-        Me.dtpDate.Name = "dtpDate"
-        Me.dtpDate.Size = New System.Drawing.Size(108, 25)
-        Me.dtpDate.TabIndex = 23
+        Me.txtExpiry.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtExpiry.Location = New System.Drawing.Point(141, 69)
+        Me.txtExpiry.Name = "txtExpiry"
+        Me.txtExpiry.ReadOnly = True
+        Me.txtExpiry.Size = New System.Drawing.Size(125, 22)
+        Me.txtExpiry.TabIndex = 20
         '
-        'TextBox4
+        'txtAmount
         '
-        Me.TextBox4.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox4.Location = New System.Drawing.Point(120, 9)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.ReadOnly = True
-        Me.TextBox4.Size = New System.Drawing.Size(108, 25)
-        Me.TextBox4.TabIndex = 25
+        Me.txtAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtAmount.Location = New System.Drawing.Point(142, 94)
+        Me.txtAmount.Name = "txtAmount"
+        Me.txtAmount.ReadOnly = True
+        Me.txtAmount.Size = New System.Drawing.Size(125, 22)
+        Me.txtAmount.TabIndex = 16
         '
-        'GroupBox2
+        'Label4
         '
-        Me.GroupBox2.BackColor = System.Drawing.Color.Transparent
-        Me.GroupBox2.Controls.Add(Me.dtpExpiry)
-        Me.GroupBox2.Controls.Add(Me.Label6)
-        Me.GroupBox2.Controls.Add(Me.TextBox4)
-        Me.GroupBox2.Controls.Add(Me.dtpDate)
-        Me.GroupBox2.Controls.Add(Me.Label1)
-        Me.GroupBox2.Controls.Add(Me.TextBox1)
-        Me.GroupBox2.Controls.Add(Me.Label5)
-        Me.GroupBox2.Controls.Add(Me.Label7)
-        Me.GroupBox2.Font = New System.Drawing.Font("Segoe UI Symbol", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox2.ForeColor = System.Drawing.SystemColors.Desktop
-        Me.GroupBox2.Location = New System.Drawing.Point(1, 299)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(499, 131)
-        Me.GroupBox2.TabIndex = 5
-        Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "Insurance Information"
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(6, 97)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(63, 16)
+        Me.Label4.TabIndex = 17
+        Me.Label4.Text = "Amount:"
         '
-        'dtpExpiry
+        'Label5
         '
-        Me.dtpExpiry.Enabled = False
-        Me.dtpExpiry.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dtpExpiry.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpExpiry.Location = New System.Drawing.Point(120, 58)
-        Me.dtpExpiry.Name = "dtpExpiry"
-        Me.dtpExpiry.Size = New System.Drawing.Size(108, 25)
-        Me.dtpExpiry.TabIndex = 26
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(6, 69)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(55, 16)
+        Me.Label5.TabIndex = 15
+        Me.Label5.Text = "Expiry:"
+        '
+        'txtDate
+        '
+        Me.txtDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtDate.Location = New System.Drawing.Point(142, 40)
+        Me.txtDate.Name = "txtDate"
+        Me.txtDate.ReadOnly = True
+        Me.txtDate.Size = New System.Drawing.Size(125, 22)
+        Me.txtDate.TabIndex = 1
         '
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.ForeColor = System.Drawing.SystemColors.Desktop
-        Me.Label6.Location = New System.Drawing.Point(22, 58)
+        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(6, 43)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(76, 17)
-        Me.Label6.TabIndex = 27
-        Me.Label6.Text = "Valid Until: "
-        '
-        'GroupBox3
-        '
-        Me.GroupBox3.BackColor = System.Drawing.Color.LightGray
-        Me.GroupBox3.Controls.Add(Me.btnBrowse)
-        Me.GroupBox3.Controls.Add(Me.btnNew)
-        Me.GroupBox3.Controls.Add(Me.btnVoid)
-        Me.GroupBox3.Controls.Add(Me.Button2)
-        Me.GroupBox3.Controls.Add(Me.btnSave)
-        Me.GroupBox3.Font = New System.Drawing.Font("Segoe UI Symbol", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox3.Location = New System.Drawing.Point(1, -1)
-        Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(499, 83)
-        Me.GroupBox3.TabIndex = 28
-        Me.GroupBox3.TabStop = False
-        '
-        'btnBrowse
-        '
-        Me.btnBrowse.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.btnBrowse.BackgroundImage = CType(resources.GetObject("btnBrowse.BackgroundImage"), System.Drawing.Image)
-        Me.btnBrowse.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnBrowse.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.btnBrowse.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnBrowse.ForeColor = System.Drawing.Color.Black
-        Me.btnBrowse.Location = New System.Drawing.Point(180, 50)
-        Me.btnBrowse.Name = "btnBrowse"
-        Me.btnBrowse.Size = New System.Drawing.Size(78, 26)
-        Me.btnBrowse.TabIndex = 42
-        Me.btnBrowse.Text = "&Browse"
-        Me.btnBrowse.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.btnBrowse.UseVisualStyleBackColor = False
-        '
-        'btnNew
-        '
-        Me.btnNew.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.btnNew.BackgroundImage = CType(resources.GetObject("btnNew.BackgroundImage"), System.Drawing.Image)
-        Me.btnNew.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnNew.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.btnNew.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnNew.ForeColor = System.Drawing.Color.Black
-        Me.btnNew.Location = New System.Drawing.Point(24, 50)
-        Me.btnNew.Name = "btnNew"
-        Me.btnNew.Size = New System.Drawing.Size(78, 26)
-        Me.btnNew.TabIndex = 41
-        Me.btnNew.Text = "&New"
-        Me.btnNew.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.btnNew.UseVisualStyleBackColor = False
+        Me.Label6.Size = New System.Drawing.Size(45, 16)
+        Me.Label6.TabIndex = 2
+        Me.Label6.Text = "Date:"
         '
         'btnVoid
         '
-        Me.btnVoid.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.btnVoid.BackgroundImage = CType(resources.GetObject("btnVoid.BackgroundImage"), System.Drawing.Image)
-        Me.btnVoid.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btnVoid.Enabled = False
-        Me.btnVoid.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.btnVoid.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnVoid.ForeColor = System.Drawing.Color.Black
-        Me.btnVoid.Location = New System.Drawing.Point(102, 50)
+        Me.btnVoid.Location = New System.Drawing.Point(12, 336)
         Me.btnVoid.Name = "btnVoid"
-        Me.btnVoid.Size = New System.Drawing.Size(78, 26)
-        Me.btnVoid.TabIndex = 40
+        Me.btnVoid.Size = New System.Drawing.Size(74, 35)
+        Me.btnVoid.TabIndex = 13
         Me.btnVoid.Text = "&Void"
-        Me.btnVoid.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.btnVoid.UseVisualStyleBackColor = False
+        Me.btnVoid.UseVisualStyleBackColor = True
         '
-        'Button2
+        'btnClose
         '
-        Me.Button2.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.Button2.BackgroundImage = CType(resources.GetObject("Button2.BackgroundImage"), System.Drawing.Image)
-        Me.Button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.Button2.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.ForeColor = System.Drawing.Color.Black
-        Me.Button2.Location = New System.Drawing.Point(335, 50)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(79, 26)
-        Me.Button2.TabIndex = 39
-        Me.Button2.Text = "&Close"
-        Me.Button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.Button2.UseVisualStyleBackColor = False
+        Me.btnClose.Location = New System.Drawing.Point(172, 336)
+        Me.btnClose.Name = "btnClose"
+        Me.btnClose.Size = New System.Drawing.Size(74, 35)
+        Me.btnClose.TabIndex = 12
+        Me.btnClose.Text = "&Close"
+        Me.btnClose.UseVisualStyleBackColor = True
         '
         'btnSave
         '
-        Me.btnSave.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.btnSave.BackgroundImage = CType(resources.GetObject("btnSave.BackgroundImage"), System.Drawing.Image)
-        Me.btnSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnSave.Enabled = False
-        Me.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.btnSave.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSave.ForeColor = System.Drawing.Color.Black
-        Me.btnSave.Location = New System.Drawing.Point(257, 50)
+        Me.btnSave.Location = New System.Drawing.Point(92, 336)
         Me.btnSave.Name = "btnSave"
-        Me.btnSave.Size = New System.Drawing.Size(82, 26)
-        Me.btnSave.TabIndex = 38
+        Me.btnSave.Size = New System.Drawing.Size(74, 35)
+        Me.btnSave.TabIndex = 11
         Me.btnSave.Text = "&Save"
-        Me.btnSave.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.btnSave.UseVisualStyleBackColor = False
+        Me.btnSave.UseVisualStyleBackColor = True
         '
         'frmInsurance
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(500, 446)
-        Me.Controls.Add(Me.GroupBox3)
-        Me.Controls.Add(Me.GroupBox2)
-        Me.Controls.Add(Me.GroupBox1)
-        Me.ForeColor = System.Drawing.SystemColors.HotTrack
+        Me.ClientSize = New System.Drawing.Size(509, 399)
+        Me.Controls.Add(Me.btnVoid)
+        Me.Controls.Add(Me.btnClose)
+        Me.Controls.Add(Me.btnSave)
+        Me.Controls.Add(Me.grpInsurance)
+        Me.Controls.Add(Me.grpClient)
         Me.Name = "frmInsurance"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Certificate of Insurance"
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
-        Me.GroupBox2.ResumeLayout(False)
-        Me.GroupBox2.PerformLayout()
-        Me.GroupBox3.ResumeLayout(False)
+        Me.grpClient.ResumeLayout(False)
+        Me.grpClient.PerformLayout()
+        Me.grpInsurance.ResumeLayout(False)
+        Me.grpInsurance.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
-    Friend WithEvents txtSenderID As System.Windows.Forms.TextBox
-    Friend WithEvents txtSenderIDNum As System.Windows.Forms.TextBox
-    Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents txtSenderAddr As System.Windows.Forms.TextBox
+    Friend WithEvents grpClient As System.Windows.Forms.GroupBox
+    Friend WithEvents txtContact As System.Windows.Forms.TextBox
+    Friend WithEvents Label16 As System.Windows.Forms.Label
+    Friend WithEvents txtBirthdate As System.Windows.Forms.TextBox
+    Friend WithEvents Label15 As System.Windows.Forms.Label
+    Friend WithEvents txtAddress As System.Windows.Forms.TextBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents btnSearch As System.Windows.Forms.Button
-    Friend WithEvents txtHolder As System.Windows.Forms.TextBox
+    Friend WithEvents txtClient As System.Windows.Forms.TextBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents dtpBday As System.Windows.Forms.DateTimePicker
-    Friend WithEvents Label17 As System.Windows.Forms.Label
-    Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents grpInsurance As System.Windows.Forms.GroupBox
+    Friend WithEvents txtExpiry As System.Windows.Forms.TextBox
+    Friend WithEvents txtAmount As System.Windows.Forms.TextBox
+    Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
-    Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents dtpDate As System.Windows.Forms.DateTimePicker
-    Friend WithEvents TextBox4 As System.Windows.Forms.TextBox
-    Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
-    Friend WithEvents dtpExpiry As System.Windows.Forms.DateTimePicker
+    Friend WithEvents txtDate As System.Windows.Forms.TextBox
     Friend WithEvents Label6 As System.Windows.Forms.Label
-    Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
-    Friend WithEvents btnBrowse As System.Windows.Forms.Button
-    Friend WithEvents btnNew As System.Windows.Forms.Button
+    Friend WithEvents txtCOI As System.Windows.Forms.TextBox
+    Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents btnVoid As System.Windows.Forms.Button
-    Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents btnClose As System.Windows.Forms.Button
     Friend WithEvents btnSave As System.Windows.Forms.Button
 End Class

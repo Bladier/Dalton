@@ -6,7 +6,7 @@ pawnshop
 </name>
 </assembly>
 <members>
-<member name="M:Pawnshop.database.SaveEntry(System.Data.DataSet)">
+<member name="M:Pawnshop.database.SaveEntry(System.Data.DataSet,System.Boolean)">
 	<summary>
  Module 001
  Save the Dataset to the database

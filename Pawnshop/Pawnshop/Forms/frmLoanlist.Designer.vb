@@ -131,6 +131,7 @@ Partial Class frmLoanlist
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.lvClient)
         Me.Name = "frmLoanlist"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Loan List"
         Me.ResumeLayout(False)
 
