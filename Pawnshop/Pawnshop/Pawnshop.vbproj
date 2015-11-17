@@ -124,16 +124,28 @@
     <Compile Include="Forms\diagPayloan.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmLayAwayLookUp.Designer.vb">
-      <DependentUpon>frmLayAwayLookUp.vb</DependentUpon>
+    <Compile Include="Forms\frmInsuranceList.Designer.vb">
+      <DependentUpon>frmInsuranceList.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmLayAwayLookUp.vb">
+    <Compile Include="Forms\frmInsuranceList.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmLayAway.Designer.vb">
+    <Compile Include="POS\frmPOSmain.Designer.vb">
+      <DependentUpon>frmPOSmain.vb</DependentUpon>
+    </Compile>
+    <Compile Include="POS\frmPOSmain.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="POS\frmLayAwayLookUp.Designer.vb">
+      <DependentUpon>frmLayAwayLookUp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="POS\frmLayAwayLookUp.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="POS\frmLayAway.Designer.vb">
       <DependentUpon>frmLayAway.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmLayAway.vb">
+    <Compile Include="POS\frmLayAway.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmBorrowBrowse.Designer.vb">
@@ -289,7 +301,10 @@
     <EmbeddedResource Include="Forms\diagPayloan.resx">
       <DependentUpon>diagPayloan.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmLayAwayLookUp.resx">
+    <EmbeddedResource Include="Forms\frmInsuranceList.resx">
+      <DependentUpon>frmInsuranceList.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="POS\frmLayAwayLookUp.resx">
       <DependentUpon>frmLayAwayLookUp.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmBorrowBrowse.resx">
@@ -319,7 +334,7 @@
     <EmbeddedResource Include="Forms\frmInsurance.resx">
       <DependentUpon>frmInsurance.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmLayAway.resx">
+    <EmbeddedResource Include="POS\frmLayAway.resx">
       <DependentUpon>frmLayAway.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmMain.resx">
@@ -363,6 +378,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="POS\frmPOS.resx">
       <DependentUpon>frmPOS.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="POS\frmPOSmain.resx">
+      <DependentUpon>frmPOSmain.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

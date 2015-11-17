@@ -22,7 +22,7 @@ Partial Class frmPOS
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim ListViewItem5 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem(New String() {"CEL 0001", "CELLPHONE DAW NI", "2", "1000", "2000"}, -1)
+        Dim ListViewItem3 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem(New String() {"CEL 0001", "CELLPHONE DAW NI", "2", "1000", "2000"}, -1)
         Me.lvSales = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -61,7 +61,7 @@ Partial Class frmPOS
         Me.lvSales.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lvSales.FullRowSelect = True
         Me.lvSales.GridLines = True
-        Me.lvSales.Items.AddRange(New System.Windows.Forms.ListViewItem() {ListViewItem5})
+        Me.lvSales.Items.AddRange(New System.Windows.Forms.ListViewItem() {ListViewItem3})
         Me.lvSales.Location = New System.Drawing.Point(12, 12)
         Me.lvSales.Name = "lvSales"
         Me.lvSales.Size = New System.Drawing.Size(601, 378)
@@ -127,7 +127,7 @@ Partial Class frmPOS
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Location = New System.Drawing.Point(622, 63)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(352, 157)
+        Me.GroupBox1.Size = New System.Drawing.Size(352, 171)
         Me.GroupBox1.TabIndex = 7
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Item Information"
@@ -227,9 +227,9 @@ Partial Class frmPOS
         Me.GroupBox2.Controls.Add(Me.Label13)
         Me.GroupBox2.Controls.Add(Me.Label10)
         Me.GroupBox2.Controls.Add(Me.Label11)
-        Me.GroupBox2.Location = New System.Drawing.Point(622, 226)
+        Me.GroupBox2.Location = New System.Drawing.Point(623, 240)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(351, 115)
+        Me.GroupBox2.Size = New System.Drawing.Size(351, 101)
         Me.GroupBox2.TabIndex = 8
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Sales Information"
@@ -238,7 +238,7 @@ Partial Class frmPOS
         '
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(15, 59)
+        Me.Label12.Location = New System.Drawing.Point(9, 56)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(41, 18)
         Me.Label12.TabIndex = 12
@@ -249,7 +249,7 @@ Partial Class frmPOS
         Me.Label13.BackColor = System.Drawing.Color.White
         Me.Label13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(15, 77)
+        Me.Label13.Location = New System.Drawing.Point(12, 74)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(145, 22)
         Me.Label13.TabIndex = 11
@@ -260,7 +260,7 @@ Partial Class frmPOS
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(12, 16)
+        Me.Label10.Location = New System.Drawing.Point(9, 16)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(39, 18)
         Me.Label10.TabIndex = 10
@@ -315,7 +315,7 @@ Partial Class frmPOS
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(985, 400)
+        Me.ClientSize = New System.Drawing.Size(985, 521)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)

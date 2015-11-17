@@ -33,19 +33,21 @@ Partial Class frmLayAway
         Me.txtCustomer = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.btnItem = New System.Windows.Forms.Button()
+        Me.txtDescription = New System.Windows.Forms.TextBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.cboType = New System.Windows.Forms.ComboBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.txtItemCode = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.cboDate = New System.Windows.Forms.DateTimePicker()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.txtLapNo = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.cboDate = New System.Windows.Forms.DateTimePicker()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.btnClose = New System.Windows.Forms.Button()
-        Me.btnSave = New System.Windows.Forms.Button()
-        Me.txtItemCode = New System.Windows.Forms.TextBox()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.cboType = New System.Windows.Forms.ComboBox()
-        Me.txtDescription = New System.Windows.Forms.TextBox()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.btnItem = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Button3 = New System.Windows.Forms.Button()
         Me.grpPawner.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -177,6 +179,87 @@ Partial Class frmLayAway
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Lay Away Plan's Information"
         '
+        'btnItem
+        '
+        Me.btnItem.Enabled = False
+        Me.btnItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnItem.Location = New System.Drawing.Point(260, 96)
+        Me.btnItem.Name = "btnItem"
+        Me.btnItem.Size = New System.Drawing.Size(33, 23)
+        Me.btnItem.TabIndex = 36
+        Me.btnItem.Text = "..."
+        Me.btnItem.UseVisualStyleBackColor = True
+        Me.btnItem.Visible = False
+        '
+        'txtDescription
+        '
+        Me.txtDescription.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtDescription.Location = New System.Drawing.Point(141, 125)
+        Me.txtDescription.Multiline = True
+        Me.txtDescription.Name = "txtDescription"
+        Me.txtDescription.ReadOnly = True
+        Me.txtDescription.Size = New System.Drawing.Size(183, 61)
+        Me.txtDescription.TabIndex = 35
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(6, 125)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(124, 16)
+        Me.Label7.TabIndex = 34
+        Me.Label7.Text = "Item Description:"
+        '
+        'cboType
+        '
+        Me.cboType.Enabled = False
+        Me.cboType.FormattingEnabled = True
+        Me.cboType.Items.AddRange(New Object() {"Auction item", "Brand new"})
+        Me.cboType.Location = New System.Drawing.Point(141, 20)
+        Me.cboType.Name = "cboType"
+        Me.cboType.Size = New System.Drawing.Size(112, 21)
+        Me.cboType.TabIndex = 33
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(6, 20)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(48, 16)
+        Me.Label4.TabIndex = 32
+        Me.Label4.Text = "Type:"
+        '
+        'txtItemCode
+        '
+        Me.txtItemCode.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtItemCode.Location = New System.Drawing.Point(141, 97)
+        Me.txtItemCode.Name = "txtItemCode"
+        Me.txtItemCode.ReadOnly = True
+        Me.txtItemCode.Size = New System.Drawing.Size(113, 22)
+        Me.txtItemCode.TabIndex = 31
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(6, 97)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(80, 16)
+        Me.Label1.TabIndex = 29
+        Me.Label1.Text = "Item code:"
+        '
+        'cboDate
+        '
+        Me.cboDate.Enabled = False
+        Me.cboDate.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.cboDate.Location = New System.Drawing.Point(141, 73)
+        Me.cboDate.Name = "cboDate"
+        Me.cboDate.Size = New System.Drawing.Size(113, 20)
+        Me.cboDate.TabIndex = 27
+        Me.cboDate.Value = New Date(2015, 10, 15, 0, 0, 0, 0)
+        '
         'Label5
         '
         Me.Label5.AutoSize = True
@@ -206,113 +289,54 @@ Partial Class frmLayAway
         Me.Label6.TabIndex = 2
         Me.Label6.Text = "LAP No:"
         '
-        'cboDate
-        '
-        Me.cboDate.Enabled = False
-        Me.cboDate.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.cboDate.Location = New System.Drawing.Point(141, 73)
-        Me.cboDate.Name = "cboDate"
-        Me.cboDate.Size = New System.Drawing.Size(113, 20)
-        Me.cboDate.TabIndex = 27
-        Me.cboDate.Value = New Date(2015, 10, 15, 0, 0, 0, 0)
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(6, 97)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(80, 16)
-        Me.Label1.TabIndex = 29
-        Me.Label1.Text = "Item code:"
-        '
         'btnClose
         '
-        Me.btnClose.Location = New System.Drawing.Point(778, 235)
+        Me.btnClose.Location = New System.Drawing.Point(778, 219)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(74, 35)
         Me.btnClose.TabIndex = 12
         Me.btnClose.Text = "&Close"
         Me.btnClose.UseVisualStyleBackColor = True
         '
-        'btnSave
+        'Button1
         '
-        Me.btnSave.Enabled = False
-        Me.btnSave.Location = New System.Drawing.Point(698, 235)
-        Me.btnSave.Name = "btnSave"
-        Me.btnSave.Size = New System.Drawing.Size(74, 35)
-        Me.btnSave.TabIndex = 11
-        Me.btnSave.Text = "&Save"
-        Me.btnSave.UseVisualStyleBackColor = True
+        Me.Button1.Enabled = False
+        Me.Button1.Location = New System.Drawing.Point(698, 219)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(74, 35)
+        Me.Button1.TabIndex = 11
+        Me.Button1.Text = "&Save"
+        Me.Button1.UseVisualStyleBackColor = True
         '
-        'txtItemCode
+        'Button2
         '
-        Me.txtItemCode.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtItemCode.Location = New System.Drawing.Point(141, 97)
-        Me.txtItemCode.Name = "txtItemCode"
-        Me.txtItemCode.ReadOnly = True
-        Me.txtItemCode.Size = New System.Drawing.Size(113, 22)
-        Me.txtItemCode.TabIndex = 31
+        Me.Button2.Enabled = False
+        Me.Button2.Location = New System.Drawing.Point(618, 219)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(74, 35)
+        Me.Button2.TabIndex = 13
+        Me.Button2.Text = "&Browse"
+        Me.Button2.UseVisualStyleBackColor = True
         '
-        'Label4
+        'Button3
         '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(6, 20)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(48, 16)
-        Me.Label4.TabIndex = 32
-        Me.Label4.Text = "Type:"
-        '
-        'cboType
-        '
-        Me.cboType.Enabled = False
-        Me.cboType.FormattingEnabled = True
-        Me.cboType.Items.AddRange(New Object() {"Auction item", "Brand new"})
-        Me.cboType.Location = New System.Drawing.Point(141, 20)
-        Me.cboType.Name = "cboType"
-        Me.cboType.Size = New System.Drawing.Size(112, 21)
-        Me.cboType.TabIndex = 33
-        '
-        'txtDescription
-        '
-        Me.txtDescription.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtDescription.Location = New System.Drawing.Point(141, 125)
-        Me.txtDescription.Multiline = True
-        Me.txtDescription.Name = "txtDescription"
-        Me.txtDescription.ReadOnly = True
-        Me.txtDescription.Size = New System.Drawing.Size(183, 61)
-        Me.txtDescription.TabIndex = 35
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(6, 125)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(124, 16)
-        Me.Label7.TabIndex = 34
-        Me.Label7.Text = "Item Description:"
-        '
-        'btnItem
-        '
-        Me.btnItem.Enabled = False
-        Me.btnItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnItem.Location = New System.Drawing.Point(260, 96)
-        Me.btnItem.Name = "btnItem"
-        Me.btnItem.Size = New System.Drawing.Size(33, 23)
-        Me.btnItem.TabIndex = 36
-        Me.btnItem.Text = "..."
-        Me.btnItem.UseVisualStyleBackColor = True
-        Me.btnItem.Visible = False
+        Me.Button3.Enabled = False
+        Me.Button3.Location = New System.Drawing.Point(538, 219)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(74, 35)
+        Me.Button3.TabIndex = 14
+        Me.Button3.Text = "&New"
+        Me.Button3.UseVisualStyleBackColor = True
         '
         'frmLayAway
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(876, 353)
+        Me.ClientSize = New System.Drawing.Size(865, 262)
+        Me.Controls.Add(Me.Button3)
+        Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.btnClose)
-        Me.Controls.Add(Me.btnSave)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.grpPawner)
         Me.Name = "frmLayAway"
@@ -341,11 +365,13 @@ Partial Class frmLayAway
     Friend WithEvents cboDate As System.Windows.Forms.DateTimePicker
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents btnClose As System.Windows.Forms.Button
-    Friend WithEvents btnSave As System.Windows.Forms.Button
     Friend WithEvents txtItemCode As System.Windows.Forms.TextBox
     Friend WithEvents txtDescription As System.Windows.Forms.TextBox
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents cboType As System.Windows.Forms.ComboBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents btnItem As System.Windows.Forms.Button
+    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents Button3 As System.Windows.Forms.Button
 End Class
