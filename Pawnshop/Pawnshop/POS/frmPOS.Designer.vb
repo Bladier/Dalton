@@ -48,6 +48,9 @@ Partial Class frmPOS
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.btnItem = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
@@ -117,6 +120,8 @@ Partial Class frmPOS
         'GroupBox1
         '
         Me.GroupBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox1.Controls.Add(Me.Label14)
+        Me.GroupBox1.Controls.Add(Me.Label15)
         Me.GroupBox1.Controls.Add(Me.Label8)
         Me.GroupBox1.Controls.Add(Me.Label9)
         Me.GroupBox1.Controls.Add(Me.Label6)
@@ -127,7 +132,7 @@ Partial Class frmPOS
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Location = New System.Drawing.Point(622, 63)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(352, 171)
+        Me.GroupBox1.Size = New System.Drawing.Size(352, 218)
         Me.GroupBox1.TabIndex = 7
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Item Information"
@@ -227,9 +232,9 @@ Partial Class frmPOS
         Me.GroupBox2.Controls.Add(Me.Label13)
         Me.GroupBox2.Controls.Add(Me.Label10)
         Me.GroupBox2.Controls.Add(Me.Label11)
-        Me.GroupBox2.Location = New System.Drawing.Point(623, 240)
+        Me.GroupBox2.Location = New System.Drawing.Point(623, 287)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(351, 101)
+        Me.GroupBox2.Size = New System.Drawing.Size(351, 103)
         Me.GroupBox2.TabIndex = 8
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Sales Information"
@@ -282,7 +287,7 @@ Partial Class frmPOS
         '
         Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(898, 347)
+        Me.Button1.Location = New System.Drawing.Point(898, 466)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 43)
         Me.Button1.TabIndex = 9
@@ -293,7 +298,7 @@ Partial Class frmPOS
         '
         Me.Button2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.Location = New System.Drawing.Point(817, 347)
+        Me.Button2.Location = New System.Drawing.Point(807, 466)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(75, 43)
         Me.Button2.TabIndex = 10
@@ -304,18 +309,53 @@ Partial Class frmPOS
         '
         Me.Button3.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button3.Location = New System.Drawing.Point(622, 347)
+        Me.Button3.Location = New System.Drawing.Point(623, 466)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(75, 43)
         Me.Button3.TabIndex = 11
         Me.Button3.Text = "&Cancel"
         Me.Button3.UseVisualStyleBackColor = True
         '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label14.Location = New System.Drawing.Point(12, 147)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(102, 18)
+        Me.Label14.TabIndex = 15
+        Me.Label14.Text = "Serial Number"
+        '
+        'Label15
+        '
+        Me.Label15.BackColor = System.Drawing.Color.White
+        Me.Label15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label15.Location = New System.Drawing.Point(15, 166)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(327, 22)
+        Me.Label15.TabIndex = 14
+        Me.Label15.Text = "1000AE3TA000"
+        Me.Label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'btnItem
+        '
+        Me.btnItem.Enabled = False
+        Me.btnItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnItem.Location = New System.Drawing.Point(868, 33)
+        Me.btnItem.Name = "btnItem"
+        Me.btnItem.Size = New System.Drawing.Size(33, 23)
+        Me.btnItem.TabIndex = 37
+        Me.btnItem.Text = "..."
+        Me.btnItem.UseVisualStyleBackColor = True
+        Me.btnItem.Visible = False
+        '
         'frmPOS
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(985, 521)
+        Me.Controls.Add(Me.btnItem)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
@@ -359,4 +399,7 @@ Partial Class frmPOS
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents Button3 As System.Windows.Forms.Button
+    Friend WithEvents Label14 As System.Windows.Forms.Label
+    Friend WithEvents Label15 As System.Windows.Forms.Label
+    Friend WithEvents btnItem As System.Windows.Forms.Button
 End Class

@@ -293,6 +293,12 @@
     <Compile Include="POS\frmPOS.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="POS\frmLayAwayReceipt.Designer.vb">
+      <DependentUpon>frmLayAwayReceipt.vb</DependentUpon>
+    </Compile>
+    <Compile Include="POS\frmLayAwayReceipt.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Forms\devClient.resx">
@@ -381,6 +387,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="POS\frmPOSmain.resx">
       <DependentUpon>frmPOSmain.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="POS\frmLayAwayReceipt.resx">
+      <DependentUpon>frmLayAwayReceipt.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
