@@ -35,7 +35,7 @@ Partial Class frmPOSmain
         '
         Me.btnSave.Enabled = False
         Me.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.btnSave.Location = New System.Drawing.Point(12, 25)
+        Me.btnSave.Location = New System.Drawing.Point(20, 9)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(90, 58)
         Me.btnSave.TabIndex = 13
@@ -46,7 +46,7 @@ Partial Class frmPOSmain
         '
         Me.Button1.Enabled = False
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Button1.Location = New System.Drawing.Point(12, 153)
+        Me.Button1.Location = New System.Drawing.Point(20, 137)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(90, 58)
         Me.Button1.TabIndex = 14
@@ -57,7 +57,7 @@ Partial Class frmPOSmain
         '
         Me.Button2.Enabled = False
         Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Button2.Location = New System.Drawing.Point(12, 89)
+        Me.Button2.Location = New System.Drawing.Point(20, 73)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(90, 58)
         Me.Button2.TabIndex = 15
@@ -68,7 +68,7 @@ Partial Class frmPOSmain
         '
         Me.Button3.Enabled = False
         Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Button3.Location = New System.Drawing.Point(133, 89)
+        Me.Button3.Location = New System.Drawing.Point(116, 73)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(90, 58)
         Me.Button3.TabIndex = 16
@@ -79,7 +79,7 @@ Partial Class frmPOSmain
         '
         Me.Button4.Enabled = False
         Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Button4.Location = New System.Drawing.Point(133, 153)
+        Me.Button4.Location = New System.Drawing.Point(116, 137)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(90, 58)
         Me.Button4.TabIndex = 17
@@ -90,7 +90,7 @@ Partial Class frmPOSmain
         '
         Me.Button5.Enabled = False
         Me.Button5.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Button5.Location = New System.Drawing.Point(133, 25)
+        Me.Button5.Location = New System.Drawing.Point(116, 9)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(90, 58)
         Me.Button5.TabIndex = 18
@@ -101,9 +101,9 @@ Partial Class frmPOSmain
         '
         Me.Button6.Enabled = False
         Me.Button6.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.Button6.Location = New System.Drawing.Point(12, 217)
+        Me.Button6.Location = New System.Drawing.Point(20, 201)
         Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(213, 58)
+        Me.Button6.Size = New System.Drawing.Size(186, 58)
         Me.Button6.TabIndex = 19
         Me.Button6.Text = "Lay Away Sales Receipt"
         Me.Button6.UseVisualStyleBackColor = True
@@ -112,7 +112,7 @@ Partial Class frmPOSmain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(237, 284)
+        Me.ClientSize = New System.Drawing.Size(225, 264)
         Me.Controls.Add(Me.Button6)
         Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.Button4)
@@ -121,7 +121,7 @@ Partial Class frmPOSmain
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.btnSave)
         Me.Name = "frmPOSmain"
-        Me.Text = "Transaction Type"
+        Me.Text = "Transaction Mode"
         Me.ResumeLayout(False)
 
     End Sub

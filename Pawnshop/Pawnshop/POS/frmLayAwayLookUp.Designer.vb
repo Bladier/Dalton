@@ -23,10 +23,10 @@ Partial Class frmLayAwayLookUp
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.grpLayAway = New System.Windows.Forms.GroupBox()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.btnSearch = New System.Windows.Forms.Button()
         Me.txtPawner = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.lvClient = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -50,6 +50,14 @@ Partial Class frmLayAwayLookUp
         Me.grpLayAway.TabIndex = 5
         Me.grpLayAway.TabStop = False
         Me.grpLayAway.Text = "Search Lay Away Plan"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(95, 23)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(0, 13)
+        Me.Label1.TabIndex = 3
         '
         'btnSearch
         '
@@ -79,14 +87,6 @@ Partial Class frmLayAwayLookUp
         Me.Label2.TabIndex = 2
         Me.Label2.Text = "LAP No:"
         '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(95, 23)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(0, 13)
-        Me.Label1.TabIndex = 3
-        '
         'lvClient
         '
         Me.lvClient.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -97,7 +97,7 @@ Partial Class frmLayAwayLookUp
         Me.lvClient.GridLines = True
         Me.lvClient.Location = New System.Drawing.Point(12, 92)
         Me.lvClient.Name = "lvClient"
-        Me.lvClient.Size = New System.Drawing.Size(760, 272)
+        Me.lvClient.Size = New System.Drawing.Size(843, 272)
         Me.lvClient.TabIndex = 9
         Me.lvClient.UseCompatibleStateImageBehavior = False
         Me.lvClient.View = System.Windows.Forms.View.Details
@@ -130,7 +130,7 @@ Partial Class frmLayAwayLookUp
         'btnSave
         '
         Me.btnSave.Enabled = False
-        Me.btnSave.Location = New System.Drawing.Point(618, 386)
+        Me.btnSave.Location = New System.Drawing.Point(704, 370)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(74, 35)
         Me.btnSave.TabIndex = 12
@@ -140,7 +140,7 @@ Partial Class frmLayAwayLookUp
         'Button1
         '
         Me.Button1.Enabled = False
-        Me.Button1.Location = New System.Drawing.Point(698, 386)
+        Me.Button1.Location = New System.Drawing.Point(784, 370)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(74, 35)
         Me.Button1.TabIndex = 13

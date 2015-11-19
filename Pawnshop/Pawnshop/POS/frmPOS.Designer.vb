@@ -22,7 +22,7 @@ Partial Class frmPOS
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim ListViewItem3 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem(New String() {"CEL 0001", "CELLPHONE DAW NI", "2", "1000", "2000"}, -1)
+        Dim ListViewItem2 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem(New String() {"CEL 0001", "CELLPHONE DAW NI", "2", "1000", "2000"}, -1)
         Me.lvSales = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -32,6 +32,8 @@ Partial Class frmPOS
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.Label15 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
@@ -48,9 +50,8 @@ Partial Class frmPOS
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
-        Me.Label14 = New System.Windows.Forms.Label()
-        Me.Label15 = New System.Windows.Forms.Label()
         Me.btnItem = New System.Windows.Forms.Button()
+        Me.Button4 = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
@@ -64,7 +65,7 @@ Partial Class frmPOS
         Me.lvSales.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lvSales.FullRowSelect = True
         Me.lvSales.GridLines = True
-        Me.lvSales.Items.AddRange(New System.Windows.Forms.ListViewItem() {ListViewItem3})
+        Me.lvSales.Items.AddRange(New System.Windows.Forms.ListViewItem() {ListViewItem2})
         Me.lvSales.Location = New System.Drawing.Point(12, 12)
         Me.lvSales.Name = "lvSales"
         Me.lvSales.Size = New System.Drawing.Size(601, 378)
@@ -136,6 +137,28 @@ Partial Class frmPOS
         Me.GroupBox1.TabIndex = 7
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Item Information"
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label14.Location = New System.Drawing.Point(12, 147)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(102, 18)
+        Me.Label14.TabIndex = 15
+        Me.Label14.Text = "Serial Number"
+        '
+        'Label15
+        '
+        Me.Label15.BackColor = System.Drawing.Color.White
+        Me.Label15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label15.Location = New System.Drawing.Point(15, 166)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(327, 22)
+        Me.Label15.TabIndex = 14
+        Me.Label15.Text = "1000AE3TA000"
+        Me.Label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'Label8
         '
@@ -309,34 +332,12 @@ Partial Class frmPOS
         '
         Me.Button3.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button3.Location = New System.Drawing.Point(623, 466)
+        Me.Button3.Location = New System.Drawing.Point(639, 466)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(75, 43)
         Me.Button3.TabIndex = 11
-        Me.Button3.Text = "&Cancel"
+        Me.Button3.Text = "C&ancel"
         Me.Button3.UseVisualStyleBackColor = True
-        '
-        'Label14
-        '
-        Me.Label14.AutoSize = True
-        Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.Location = New System.Drawing.Point(12, 147)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(102, 18)
-        Me.Label14.TabIndex = 15
-        Me.Label14.Text = "Serial Number"
-        '
-        'Label15
-        '
-        Me.Label15.BackColor = System.Drawing.Color.White
-        Me.Label15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.Location = New System.Drawing.Point(15, 166)
-        Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(327, 22)
-        Me.Label15.TabIndex = 14
-        Me.Label15.Text = "1000AE3TA000"
-        Me.Label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'btnItem
         '
@@ -350,11 +351,23 @@ Partial Class frmPOS
         Me.btnItem.UseVisualStyleBackColor = True
         Me.btnItem.Visible = False
         '
+        'Button4
+        '
+        Me.Button4.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button4.Location = New System.Drawing.Point(12, 466)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(131, 43)
+        Me.Button4.TabIndex = 38
+        Me.Button4.Text = "Transaction &Mode"
+        Me.Button4.UseVisualStyleBackColor = True
+        '
         'frmPOS
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(985, 521)
+        Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.btnItem)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
@@ -402,4 +415,5 @@ Partial Class frmPOS
     Friend WithEvents Label14 As System.Windows.Forms.Label
     Friend WithEvents Label15 As System.Windows.Forms.Label
     Friend WithEvents btnItem As System.Windows.Forms.Button
+    Friend WithEvents Button4 As System.Windows.Forms.Button
 End Class

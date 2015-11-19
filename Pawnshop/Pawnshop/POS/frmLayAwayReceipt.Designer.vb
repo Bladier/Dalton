@@ -23,6 +23,8 @@ Partial Class frmLayAwayReceipt
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.grpPawner = New System.Windows.Forms.GroupBox()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.txtContact = New System.Windows.Forms.TextBox()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.txtBirthdate = New System.Windows.Forms.TextBox()
@@ -31,23 +33,23 @@ Partial Class frmLayAwayReceipt
         Me.Label3 = New System.Windows.Forms.Label()
         Me.txtCustomer = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.TextBox4 = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.TextBox6 = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
         Me.btnClose = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.btnItem = New System.Windows.Forms.Button()
         Me.grpPawner.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'grpPawner
         '
+        Me.grpPawner.Controls.Add(Me.btnItem)
         Me.grpPawner.Controls.Add(Me.TextBox1)
         Me.grpPawner.Controls.Add(Me.Label1)
         Me.grpPawner.Controls.Add(Me.txtContact)
@@ -64,6 +66,25 @@ Partial Class frmLayAwayReceipt
         Me.grpPawner.TabIndex = 6
         Me.grpPawner.TabStop = False
         Me.grpPawner.Text = "Lay Away Information"
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox1.Location = New System.Drawing.Point(142, 29)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(214, 22)
+        Me.TextBox1.TabIndex = 20
+        Me.TextBox1.Text = "LAP11001"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(6, 32)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(64, 16)
+        Me.Label1.TabIndex = 21
+        Me.Label1.Text = "LAP No:"
         '
         'txtContact
         '
@@ -144,26 +165,6 @@ Partial Class frmLayAwayReceipt
         Me.Label2.TabIndex = 2
         Me.Label2.Text = "Name:"
         '
-        'TextBox1
-        '
-        Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(142, 29)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.ReadOnly = True
-        Me.TextBox1.Size = New System.Drawing.Size(250, 22)
-        Me.TextBox1.TabIndex = 20
-        Me.TextBox1.Text = "LAP11001"
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(6, 32)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(64, 16)
-        Me.Label1.TabIndex = 21
-        Me.Label1.Text = "LAP No:"
-        '
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.TextBox2)
@@ -184,10 +185,9 @@ Partial Class frmLayAwayReceipt
         Me.TextBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TextBox2.Location = New System.Drawing.Point(142, 29)
         Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.ReadOnly = True
         Me.TextBox2.Size = New System.Drawing.Size(111, 22)
         Me.TextBox2.TabIndex = 20
-        Me.TextBox2.Text = "LAP11001"
+        Me.TextBox2.Text = "CI100011"
         '
         'Label4
         '
@@ -198,6 +198,15 @@ Partial Class frmLayAwayReceipt
         Me.Label4.Size = New System.Drawing.Size(50, 16)
         Me.Label4.TabIndex = 21
         Me.Label4.Text = "CI No:"
+        '
+        'TextBox4
+        '
+        Me.TextBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox4.Location = New System.Drawing.Point(142, 92)
+        Me.TextBox4.Name = "TextBox4"
+        Me.TextBox4.Size = New System.Drawing.Size(111, 22)
+        Me.TextBox4.TabIndex = 16
+        Me.TextBox4.Text = "1000"
         '
         'Label6
         '
@@ -229,16 +238,6 @@ Partial Class frmLayAwayReceipt
         Me.Label8.TabIndex = 2
         Me.Label8.Text = "Date"
         '
-        'TextBox4
-        '
-        Me.TextBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox4.Location = New System.Drawing.Point(142, 92)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.ReadOnly = True
-        Me.TextBox4.Size = New System.Drawing.Size(111, 22)
-        Me.TextBox4.TabIndex = 16
-        Me.TextBox4.Text = "1000"
-        '
         'btnClose
         '
         Me.btnClose.Location = New System.Drawing.Point(633, 206)
@@ -257,6 +256,18 @@ Partial Class frmLayAwayReceipt
         Me.Button1.TabIndex = 13
         Me.Button1.Text = "&Save"
         Me.Button1.UseVisualStyleBackColor = True
+        '
+        'btnItem
+        '
+        Me.btnItem.Enabled = False
+        Me.btnItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnItem.Location = New System.Drawing.Point(359, 28)
+        Me.btnItem.Name = "btnItem"
+        Me.btnItem.Size = New System.Drawing.Size(33, 23)
+        Me.btnItem.TabIndex = 37
+        Me.btnItem.Text = "..."
+        Me.btnItem.UseVisualStyleBackColor = True
+        Me.btnItem.Visible = False
         '
         'frmLayAwayReceipt
         '
@@ -296,4 +307,5 @@ Partial Class frmLayAwayReceipt
     Friend WithEvents TextBox4 As System.Windows.Forms.TextBox
     Friend WithEvents btnClose As System.Windows.Forms.Button
     Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents btnItem As System.Windows.Forms.Button
 End Class
