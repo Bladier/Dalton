@@ -137,7 +137,7 @@
                         Console.WriteLine("Special Length: " & privParts(y).Length)
                 End Select
 
-                chkList(x).Checked = IIf(privParts(y).Substring(x, 1) = "1", True, False)
+                ' chkList(x).Checked = IIf(privParts(y).Substring(x, 1) = "1", True, False)
             Next
         Next
     End Sub

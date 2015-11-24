@@ -309,30 +309,29 @@ Public Class ComputerUser
         Console.WriteLine("Level is " & _level)
     End Sub
 
-    Private Sub getPrivilege()
-        Dim superAdmin As String = "PDuNxp8S9q0="
-        If _privilege = superAdmin Then
-            _level = "Super User"
+    'Private Sub getPrivilege()
+    'Dim superAdmin As String = "PDuNxp8S9q0="
+    ' If _privilege = superAdmin Then
+    '      _level = "Super User"
 
-            Dim TabCnt As Integer = 4
-            Dim privList() As Boolean
+    ' Dim TabCnt As Integer = 4
+    'Dim privList() As Boolean
 
-            For cnt As Integer = 0 To TabCnt - 1
-                Select Case cnt
-                    Case 0 : privList = {_pawn, _clientList, _moneyTransfer, _insurance, _layAway, _dollarBuying, _pos, _cio}
-                    Case 1 : privList = {_expiryList, _journalEntries, _cashCount, _backUp, _viewUserManagement, _viewUserManagement, _viewUserManagement, _viewUserManagement, _viewUserManagement, _viewRates, _openStore}
-                    Case 2 : privList = {_userManagement, _updateRates, _settings, _borrow}
-                    Case 3 : privList = {_cashInBank, _cashOutBank, _void}
-                End Select
+    '  For cnt As Integer = 0 To TabCnt - 1
+    'Select Case cnt
+    ' Case 0 : privList = {_pawn, _clientList, _moneyTransfer, _insurance, _layAway, _dollarBuying, _pos, _cio}
+    ' Case 1 : privList = {_expiryList, _journalEntries, _cashCount, _backUp, _viewUserManagement, _viewUserManagement, _viewUserManagement, _viewUserManagement, _viewUserManagement, _viewRates, _openStore}
+    ' Case 2 : privList = {_userManagement, _updateRates, _settings, _borrow}
+    ' Case 3 : privList = {_cashInBank, _cashOutBank, _void}
+    'End Select
 
-                For Each e In privList
-                    e = True
-                Next
-            Next
-        Else
-            UpdatePrivilege()
-        End If
-    End Sub
+    'For Each e In privList
+    '  e = True
+    '  Next
+    ' NextS()
+    'Else
+               '
+    'End Sub
 #End Region
 
 #Region "Procedures and Functions"
@@ -372,7 +371,7 @@ Public Class ComputerUser
             _lastLogin = .Item("LastLogin")
         End With
 
-        getPrivilege()
+        'getPrivilege()
     End Sub
 
     Public Sub SaveUser(Optional ByVal isNew As Boolean = True)

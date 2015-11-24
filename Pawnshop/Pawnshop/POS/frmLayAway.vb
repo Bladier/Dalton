@@ -4,7 +4,7 @@
         Me.Close()
     End Sub
 
-    Private Sub btnItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnItem.Click
+    Private Sub btnItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         frmItemLookUp.Show()
     End Sub
 End Class

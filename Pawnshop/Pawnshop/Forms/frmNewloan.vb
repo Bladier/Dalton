@@ -79,29 +79,17 @@
         Dim mySql As String = "SELECT * FROM tbl_Gamit WHERE PRIVILEGE <> 'PDuNxp8S9q0='"
         Dim ds As DataSet = LoadSQL(mySql)
 
-<<<<<<< HEAD
-        Try
-            appraisal = New Hashtable
-            appraisal.Clear()
-            cboAppraiser.Items.Clear()
-        Catch ex As Exception
-            MsgBox(ex.ToString)
-        End Try
 
-=======
         appraiser = New Hashtable
         cboAppraiser.Items.Clear()
->>>>>>> refs/remotes/origin/Backup
+
         For Each dr As DataRow In ds.Tables(0).Rows
             Dim tmpUser As New ComputerUser
             tmpUser.LoadUserByRow(dr)
             Console.WriteLine(tmpUser.FullName & " loaded.")
 
-<<<<<<< HEAD
-            appraisal.Add(tmpUser.UserID, tmpUser.UserName)
-=======
+
             appraiser.Add(tmpUser.UserID, tmpUser.UserName)
->>>>>>> refs/remotes/origin/Backup
             cboAppraiser.Items.Add(tmpUser.UserName)
         Next
     End Sub
@@ -151,11 +139,11 @@
         DigitOnly(e)
     End Sub
 
-    Private Sub frmNewloan_DoubleClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.DoubleClick
-        For Each eL As DictionaryEntry In appraisal
-            Console.WriteLine(eL)
-        Next
-    End Sub
+    ' Private Sub frmNewloan_DoubleClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.DoubleClick
+    'For Each eL As DictionaryEntry In appraisal
+    ' Console.WriteLine(eL)
+    'Next
+    'End Sub
 
     Private Sub frmNewloan_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Me.KeyDown
         Select Case e.KeyCode
@@ -542,7 +530,7 @@
                 .Principal = txtPrincipal.Text
             End If
             .NetAmount = txtTotal.Text
-            .AppraiserID = appraisal(cboAppraiser.Text)
+            ' .AppraiserID = appraisal(cboAppraiser.Text)
             .Status = transactionType
             .AdvanceInterestPerDays = advanceInterestNumberofMonth
             If transactionType <> "L" Then
@@ -638,19 +626,6 @@
         End Select
     End Function
 
-<<<<<<< HEAD
-=======
-    Private Function GetAppraiserById(ByVal id As Integer) As String
-        For Each user In appraiser
-            If user.key = id Then
-                Return user.value
-            End If
-        Next
-
-        Return "N/A"
-    End Function
-
->>>>>>> refs/remotes/origin/Backup
     Private Function GetAppraiserID(ByVal name As String) As Integer
         For Each user In appraiser
             Console.Write(user.value & " USER VALUE")
@@ -956,8 +931,6 @@
         End If
     End Sub
 
-<<<<<<< HEAD
-=======
     Private Sub cboAppraiser_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboAppraiser.SelectedIndexChanged
         If POSuser.UserName = cboAppraiser.Text Then
             mod_system.isAuthorized = True
@@ -966,5 +939,4 @@
         End If
     End Sub
 
->>>>>>> refs/remotes/origin/Backup
 End Class

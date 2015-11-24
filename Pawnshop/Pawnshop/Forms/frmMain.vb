@@ -228,11 +228,14 @@
             MsgBoxAuthoriation("You don't have access to Backup")
             Exit Sub
         End If
-
         frmBackup.Show()
     End Sub
 
     Private Sub UpdateToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles UpdateToolStripMenuItem.Click
         If Not dateSet Then MsgBox("Please Open the Store" & vbCrLf & "File > Open Store", MsgBoxStyle.Critical, "Store Closed") : Exit Sub
+    End Sub
+
+    Private Sub InsuranceListingToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles InsuranceListingToolStripMenuItem1.Click
+
     End Sub
 End Class

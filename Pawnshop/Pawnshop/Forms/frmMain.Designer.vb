@@ -62,6 +62,33 @@ Partial Class frmMain
         Me.tsCurrentDate = New System.Windows.Forms.ToolStripStatusLabel()
         Me.tsUser = New System.Windows.Forms.ToolStripStatusLabel()
         Me.tmrCurrent = New System.Windows.Forms.Timer(Me.components)
+        Me.DailyToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LoansRegisterToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LoansPaidRegisterToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CashCountSheetToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.InsuranceListingToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MoneyTransferToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PeraPadalaSellInToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PeraPadalaOutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.WesternUnionInToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.WesternUnionOutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CashSalesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CashReceiptToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CashDisbursementToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PeriodicToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LoansPaidRegisterToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LoansToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ListOfSegregatedItemToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.InsuranceListingToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MoneyTransferToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PeraPadalaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.WesternUnionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.OtherReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ListOfAuctionNoticeWithAddressesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ReminderLetterToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.StockTransferInOutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ActiveLoanListingToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ClientListToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.msMenu.SuspendLayout()
         CType(Me.pbLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pInfo.SuspendLayout()
@@ -169,6 +196,7 @@ Partial Class frmMain
         '
         'ReportToolStripMenuItem
         '
+        Me.ReportToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DailyToolStripMenuItem, Me.PeriodicToolStripMenuItem, Me.OtherReportToolStripMenuItem})
         Me.ReportToolStripMenuItem.Name = "ReportToolStripMenuItem"
         Me.ReportToolStripMenuItem.Size = New System.Drawing.Size(54, 20)
         Me.ReportToolStripMenuItem.Text = "&Report"
@@ -367,6 +395,174 @@ Partial Class frmMain
         '
         Me.tmrCurrent.Enabled = True
         '
+        'DailyToolStripMenuItem
+        '
+        Me.DailyToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LoansRegisterToolStripMenuItem, Me.LoansPaidRegisterToolStripMenuItem, Me.CashCountSheetToolStripMenuItem, Me.InsuranceListingToolStripMenuItem, Me.MoneyTransferToolStripMenuItem, Me.CashSalesToolStripMenuItem})
+        Me.DailyToolStripMenuItem.Name = "DailyToolStripMenuItem"
+        Me.DailyToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.DailyToolStripMenuItem.Text = "Daily"
+        '
+        'LoansRegisterToolStripMenuItem
+        '
+        Me.LoansRegisterToolStripMenuItem.Name = "LoansRegisterToolStripMenuItem"
+        Me.LoansRegisterToolStripMenuItem.Size = New System.Drawing.Size(176, 22)
+        Me.LoansRegisterToolStripMenuItem.Text = "Loans Register"
+        '
+        'LoansPaidRegisterToolStripMenuItem
+        '
+        Me.LoansPaidRegisterToolStripMenuItem.Name = "LoansPaidRegisterToolStripMenuItem"
+        Me.LoansPaidRegisterToolStripMenuItem.Size = New System.Drawing.Size(176, 22)
+        Me.LoansPaidRegisterToolStripMenuItem.Text = "Loans Paid Register"
+        '
+        'CashCountSheetToolStripMenuItem
+        '
+        Me.CashCountSheetToolStripMenuItem.Name = "CashCountSheetToolStripMenuItem"
+        Me.CashCountSheetToolStripMenuItem.Size = New System.Drawing.Size(176, 22)
+        Me.CashCountSheetToolStripMenuItem.Text = "Cash Count Sheet"
+        '
+        'InsuranceListingToolStripMenuItem
+        '
+        Me.InsuranceListingToolStripMenuItem.Name = "InsuranceListingToolStripMenuItem"
+        Me.InsuranceListingToolStripMenuItem.Size = New System.Drawing.Size(176, 22)
+        Me.InsuranceListingToolStripMenuItem.Text = "Insurance Listing"
+        '
+        'MoneyTransferToolStripMenuItem
+        '
+        Me.MoneyTransferToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PeraPadalaSellInToolStripMenuItem, Me.PeraPadalaOutToolStripMenuItem, Me.WesternUnionInToolStripMenuItem, Me.WesternUnionOutToolStripMenuItem})
+        Me.MoneyTransferToolStripMenuItem.Name = "MoneyTransferToolStripMenuItem"
+        Me.MoneyTransferToolStripMenuItem.Size = New System.Drawing.Size(176, 22)
+        Me.MoneyTransferToolStripMenuItem.Text = "Money Transfer"
+        '
+        'PeraPadalaSellInToolStripMenuItem
+        '
+        Me.PeraPadalaSellInToolStripMenuItem.Name = "PeraPadalaSellInToolStripMenuItem"
+        Me.PeraPadalaSellInToolStripMenuItem.Size = New System.Drawing.Size(173, 22)
+        Me.PeraPadalaSellInToolStripMenuItem.Text = "Pera Padala in"
+        '
+        'PeraPadalaOutToolStripMenuItem
+        '
+        Me.PeraPadalaOutToolStripMenuItem.Name = "PeraPadalaOutToolStripMenuItem"
+        Me.PeraPadalaOutToolStripMenuItem.Size = New System.Drawing.Size(173, 22)
+        Me.PeraPadalaOutToolStripMenuItem.Text = "Pera Padala out"
+        '
+        'WesternUnionInToolStripMenuItem
+        '
+        Me.WesternUnionInToolStripMenuItem.Name = "WesternUnionInToolStripMenuItem"
+        Me.WesternUnionInToolStripMenuItem.Size = New System.Drawing.Size(173, 22)
+        Me.WesternUnionInToolStripMenuItem.Text = "Western Union in"
+        '
+        'WesternUnionOutToolStripMenuItem
+        '
+        Me.WesternUnionOutToolStripMenuItem.Name = "WesternUnionOutToolStripMenuItem"
+        Me.WesternUnionOutToolStripMenuItem.Size = New System.Drawing.Size(173, 22)
+        Me.WesternUnionOutToolStripMenuItem.Text = "Western Union out"
+        '
+        'CashSalesToolStripMenuItem
+        '
+        Me.CashSalesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CashReceiptToolStripMenuItem, Me.CashDisbursementToolStripMenuItem})
+        Me.CashSalesToolStripMenuItem.Name = "CashSalesToolStripMenuItem"
+        Me.CashSalesToolStripMenuItem.Size = New System.Drawing.Size(176, 22)
+        Me.CashSalesToolStripMenuItem.Text = "Cash Sales"
+        '
+        'CashReceiptToolStripMenuItem
+        '
+        Me.CashReceiptToolStripMenuItem.Name = "CashReceiptToolStripMenuItem"
+        Me.CashReceiptToolStripMenuItem.Size = New System.Drawing.Size(176, 22)
+        Me.CashReceiptToolStripMenuItem.Text = "Cash Receipt"
+        '
+        'CashDisbursementToolStripMenuItem
+        '
+        Me.CashDisbursementToolStripMenuItem.Name = "CashDisbursementToolStripMenuItem"
+        Me.CashDisbursementToolStripMenuItem.Size = New System.Drawing.Size(176, 22)
+        Me.CashDisbursementToolStripMenuItem.Text = "Cash Disbursement"
+        '
+        'PeriodicToolStripMenuItem
+        '
+        Me.PeriodicToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LoansPaidRegisterToolStripMenuItem1, Me.LoansToolStripMenuItem, Me.ListOfSegregatedItemToolStripMenuItem, Me.InsuranceListingToolStripMenuItem1, Me.MoneyTransferToolStripMenuItem1})
+        Me.PeriodicToolStripMenuItem.Name = "PeriodicToolStripMenuItem"
+        Me.PeriodicToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.PeriodicToolStripMenuItem.Text = "Periodic"
+        '
+        'LoansPaidRegisterToolStripMenuItem1
+        '
+        Me.LoansPaidRegisterToolStripMenuItem1.Name = "LoansPaidRegisterToolStripMenuItem1"
+        Me.LoansPaidRegisterToolStripMenuItem1.Size = New System.Drawing.Size(181, 22)
+        Me.LoansPaidRegisterToolStripMenuItem1.Text = "Loans Register"
+        '
+        'LoansToolStripMenuItem
+        '
+        Me.LoansToolStripMenuItem.Name = "LoansToolStripMenuItem"
+        Me.LoansToolStripMenuItem.Size = New System.Drawing.Size(181, 22)
+        Me.LoansToolStripMenuItem.Text = "Loans Paid Register"
+        '
+        'ListOfSegregatedItemToolStripMenuItem
+        '
+        Me.ListOfSegregatedItemToolStripMenuItem.Name = "ListOfSegregatedItemToolStripMenuItem"
+        Me.ListOfSegregatedItemToolStripMenuItem.Size = New System.Drawing.Size(181, 22)
+        Me.ListOfSegregatedItemToolStripMenuItem.Text = "Segregated Item List"
+        '
+        'InsuranceListingToolStripMenuItem1
+        '
+        Me.InsuranceListingToolStripMenuItem1.Name = "InsuranceListingToolStripMenuItem1"
+        Me.InsuranceListingToolStripMenuItem1.Size = New System.Drawing.Size(181, 22)
+        Me.InsuranceListingToolStripMenuItem1.Text = "Insurance Register"
+        '
+        'MoneyTransferToolStripMenuItem1
+        '
+        Me.MoneyTransferToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PeraPadalaToolStripMenuItem, Me.WesternUnionToolStripMenuItem})
+        Me.MoneyTransferToolStripMenuItem1.Name = "MoneyTransferToolStripMenuItem1"
+        Me.MoneyTransferToolStripMenuItem1.Size = New System.Drawing.Size(181, 22)
+        Me.MoneyTransferToolStripMenuItem1.Text = "Money Transfer"
+        '
+        'PeraPadalaToolStripMenuItem
+        '
+        Me.PeraPadalaToolStripMenuItem.Name = "PeraPadalaToolStripMenuItem"
+        Me.PeraPadalaToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.PeraPadalaToolStripMenuItem.Text = "Pera Padala"
+        '
+        'WesternUnionToolStripMenuItem
+        '
+        Me.WesternUnionToolStripMenuItem.Name = "WesternUnionToolStripMenuItem"
+        Me.WesternUnionToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.WesternUnionToolStripMenuItem.Text = "Western union"
+        '
+        'OtherReportToolStripMenuItem
+        '
+        Me.OtherReportToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ListOfAuctionNoticeWithAddressesToolStripMenuItem, Me.ReminderLetterToolStripMenuItem, Me.StockTransferInOutToolStripMenuItem, Me.ActiveLoanListingToolStripMenuItem, Me.ClientListToolStripMenuItem})
+        Me.OtherReportToolStripMenuItem.Name = "OtherReportToolStripMenuItem"
+        Me.OtherReportToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.OtherReportToolStripMenuItem.Text = "Other Report"
+        '
+        'ListOfAuctionNoticeWithAddressesToolStripMenuItem
+        '
+        Me.ListOfAuctionNoticeWithAddressesToolStripMenuItem.Name = "ListOfAuctionNoticeWithAddressesToolStripMenuItem"
+        Me.ListOfAuctionNoticeWithAddressesToolStripMenuItem.Size = New System.Drawing.Size(271, 22)
+        Me.ListOfAuctionNoticeWithAddressesToolStripMenuItem.Text = "List of Auction Notice with Addresses"
+        '
+        'ReminderLetterToolStripMenuItem
+        '
+        Me.ReminderLetterToolStripMenuItem.Name = "ReminderLetterToolStripMenuItem"
+        Me.ReminderLetterToolStripMenuItem.Size = New System.Drawing.Size(271, 22)
+        Me.ReminderLetterToolStripMenuItem.Text = "Reminder Letter"
+        '
+        'StockTransferInOutToolStripMenuItem
+        '
+        Me.StockTransferInOutToolStripMenuItem.Name = "StockTransferInOutToolStripMenuItem"
+        Me.StockTransferInOutToolStripMenuItem.Size = New System.Drawing.Size(271, 22)
+        Me.StockTransferInOutToolStripMenuItem.Text = "Stock Transfer In/Out"
+        '
+        'ActiveLoanListingToolStripMenuItem
+        '
+        Me.ActiveLoanListingToolStripMenuItem.Name = "ActiveLoanListingToolStripMenuItem"
+        Me.ActiveLoanListingToolStripMenuItem.Size = New System.Drawing.Size(271, 22)
+        Me.ActiveLoanListingToolStripMenuItem.Text = "Active Loan Listing"
+        '
+        'ClientListToolStripMenuItem
+        '
+        Me.ClientListToolStripMenuItem.Name = "ClientListToolStripMenuItem"
+        Me.ClientListToolStripMenuItem.Size = New System.Drawing.Size(271, 22)
+        Me.ClientListToolStripMenuItem.Text = "Client List"
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -434,5 +630,32 @@ Partial Class frmMain
     Friend WithEvents tmrCurrent As System.Windows.Forms.Timer
     Friend WithEvents LogOutToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tsUser As System.Windows.Forms.ToolStripStatusLabel
+    Friend WithEvents DailyToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents LoansRegisterToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents LoansPaidRegisterToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents CashCountSheetToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents InsuranceListingToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MoneyTransferToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents PeraPadalaSellInToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents PeraPadalaOutToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents WesternUnionInToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents WesternUnionOutToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents CashSalesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents CashReceiptToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents CashDisbursementToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents PeriodicToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents LoansPaidRegisterToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents LoansToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ListOfSegregatedItemToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents InsuranceListingToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MoneyTransferToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents PeraPadalaToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents WesternUnionToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents OtherReportToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ListOfAuctionNoticeWithAddressesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ReminderLetterToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents StockTransferInOutToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ActiveLoanListingToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ClientListToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class
