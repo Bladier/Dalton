@@ -75,6 +75,8 @@ Partial Class frmClientInformation
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.btnSelect = New System.Windows.Forms.Button()
+        Me.webAds = New System.Windows.Forms.WebBrowser()
+        Me.btnHistory = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.grpID.SuspendLayout()
@@ -601,18 +603,38 @@ Partial Class frmClientInformation
         Me.btnSelect.UseVisualStyleBackColor = True
         Me.btnSelect.Visible = False
         '
+        'webAds
+        '
+        Me.webAds.Location = New System.Drawing.Point(570, 226)
+        Me.webAds.MinimumSize = New System.Drawing.Size(20, 20)
+        Me.webAds.Name = "webAds"
+        Me.webAds.ScrollBarsEnabled = False
+        Me.webAds.Size = New System.Drawing.Size(258, 62)
+        Me.webAds.TabIndex = 25
+        '
+        'btnHistory
+        '
+        Me.btnHistory.Location = New System.Drawing.Point(563, 344)
+        Me.btnHistory.Name = "btnHistory"
+        Me.btnHistory.Size = New System.Drawing.Size(84, 40)
+        Me.btnHistory.TabIndex = 26
+        Me.btnHistory.Text = "&History"
+        Me.btnHistory.UseVisualStyleBackColor = True
+        '
         'frmClientInformation
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.btnCancel
         Me.ClientSize = New System.Drawing.Size(964, 396)
+        Me.Controls.Add(Me.btnHistory)
         Me.Controls.Add(Me.btnSelect)
         Me.Controls.Add(Me.grpID)
         Me.Controls.Add(Me.btnSave)
         Me.Controls.Add(Me.btnCancel)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.webAds)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
@@ -680,4 +702,6 @@ Partial Class frmClientInformation
     Friend WithEvents btnIDModify As System.Windows.Forms.Button
     Friend WithEvents cboCity As System.Windows.Forms.ComboBox
     Friend WithEvents cboProv As System.Windows.Forms.ComboBox
+    Friend WithEvents webAds As System.Windows.Forms.WebBrowser
+    Friend WithEvents btnHistory As System.Windows.Forms.Button
 End Class
