@@ -22,6 +22,7 @@ Partial Class frmIMD
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmIMD))
         Me.lvIMD = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -31,13 +32,12 @@ Partial Class frmIMD
         Me.ColumnHeader14 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader15 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader16 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.btnImport = New System.Windows.Forms.Button()
-        Me.txtSearch = New System.Windows.Forms.TextBox()
-        Me.lblSearch = New System.Windows.Forms.Label()
-        Me.btnSearch = New System.Windows.Forms.Button()
-        Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
-        Me.GroupBox1.SuspendLayout()
+        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
+        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
+        Me.txtSearchtoolStrip = New System.Windows.Forms.ToolStripTextBox()
+        Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButton3 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'lvIMD
@@ -45,9 +45,9 @@ Partial Class frmIMD
         Me.lvIMD.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader11, Me.ColumnHeader12, Me.ColumnHeader13, Me.ColumnHeader14, Me.ColumnHeader15, Me.ColumnHeader16})
         Me.lvIMD.FullRowSelect = True
         Me.lvIMD.GridLines = True
-        Me.lvIMD.Location = New System.Drawing.Point(12, 71)
+        Me.lvIMD.Location = New System.Drawing.Point(0, 40)
         Me.lvIMD.Name = "lvIMD"
-        Me.lvIMD.Size = New System.Drawing.Size(894, 377)
+        Me.lvIMD.Size = New System.Drawing.Size(916, 303)
         Me.lvIMD.TabIndex = 0
         Me.lvIMD.UseCompatibleStateImageBehavior = False
         Me.lvIMD.View = System.Windows.Forms.View.Details
@@ -92,72 +92,62 @@ Partial Class frmIMD
         Me.ColumnHeader16.Text = "HasSerial"
         Me.ColumnHeader16.Width = 59
         '
-        'GroupBox1
+        'ToolStrip1
         '
-        Me.GroupBox1.Controls.Add(Me.btnImport)
-        Me.GroupBox1.Controls.Add(Me.txtSearch)
-        Me.GroupBox1.Controls.Add(Me.lblSearch)
-        Me.GroupBox1.Controls.Add(Me.btnSearch)
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 3)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(894, 62)
-        Me.GroupBox1.TabIndex = 1
-        Me.GroupBox1.TabStop = False
+        Me.ToolStrip1.AutoSize = False
+        Me.ToolStrip1.BackColor = System.Drawing.Color.LightGray
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton1, Me.txtSearchtoolStrip, Me.ToolStripButton2, Me.ToolStripButton3})
+        Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.ToolStrip1.Name = "ToolStrip1"
+        Me.ToolStrip1.Size = New System.Drawing.Size(916, 40)
+        Me.ToolStrip1.TabIndex = 2
+        Me.ToolStrip1.Text = "ToolStrip1"
         '
-        'btnImport
+        'ToolStripButton1
         '
-        Me.btnImport.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnImport.Location = New System.Drawing.Point(801, 25)
-        Me.btnImport.Name = "btnImport"
-        Me.btnImport.Size = New System.Drawing.Size(75, 23)
-        Me.btnImport.TabIndex = 3
-        Me.btnImport.Text = "Import"
-        Me.btnImport.UseVisualStyleBackColor = True
+        Me.ToolStripButton1.AutoSize = False
+        Me.ToolStripButton1.Image = CType(resources.GetObject("ToolStripButton1.Image"), System.Drawing.Image)
+        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton1.Name = "ToolStripButton1"
+        Me.ToolStripButton1.Size = New System.Drawing.Size(65, 40)
+        Me.ToolStripButton1.Text = "&New"
         '
-        'txtSearch
+        'txtSearchtoolStrip
         '
-        Me.txtSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtSearch.Location = New System.Drawing.Point(80, 26)
-        Me.txtSearch.Name = "txtSearch"
-        Me.txtSearch.Size = New System.Drawing.Size(634, 22)
-        Me.txtSearch.TabIndex = 2
+        Me.txtSearchtoolStrip.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtSearchtoolStrip.ForeColor = System.Drawing.SystemColors.InfoText
+        Me.txtSearchtoolStrip.Name = "txtSearchtoolStrip"
+        Me.txtSearchtoolStrip.Size = New System.Drawing.Size(130, 40)
+        Me.txtSearchtoolStrip.Text = "Search"
         '
-        'lblSearch
+        'ToolStripButton2
         '
-        Me.lblSearch.AutoSize = True
-        Me.lblSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblSearch.Location = New System.Drawing.Point(23, 28)
-        Me.lblSearch.Name = "lblSearch"
-        Me.lblSearch.Size = New System.Drawing.Size(51, 16)
-        Me.lblSearch.TabIndex = 1
-        Me.lblSearch.Text = "Search"
+        Me.ToolStripButton2.Image = CType(resources.GetObject("ToolStripButton2.Image"), System.Drawing.Image)
+        Me.ToolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton2.Name = "ToolStripButton2"
+        Me.ToolStripButton2.Size = New System.Drawing.Size(62, 37)
+        Me.ToolStripButton2.Text = "Search"
         '
-        'btnSearch
+        'ToolStripButton3
         '
-        Me.btnSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSearch.Location = New System.Drawing.Point(720, 25)
-        Me.btnSearch.Name = "btnSearch"
-        Me.btnSearch.Size = New System.Drawing.Size(75, 23)
-        Me.btnSearch.TabIndex = 0
-        Me.btnSearch.Text = "Search"
-        Me.btnSearch.UseVisualStyleBackColor = True
-        '
-        'OpenFileDialog1
-        '
-        Me.OpenFileDialog1.FileName = "OpenFileDialog1"
+        Me.ToolStripButton3.Image = CType(resources.GetObject("ToolStripButton3.Image"), System.Drawing.Image)
+        Me.ToolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton3.Name = "ToolStripButton3"
+        Me.ToolStripButton3.Size = New System.Drawing.Size(63, 37)
+        Me.ToolStripButton3.Text = "Import"
         '
         'frmIMD
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(916, 460)
-        Me.Controls.Add(Me.GroupBox1)
+        Me.ClientSize = New System.Drawing.Size(916, 355)
+        Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.lvIMD)
         Me.Name = "frmIMD"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "ITEM MASTER DATA"
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
+        Me.ToolStrip1.ResumeLayout(False)
+        Me.ToolStrip1.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -170,10 +160,9 @@ Partial Class frmIMD
     Friend WithEvents ColumnHeader14 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader15 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader16 As System.Windows.Forms.ColumnHeader
-    Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
-    Friend WithEvents btnImport As System.Windows.Forms.Button
-    Friend WithEvents txtSearch As System.Windows.Forms.TextBox
-    Friend WithEvents lblSearch As System.Windows.Forms.Label
-    Friend WithEvents btnSearch As System.Windows.Forms.Button
-    Friend WithEvents OpenFileDialog1 As System.Windows.Forms.OpenFileDialog
+    Friend WithEvents ToolStrip1 As System.Windows.Forms.ToolStrip
+    Friend WithEvents ToolStripButton1 As System.Windows.Forms.ToolStripButton
+    Friend WithEvents txtSearchtoolStrip As System.Windows.Forms.ToolStripTextBox
+    Friend WithEvents ToolStripButton2 As System.Windows.Forms.ToolStripButton
+    Friend WithEvents ToolStripButton3 As System.Windows.Forms.ToolStripButton
 End Class
