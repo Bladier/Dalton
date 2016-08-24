@@ -22,7 +22,7 @@ Partial Class frmPOS
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim ListViewItem3 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem(New String() {"CEL 0001", "CELLPHONE DAW NI", "2", "1000", "2000"}, -1)
+        Dim ListViewItem1 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem(New String() {"CEL 0001", "CELLPHONE DAW NI", "2", "1000", "2000"}, -1)
         Me.lvSales = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -41,13 +41,13 @@ Partial Class frmPOS
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.Label10 = New System.Windows.Forms.Label()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
@@ -61,7 +61,7 @@ Partial Class frmPOS
         Me.lvSales.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lvSales.FullRowSelect = True
         Me.lvSales.GridLines = True
-        Me.lvSales.Items.AddRange(New System.Windows.Forms.ListViewItem() {ListViewItem3})
+        Me.lvSales.Items.AddRange(New System.Windows.Forms.ListViewItem() {ListViewItem1})
         Me.lvSales.Location = New System.Drawing.Point(12, 12)
         Me.lvSales.Name = "lvSales"
         Me.lvSales.Size = New System.Drawing.Size(601, 485)
@@ -234,6 +234,25 @@ Partial Class frmPOS
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Sales Information"
         '
+        'TextBox2
+        '
+        Me.TextBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox2.Location = New System.Drawing.Point(15, 39)
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Size = New System.Drawing.Size(77, 24)
+        Me.TextBox2.TabIndex = 15
+        Me.TextBox2.Text = "2"
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.Location = New System.Drawing.Point(14, 16)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(62, 18)
+        Me.Label10.TabIndex = 14
+        Me.Label10.Text = "Quantity"
+        '
         'Label12
         '
         Me.Label12.AutoSize = True
@@ -288,25 +307,6 @@ Partial Class frmPOS
         Me.Button3.TabIndex = 11
         Me.Button3.Text = "&Cancel"
         Me.Button3.UseVisualStyleBackColor = True
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(14, 16)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(62, 18)
-        Me.Label10.TabIndex = 14
-        Me.Label10.Text = "Quantity"
-        '
-        'TextBox2
-        '
-        Me.TextBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox2.Location = New System.Drawing.Point(15, 39)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(77, 24)
-        Me.TextBox2.TabIndex = 15
-        Me.TextBox2.Text = "2"
         '
         'frmPOS
         '

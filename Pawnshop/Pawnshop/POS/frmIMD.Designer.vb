@@ -95,7 +95,7 @@ Partial Class frmIMD
         'ToolStrip1
         '
         Me.ToolStrip1.AutoSize = False
-        Me.ToolStrip1.BackColor = System.Drawing.Color.LightSlateGray
+        Me.ToolStrip1.BackColor = System.Drawing.Color.LightGray
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton1, Me.txtSearchtoolStrip, Me.ToolStripButton2, Me.ToolStripButton3})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
