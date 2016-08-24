@@ -139,4 +139,7 @@ Public Class frmIMD
         End If
     End Sub
 
+    Private Sub ToolStripButton1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton1.Click
+        frmAddProduct.ShowDialog()
+    End Sub
 End Class
