@@ -1,128 +1,78 @@
 ﻿Imports Microsoft.Office.Interop
+Imports System.Data.Odbc
 Public Class frmAddProduct
-    Const MASTERDATA As String = "\Template\Template-IMD.xlsx"
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
-        Dim xlApp As Excel.Application
-        Dim xlWorkBook As Excel.Workbook
-        Dim xlWorksheet As Excel.Worksheet
-        Dim lastRow As Long
-        'Dim MaxEntries As Integer
 
-        xlApp = New Excel.Application
-        xlWorkBook = xlApp.Workbooks.Open(Application.StartupPath & MASTERDATA)
-        xlWorksheet = xlWorkBook.Worksheets(1)
-        'xlApp.Visible = True
+    Private IMD As ItemMaterData
+    Dim fillData As String = "TBL_ITEMMASTERDATA"
 
-        'xlApp = OpenExcel(Application.StartupPath & MASTERDATA)
-        'Dim dsIMD As New DataSet
-        'dsIMD.Tables.Add(tbl_IMD)
+    Private Sub btnsave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
 
-        'Dim imdSheet As Excel.Worksheet
-        'Dim imdBook As Excel.Workbook
-        'Dim dsNewRow As DataRow
-        'imdBook = xlApp.Workbooks(1)
-        'imdSheet = imdBook.Worksheets(1)
+        If Not isValid() Then Exit Sub
+        Dim ans As DialogResult = MsgBox("Do you want to save this transaction?", MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton2 + MsgBoxStyle.Information)
 
-        'With imdSheet
-        '    MaxEntries = .Cells(.Rows.Count, 1).End(Excel.XlDirection.xlUp).row
-        'End With
+        If ans = Windows.Forms.DialogResult.No Then
+            Exit Sub
+        Else
+            Dim mySql As String = "SELECT * FROM " & fillData & " WHERE "
+            mySql &= String.Format("ITEMCODE ='{0}' OR DESCRIPTION LIKE '%{1}%'", txtItemCode.Text, txtDescription.Text)
 
-        'Console.WriteLine("MaxEntries : " & MaxEntries)
+            Dim ds As DataSet = LoadSQL(mySql, fillData)
+            If ds.Tables(fillData).Rows.Count > 0 Then
+                MsgBox("Data Already Exist!", MsgBoxStyle.Exclamation, "Add New Data!")
+            Else
+                IMD = New ItemMaterData
+                With IMD
+                    .ITEMCODE = txtItemCode.Text
+                    .DESCRIPTION = txtDescription.Text
+                    .UnitofMeasure = txtUnitofMeasure.Text
+                    .PRICE = txtPrice.Text
+                    .ONHOLDYN = cmbOnhold.Text
+                    .INVENTORIALBE = cmbInInven.Text
+                    .SALABLE = cmbIsSalable.Text
+                    .HASSERIAL = cmbHasSerial.Text
+                    .SaveIMD()
 
-        'For rowIdx As Integer = 2 To MaxEntries
-        '    dsNewRow = dsIMD.Tables(0).NewRow
-        '    With dsNewRow
-        '        .Item("ItemCode") = Trim(imdSheet.Cells(rowIdx, 1).value)
-        '        .Item("Description") = Trim(imdSheet.Cells(rowIdx, 2).value)
-        '        .Item("UnitOfMeasure") = Trim(imdSheet.Cells(rowIdx, 3).value)
-        '        .Item("Price") = Trim(imdSheet.Cells(rowIdx, 4).value)
-        '        .Item("onHold(Y/N)") = Trim(imdSheet.Cells(rowIdx, 5).value)
-        '        .Item("isInv") = Trim(imdSheet.Cells(rowIdx, 6).value)
-        '        .Item("isSale") = Trim(imdSheet.Cells(rowIdx, 7).value)
-        '        .Item("HasSerial") = Trim(imdSheet.Cells(rowIdx, 8).value)
-        '    End With
-        '    dsIMD.Tables(0).Rows.Add(dsNewRow)
-        'Next
+                End With
 
-        'Dim valueToSearch As String = txtDescription.Text
-        'For Each dTable As DataTable In dsIMD.Tables
-        '    For Each dRow As DataRow In dTable.Rows
-        '        For index As Integer = 0 To dTable.Columns.Count - 1
-        '            Convert.ToString(dRow(index)).Contains(valueToSearch)
-        '            If index = valueToSearch.ToString Then
-        '                MsgBox("sdf")
-        '            End If
-        '        Next
-        '    Next
-        'Next
-
-
-        lastRow = xlWorksheet.Range("A" & xlApp.Rows.CountLarge).End(Excel.XlDirection.xlUp).Row + 1
-
-        With xlWorksheet
-            .Range("A" & lastRow).Value = Me.txtItemCode.Text
-            .Range("B" & lastRow).Value = Me.txtDescription.Text
-            .Range("C" & lastRow).Value = Me.txtUnitofMeasure.Text
-            .Range("D" & lastRow).Value = Me.txtPrice.Text
-            .Range("E" & lastRow).Value = Me.cmbOnhold.Text
-            .Range("F" & lastRow).Value = Me.cmbIsSalable.Text
-            .Range("G" & lastRow).Value = Me.cmbIsSalable.Text
-            .Range("H" & lastRow).Value = Me.cmbHasSerial.Text
-        End With
-
-        xlWorkBook.Save()
-        xlWorkBook.Close()
-
-        releaseObject(xlWorkBook)
-        releaseObject(xlWorksheet)
-        xlApp.Quit()
-        releaseObject(xlApp)
+                MsgBox("Transaction Saved", MsgBoxStyle.Information)
+                ClearTextField()
+            End If
+        End If
     End Sub
 
-    Private Function tbl_IMD() As DataTable
-        Dim tbl As New DataTable("ITEMMASTERDATA")
-        With tbl.Columns
-            .Add("ItemCode")
-            .Add("Description")
-            .Add("UnitOfMeasure")
-            .Add("Price")
-            .Add("onHold(Y/N)")
-            .Add("isInv")
-            .Add("isSale")
-            .Add("HasSerial")
-        End With
 
-        Return tbl
+    Private Function isValid() As Boolean
+
+        If txtItemCode.Text = "" Then MsgBox("Please Complete All The Requirements", MsgBoxStyle.Information) : txtItemCode.Focus() : Return False
+        If txtDescription.Text = "" Then MsgBox("Please Complete All The Requirements", MsgBoxStyle.Information) : txtDescription.Focus() : Return False
+        If txtUnitofMeasure.Text = "" Then MsgBox("Please Complete All The Requirements", MsgBoxStyle.Information) : txtUnitofMeasure.Focus() : Return False
+        If txtPrice.Text = "" Then MsgBox("Please Complete All The Requirements", MsgBoxStyle.Information) : txtPrice.Focus() : Return False
+        If cmbOnhold.Text = "" Then MsgBox("Please Complete All The Requirements", MsgBoxStyle.Information) : cmbOnhold.Focus() : Return False
+        If cmbInInven.Text = "" Then MsgBox("Please Complete All The Requirements", MsgBoxStyle.Information) : cmbInInven.Focus() : Return False
+        If cmbIsSalable.Text = "" Then MsgBox("Please Complete All The Requirements", MsgBoxStyle.Information) : cmbIsSalable.Focus() : Return False
+        If cmbHasSerial.Text = "" Then MsgBox("Please Complete All The Requirements", MsgBoxStyle.Information) : cmbHasSerial.Focus() : Return False
+        Return True
+
     End Function
 
-    Private Function OpenExcel(ByVal src As String) As Excel.Application
-        Dim oXL As New Excel.Application
-        Dim oWB As Excel.Workbook
-
-        oWB = oXL.Workbooks.Open(src)
-
-        Return oXL
-    End Function
-
-    Private Sub CloseExcel(ByVal OpenExcel As Excel.Application)
-        OpenExcel.Quit()
-        OpenExcel = Nothing
-
-        ReleaseObject(OpenExcel)
+    Private Sub frmAddProduct_FormClosed(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles MyBase.FormClosed
+        ClearTextField()
     End Sub
 
-    Private Sub ReleaseObject(ByVal obj As Object)
-        Try
-            Dim intRel As Integer = 0
-            Do
-                intRel = System.Runtime.InteropServices.Marshal.ReleaseComObject(obj)
-            Loop While intRel > 0
-            'MsgBox("Final Released obj # " & intRel)
-        Catch ex As Exception
-            'MsgBox("Error releasing object" & ex.ToString)
-            obj = Nothing
-        Finally
-            GC.Collect()
-        End Try
+    Friend Sub ClearTextField()
+        txtItemCode.Text = ""
+        txtDescription.Text = ""
+        txtUnitofMeasure.Text = ""
+        txtPrice.Text = ""
+        cmbOnhold.SelectedItem = Nothing
+        cmbInInven.SelectedItem = Nothing
+        cmbIsSalable.SelectedItem = Nothing
+        cmbHasSerial.SelectedItem = Nothing
+        lblTitle.Text = "Adding New Item"
+    End Sub
+
+    Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel.Click
+        Me.Hide()
+        frmIMD.Show()
     End Sub
 End Class

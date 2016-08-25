@@ -300,6 +300,7 @@
     <Compile Include="Modules\OneTimePassword.vb" />
     <Compile Include="Modules\otp.vb" />
     <Compile Include="Modules\PawningScheme.vb" />
+    <Compile Include="POS\Conn.vb" />
     <Compile Include="POS\frmAddProduct.Designer.vb">
       <DependentUpon>frmAddProduct.vb</DependentUpon>
     </Compile>
@@ -312,6 +313,7 @@
     <Compile Include="POS\frmIMD.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="POS\ItemMaterData.vb" />
     <Compile Include="Reports\diagMoneyTransferBracketing.Designer.vb">
       <DependentUpon>diagMoneyTransferBracketing.vb</DependentUpon>
     </Compile>
@@ -1024,7 +1026,6 @@
     <None Include="Reports\dsReports.xss">
       <DependentUpon>dsReports.xsd</DependentUpon>
     </None>
-    <None Include="Template\Template-IMD.xlsx" />
     <None Include="W3W1LH4CKU.FDB">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

@@ -1,6 +1,10 @@
 ﻿Imports Microsoft.Office.Interop
+Imports System.Data.Odbc
+Imports System.Windows.Forms.ListView
 Public Class frmIMD
-    Const MASTERDATA As String = "\Template\Template-IMD.xlsx"
+
+    Public adding As Boolean
+    Public updating As Boolean
 
     Private Sub frmIMD_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
@@ -18,7 +22,6 @@ Public Class frmIMD
                 End If
             Next
         Next
-        ' If not found, then return -1.
         Return -1
     End Function
 
@@ -60,9 +63,7 @@ Public Class frmIMD
             Do
                 intRel = System.Runtime.InteropServices.Marshal.ReleaseComObject(obj)
             Loop While intRel > 0
-            'MsgBox("Final Released obj # " & intRel)
         Catch ex As Exception
-            'MsgBox("Error releasing object" & ex.ToString)
             obj = Nothing
         Finally
             GC.Collect()
@@ -70,12 +71,14 @@ Public Class frmIMD
     End Sub
 
     Private Sub ToolStripButton3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton3.Click
-        If lvIMD.Items.Count = 0 Then
 
+
+        If lvIMD.Items.Count = 0 Then
+            ofdOpen.ShowDialog()
             Dim ItemMasterData As Excel.Application
             Dim MaxEntries As Integer
 
-            ItemMasterData = OpenExcel(Application.StartupPath & MASTERDATA)
+            ItemMasterData = OpenExcel(lblPath.Text)
             Dim dsIMD As New DataSet
             dsIMD.Tables.Add(tbl_IMD)
 
@@ -115,14 +118,66 @@ Public Class frmIMD
                 lvIMD.Items.Add(listRow)
             Next
 
+            Dim iCount As Integer
+            Dim iLoop As Integer
+            Dim cmd As New OdbcCommand
+            Dim lvitem
+
+            cmd.Connection = New OdbcConnection("DRIVER=Firebird/InterBase(r) driver;User=" & fbUser1 & ";Password=" & fbPass1 & ";Database=" & dbName1 & ";")
+            cmd.Connection.Open()
+            iCount = lvIMD.Items.Count
+            ' For iLoop = 0 To lvLogs.Items.Count - 1
+            If Not lvIMD.Items.Count = 1 Then
+                Do Until iLoop = lvIMD.Items.Count
+                    lvitem = lvIMD.Items.Item(iLoop)
+                    With lvitem
+                        cmd.CommandText = "insert into TBL_ITEMMASTERDATA (ITEMCODE, DESCRIPTION, UNITOFMEASURE, PRICE, ONHOLDYN,INVENTORIABLE,SALABLE,HASSERIAL) values " _
+                        & "('" & lvitem.subitems(0).text & "','" & lvitem.subitems(1).text & "','" & lvitem.subitems(2).Text & "','" & lvitem.subitems(3).Text & "','" & lvitem.subitems(4).Text & "','" & lvitem.subitems(5).Text & "','" & lvitem.subitems(6).Text & "','" & lvitem.subitems(7).Text & "')"
+                        cmd.ExecuteNonQuery()
+                    End With
+                    iLoop = iLoop + 1
+                    lvitem = Nothing
+                Loop
+                MsgBox("done")
+            End If
+
+
             CloseExcel(ItemMasterData)
 
             Console.WriteLine("Database Records: " & dsIMD.Tables(0).Rows.Count)
         Else
-            MsgBox("Listview contains " & lvIMD.Items.Count & " items")
+            MsgBox("Contains " & lvIMD.Items.Count & " items")
             Exit Sub
         End If
+
+        LoadActive()
     End Sub
+
+    Private Sub LoadActive()
+        lvIMD.Items.Clear()
+        Dim mySql As String = "SELECT * FROM TBL_ITEMMASTERDATA"
+        Dim ds As DataSet = LoadSQL(mySql)
+
+        For Each IMD As DataRow In ds.Tables(0).Rows
+            AddItem(IMD)
+        Next
+    End Sub
+
+    Private Sub AddItem(ByVal IMD As DataRow)
+        Dim tmpIMD As New ItemMaterData
+        tmpIMD.LoadIMDbyRow(IMD)
+
+        Dim lv As ListViewItem = lvMasterData.Items.Add(tmpIMD.IMDID)
+        lv.SubItems.Add(tmpIMD.ITEMCODE)
+        lv.SubItems.Add(tmpIMD.DESCRIPTION)
+        lv.SubItems.Add(tmpIMD.UnitofMeasure)
+        lv.SubItems.Add(tmpIMD.PRICE)
+        lv.SubItems.Add(tmpIMD.ONHOLDYN)
+        lv.SubItems.Add(tmpIMD.INVENTORIALBE)
+        lv.SubItems.Add(tmpIMD.SALABLE)
+        lv.SubItems.Add(tmpIMD.HASSERIAL)
+    End Sub
+
 
     Private Sub ToolStripButton2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton2.Click
         If txtSearchtoolStrip.Text = "" Then Exit Sub
@@ -135,11 +190,82 @@ Public Class frmIMD
             lvIMD.Focus()
             lvIMD.SelectedItems(0).EnsureVisible()
         Else
-            MsgBox("Search string not found", MsgBoxStyle.Information)
+            MsgBox("Data not Found", MsgBoxStyle.Information)
         End If
     End Sub
 
     Private Sub ToolStripButton1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton1.Click
         frmAddProduct.ShowDialog()
     End Sub
+
+
+
+    Friend Sub ViewItem()
+
+        With Me.lvIMD
+            For i As Integer = 0 To .SelectedItems.Count - 1
+                Dim myString As String = lvIMD.Items(i).SubItems(0).Text
+                Dim myString1 As String = lvIMD.Items(i).SubItems(1).Text
+                Dim myString2 As String = lvIMD.Items(i).SubItems(2).Text
+                Dim myString3 As String = lvIMD.Items(i).SubItems(3).Text
+                Dim myString4 As String = lvIMD.Items(i).SubItems(4).Text
+                Dim myString5 As String = lvIMD.Items(i).SubItems(5).Text
+                Dim myString6 As String = lvIMD.Items(i).SubItems(6).Text
+                Dim myString7 As String = lvIMD.Items(i).SubItems(7).Text
+
+                frmAddProduct.txtItemCode.Text = myString
+                frmAddProduct.txtDescription.Text = myString1
+                frmAddProduct.txtUnitofMeasure.Text = myString2
+                frmAddProduct.txtPrice.Text = myString3
+                frmAddProduct.cmbOnhold.Text = myString4
+                frmAddProduct.cmbInInven.Text = myString5
+                frmAddProduct.cmbIsSalable.Text = myString6
+                frmAddProduct.cmbHasSerial.Text = myString7
+
+            Next i
+        End With
+        DisabledTextfield()
+
+        frmAddProduct.ShowDialog()
+
+    End Sub
+    Friend Sub DisabledTextfield()
+        frmAddProduct.txtItemCode.Enabled = False
+        frmAddProduct.txtDescription.Enabled = False
+        frmAddProduct.txtUnitofMeasure.Enabled = False
+        frmAddProduct.txtPrice.Enabled = False
+        frmAddProduct.cmbOnhold.Enabled = False
+        frmAddProduct.cmbInInven.Enabled = False
+        frmAddProduct.cmbIsSalable.Enabled = False
+        frmAddProduct.cmbHasSerial.Enabled = False
+    End Sub
+
+    Private Sub ToolStripButton4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton4.Click
+        frmAddProduct.lblTitle.Text = "Updating Item"
+        'If lvIMD.Items.Count = 0 Then
+        '    MsgBox("Please select record to update", MsgBoxStyle.Exclamation, "Update")
+        '    Exit Sub
+        'End If
+
+        'Try
+        '    If lvIMD.FocusedItem.Text = "" Then
+
+        '    Else
+        '        adding = False
+        '        updating = True
+        '        ViewItem()
+        frmAddProduct.ShowDialog()
+        '    End If
+
+        'Catch ex As Exception
+
+        'End Try
+
+    End Sub
+
+
+    Private Sub ofdOpen_FileOk(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles ofdOpen.FileOk
+        lblPath.Text = ofdOpen.FileName
+    End Sub
+
 End Class
