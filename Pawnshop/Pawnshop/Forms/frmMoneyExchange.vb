@@ -106,7 +106,6 @@
     ''' 
     Friend Sub LoadTransDollar(ByVal tmpDollar As DollarTransaction)
         With tmpDollar
-
             txtDenomination1.Text = .Denomination
             txtTotal.Text = .NetAmount
             txtSerial.Text = .Serial

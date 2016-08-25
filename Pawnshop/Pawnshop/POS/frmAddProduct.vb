@@ -75,4 +75,21 @@ Public Class frmAddProduct
         Me.Hide()
         frmIMD.Show()
     End Sub
+
+    Friend Sub LoadIMDTransaction(ByVal tmpIMD As ItemMaterData)
+        With tmpIMD
+            txtItemCode.Text = .ITEMCODE
+            txtDescription.Text = .DESCRIPTION
+            txtUnitofMeasure.Text = .UnitofMeasure
+            txtPrice.Text = .PRICE
+            cmbOnhold.Items.Clear()
+
+            cmbOnhold.SelectedItem = .ONHOLDYN
+            cmbInInven.Text = .INVENTORIALBE
+            cmbIsSalable.Text = .SALABLE
+            cmbHasSerial.Text = .HASSERIAL
+        End With
+    End Sub
+
+    
 End Class

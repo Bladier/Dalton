@@ -7,7 +7,7 @@ Public Class frmIMD
     Public updating As Boolean
 
     Private Sub frmIMD_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
+        LoadActive()
     End Sub
 
     Private Function FindItem(ByVal LV As ListView, ByVal TextToFind As String) As Integer
@@ -153,20 +153,7 @@ Public Class frmIMD
         LoadActive()
     End Sub
 
-    Private Sub LoadActive()
-        lvIMD.Items.Clear()
-        Dim mySql As String = "SELECT * FROM TBL_ITEMMASTERDATA"
-        Dim ds As DataSet = LoadSQL(mySql)
-
-        For Each IMD As DataRow In ds.Tables(0).Rows
-            AddItem(IMD)
-        Next
-    End Sub
-
-    Private Sub AddItem(ByVal IMD As DataRow)
-        Dim tmpIMD As New ItemMaterData
-        tmpIMD.LoadIMDbyRow(IMD)
-
+    Private Sub AddItem(ByVal tmpIMD As ItemMaterData)
         Dim lv As ListViewItem = lvMasterData.Items.Add(tmpIMD.IMDID)
         lv.SubItems.Add(tmpIMD.ITEMCODE)
         lv.SubItems.Add(tmpIMD.DESCRIPTION)
@@ -176,8 +163,22 @@ Public Class frmIMD
         lv.SubItems.Add(tmpIMD.INVENTORIALBE)
         lv.SubItems.Add(tmpIMD.SALABLE)
         lv.SubItems.Add(tmpIMD.HASSERIAL)
+        lv.Tag = tmpIMD.IMDID
+
     End Sub
 
+    Friend Sub LoadActive(Optional ByVal mySql As String = "SELECT * FROM TBL_ITEMMASTERDATA")
+        Dim ds As DataSet
+        ds = LoadSQL(mySql)
+
+        lvMasterData.Items.Clear()
+        For Each dr As DataRow In ds.Tables(0).Rows
+            Dim tmpIMD As New ItemMaterData
+            tmpIMD.LoadIMDAllRow(dr)
+
+            AddItem(tmpIMD)
+        Next
+    End Sub
 
     Private Sub ToolStripButton2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripButton2.Click
         If txtSearchtoolStrip.Text = "" Then Exit Sub
@@ -198,37 +199,6 @@ Public Class frmIMD
         frmAddProduct.ShowDialog()
     End Sub
 
-
-
-    Friend Sub ViewItem()
-
-        With Me.lvIMD
-            For i As Integer = 0 To .SelectedItems.Count - 1
-                Dim myString As String = lvIMD.Items(i).SubItems(0).Text
-                Dim myString1 As String = lvIMD.Items(i).SubItems(1).Text
-                Dim myString2 As String = lvIMD.Items(i).SubItems(2).Text
-                Dim myString3 As String = lvIMD.Items(i).SubItems(3).Text
-                Dim myString4 As String = lvIMD.Items(i).SubItems(4).Text
-                Dim myString5 As String = lvIMD.Items(i).SubItems(5).Text
-                Dim myString6 As String = lvIMD.Items(i).SubItems(6).Text
-                Dim myString7 As String = lvIMD.Items(i).SubItems(7).Text
-
-                frmAddProduct.txtItemCode.Text = myString
-                frmAddProduct.txtDescription.Text = myString1
-                frmAddProduct.txtUnitofMeasure.Text = myString2
-                frmAddProduct.txtPrice.Text = myString3
-                frmAddProduct.cmbOnhold.Text = myString4
-                frmAddProduct.cmbInInven.Text = myString5
-                frmAddProduct.cmbIsSalable.Text = myString6
-                frmAddProduct.cmbHasSerial.Text = myString7
-
-            Next i
-        End With
-        DisabledTextfield()
-
-        frmAddProduct.ShowDialog()
-
-    End Sub
     Friend Sub DisabledTextfield()
         frmAddProduct.txtItemCode.Enabled = False
         frmAddProduct.txtDescription.Enabled = False
@@ -266,6 +236,17 @@ Public Class frmIMD
 
     Private Sub ofdOpen_FileOk(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles ofdOpen.FileOk
         lblPath.Text = ofdOpen.FileName
+    End Sub
+
+    Private Sub lvMasterData_DoubleClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lvMasterData.DoubleClick
+        If lvMasterData.SelectedItems.Count = 0 Then Exit Sub
+
+        Dim id As Integer = lvMasterData.FocusedItem.Tag
+        Console.WriteLine("ID: " & id)
+        Dim tmpLoadIMD As New ItemMaterData
+        tmpLoadIMD.LoadIMD(id)
+        frmAddProduct.Show()
+        frmAddProduct.LoadIMDTransaction(tmpLoadIMD)
     End Sub
 
 End Class

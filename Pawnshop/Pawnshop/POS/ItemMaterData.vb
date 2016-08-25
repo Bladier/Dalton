@@ -96,6 +96,17 @@ Public Class ItemMaterData
 #End Region
 
 #Region "Procedures and Functions"
+    Public Sub LoadIMD(ByVal id As Integer)
+        mySql = "SELECT * FROM " & fillData & " WHERE IMD_ID = " & id
+        ds = LoadSQL(mySql)
+
+        For Each dr As DataRow In ds.Tables(0).Rows
+            LoadIMDbyRow(dr)
+        Next
+    End Sub
+    Public Sub LoadIMDAllRow(ByVal dr As DataRow)
+        LoadIMDbyRow(dr)
+    End Sub
 
     Public Sub LoadIMDbyRow(ByVal dr As DataRow)
         With dr
