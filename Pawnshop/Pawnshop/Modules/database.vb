@@ -6,6 +6,7 @@
 ''' <remarks></remarks>
 Friend Module database
     Public con As OdbcConnection
+
     Public ReaderCon As OdbcConnection
     Friend dbName As String = "W3W1LH4CKU.FDB" 'Final
     Friend fbUser As String = "SYSDBA"
@@ -22,9 +23,11 @@ Friend Module database
     ''' </summary>
     ''' <remarks></remarks>
     Public Sub dbOpen()
+
         conStr = "DRIVER=Firebird/InterBase(r) driver;User=" & fbUser & ";Password=" & fbPass & ";Database=" & dbName & ";"
 
         con = New OdbcConnection(conStr)
+
         Try
             con.Open()
         Catch ex As Exception

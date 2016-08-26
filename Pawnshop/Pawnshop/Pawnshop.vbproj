@@ -313,6 +313,12 @@
     <Compile Include="POS\frmIMD.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="POS\ImportIMDFile.Designer.vb">
+      <DependentUpon>ImportIMDFile.vb</DependentUpon>
+    </Compile>
+    <Compile Include="POS\ImportIMDFile.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="POS\ItemMaterData.vb" />
     <Compile Include="Reports\diagMoneyTransferBracketing.Designer.vb">
       <DependentUpon>diagMoneyTransferBracketing.vb</DependentUpon>
@@ -689,6 +695,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="POS\frmIMD.resx">
       <DependentUpon>frmIMD.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="POS\ImportIMDFile.resx">
+      <DependentUpon>ImportIMDFile.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\AuctionDailyReport.rdlc" />
     <EmbeddedResource Include="Reports\AuctionMonlyreport.rdlc">

@@ -33,22 +33,14 @@ Partial Class frmIMD
         Me.ColumnHeader15 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader16 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
-        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButton4 = New System.Windows.Forms.ToolStripButton()
+        Me.NewToolStripButton1 = New System.Windows.Forms.ToolStripButton()
+        Me.UpdateToolStripButton4 = New System.Windows.Forms.ToolStripButton()
         Me.txtSearchtoolStrip = New System.Windows.Forms.ToolStripTextBox()
-        Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButton3 = New System.Windows.Forms.ToolStripButton()
+        Me.SearchToolStripButton2 = New System.Windows.Forms.ToolStripButton()
+        Me.ImportToolStripButton3 = New System.Windows.Forms.ToolStripButton()
         Me.ofdOpen = New System.Windows.Forms.OpenFileDialog()
         Me.lblPath = New System.Windows.Forms.Label()
-        Me.lvMasterData = New System.Windows.Forms.ListView()
-        Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader6 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader7 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader8 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader9 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader10 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -58,9 +50,9 @@ Partial Class frmIMD
         Me.lvIMD.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lvIMD.FullRowSelect = True
         Me.lvIMD.GridLines = True
-        Me.lvIMD.Location = New System.Drawing.Point(8, 40)
+        Me.lvIMD.Location = New System.Drawing.Point(6, 42)
         Me.lvIMD.Name = "lvIMD"
-        Me.lvIMD.Size = New System.Drawing.Size(1067, 356)
+        Me.lvIMD.Size = New System.Drawing.Size(1164, 356)
         Me.lvIMD.TabIndex = 0
         Me.lvIMD.UseCompatibleStateImageBehavior = False
         Me.lvIMD.View = System.Windows.Forms.View.Details
@@ -110,29 +102,29 @@ Partial Class frmIMD
         Me.ToolStrip1.AutoSize = False
         Me.ToolStrip1.BackColor = System.Drawing.Color.LightGray
         Me.ToolStrip1.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton1, Me.ToolStripButton4, Me.txtSearchtoolStrip, Me.ToolStripButton2, Me.ToolStripButton3})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewToolStripButton1, Me.UpdateToolStripButton4, Me.ToolStripButton1, Me.txtSearchtoolStrip, Me.SearchToolStripButton2, Me.ImportToolStripButton3})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(1084, 40)
+        Me.ToolStrip1.Size = New System.Drawing.Size(1178, 40)
         Me.ToolStrip1.TabIndex = 2
         Me.ToolStrip1.Text = "ToolStrip1"
         '
-        'ToolStripButton1
+        'NewToolStripButton1
         '
-        Me.ToolStripButton1.AutoSize = False
-        Me.ToolStripButton1.Image = CType(resources.GetObject("ToolStripButton1.Image"), System.Drawing.Image)
-        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton1.Name = "ToolStripButton1"
-        Me.ToolStripButton1.Size = New System.Drawing.Size(65, 40)
-        Me.ToolStripButton1.Text = "&New"
+        Me.NewToolStripButton1.AutoSize = False
+        Me.NewToolStripButton1.Image = CType(resources.GetObject("NewToolStripButton1.Image"), System.Drawing.Image)
+        Me.NewToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.NewToolStripButton1.Name = "NewToolStripButton1"
+        Me.NewToolStripButton1.Size = New System.Drawing.Size(65, 40)
+        Me.NewToolStripButton1.Text = "&New"
         '
-        'ToolStripButton4
+        'UpdateToolStripButton4
         '
-        Me.ToolStripButton4.Image = CType(resources.GetObject("ToolStripButton4.Image"), System.Drawing.Image)
-        Me.ToolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton4.Name = "ToolStripButton4"
-        Me.ToolStripButton4.Size = New System.Drawing.Size(71, 37)
-        Me.ToolStripButton4.Text = "Update"
+        Me.UpdateToolStripButton4.Image = CType(resources.GetObject("UpdateToolStripButton4.Image"), System.Drawing.Image)
+        Me.UpdateToolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.UpdateToolStripButton4.Name = "UpdateToolStripButton4"
+        Me.UpdateToolStripButton4.Size = New System.Drawing.Size(71, 37)
+        Me.UpdateToolStripButton4.Text = "Update"
         '
         'txtSearchtoolStrip
         '
@@ -144,21 +136,21 @@ Partial Class frmIMD
         Me.txtSearchtoolStrip.Size = New System.Drawing.Size(160, 40)
         Me.txtSearchtoolStrip.Text = "Search"
         '
-        'ToolStripButton2
+        'SearchToolStripButton2
         '
-        Me.ToolStripButton2.Image = CType(resources.GetObject("ToolStripButton2.Image"), System.Drawing.Image)
-        Me.ToolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton2.Name = "ToolStripButton2"
-        Me.ToolStripButton2.Size = New System.Drawing.Size(67, 37)
-        Me.ToolStripButton2.Text = "Search"
+        Me.SearchToolStripButton2.Image = CType(resources.GetObject("SearchToolStripButton2.Image"), System.Drawing.Image)
+        Me.SearchToolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.SearchToolStripButton2.Name = "SearchToolStripButton2"
+        Me.SearchToolStripButton2.Size = New System.Drawing.Size(67, 37)
+        Me.SearchToolStripButton2.Text = "Search"
         '
-        'ToolStripButton3
+        'ImportToolStripButton3
         '
-        Me.ToolStripButton3.Image = CType(resources.GetObject("ToolStripButton3.Image"), System.Drawing.Image)
-        Me.ToolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton3.Name = "ToolStripButton3"
-        Me.ToolStripButton3.Size = New System.Drawing.Size(67, 37)
-        Me.ToolStripButton3.Text = "Import"
+        Me.ImportToolStripButton3.Image = CType(resources.GetObject("ImportToolStripButton3.Image"), System.Drawing.Image)
+        Me.ImportToolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ImportToolStripButton3.Name = "ImportToolStripButton3"
+        Me.ImportToolStripButton3.Size = New System.Drawing.Size(67, 37)
+        Me.ImportToolStripButton3.Text = "Import"
         '
         'ofdOpen
         '
@@ -170,71 +162,25 @@ Partial Class frmIMD
         Me.lblPath.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.lblPath.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblPath.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblPath.Location = New System.Drawing.Point(444, 9)
+        Me.lblPath.Location = New System.Drawing.Point(492, 9)
         Me.lblPath.Name = "lblPath"
         Me.lblPath.Size = New System.Drawing.Size(37, 18)
         Me.lblPath.TabIndex = 3
         Me.lblPath.Text = "Path"
         '
-        'lvMasterData
+        'ToolStripButton1
         '
-        Me.lvMasterData.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader3, Me.ColumnHeader4, Me.ColumnHeader5, Me.ColumnHeader6, Me.ColumnHeader7, Me.ColumnHeader8, Me.ColumnHeader9, Me.ColumnHeader10})
-        Me.lvMasterData.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lvMasterData.FullRowSelect = True
-        Me.lvMasterData.GridLines = True
-        Me.lvMasterData.Location = New System.Drawing.Point(8, 43)
-        Me.lvMasterData.Name = "lvMasterData"
-        Me.lvMasterData.Size = New System.Drawing.Size(1067, 356)
-        Me.lvMasterData.TabIndex = 4
-        Me.lvMasterData.UseCompatibleStateImageBehavior = False
-        Me.lvMasterData.View = System.Windows.Forms.View.Details
-        '
-        'ColumnHeader3
-        '
-        Me.ColumnHeader3.Text = "ItemCode"
-        Me.ColumnHeader3.Width = 115
-        '
-        'ColumnHeader4
-        '
-        Me.ColumnHeader4.Text = "Description"
-        Me.ColumnHeader4.Width = 261
-        '
-        'ColumnHeader5
-        '
-        Me.ColumnHeader5.Text = "UnitOfMeasure"
-        Me.ColumnHeader5.Width = 120
-        '
-        'ColumnHeader6
-        '
-        Me.ColumnHeader6.Text = "Price"
-        Me.ColumnHeader6.Width = 129
-        '
-        'ColumnHeader7
-        '
-        Me.ColumnHeader7.Text = "On Hold (Yes/No)"
-        Me.ColumnHeader7.Width = 132
-        '
-        'ColumnHeader8
-        '
-        Me.ColumnHeader8.Text = "Inventoriable"
-        Me.ColumnHeader8.Width = 109
-        '
-        'ColumnHeader9
-        '
-        Me.ColumnHeader9.Text = "Salable"
-        Me.ColumnHeader9.Width = 80
-        '
-        'ColumnHeader10
-        '
-        Me.ColumnHeader10.Text = "Has Serial"
-        Me.ColumnHeader10.Width = 92
+        Me.ToolStripButton1.Image = CType(resources.GetObject("ToolStripButton1.Image"), System.Drawing.Image)
+        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton1.Name = "ToolStripButton1"
+        Me.ToolStripButton1.Size = New System.Drawing.Size(55, 37)
+        Me.ToolStripButton1.Text = "Save"
         '
         'frmIMD
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1084, 408)
-        Me.Controls.Add(Me.lvMasterData)
+        Me.ClientSize = New System.Drawing.Size(1178, 401)
         Me.Controls.Add(Me.lblPath)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.lvIMD)
@@ -257,20 +203,12 @@ Partial Class frmIMD
     Friend WithEvents ColumnHeader15 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader16 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ToolStrip1 As System.Windows.Forms.ToolStrip
-    Friend WithEvents ToolStripButton1 As System.Windows.Forms.ToolStripButton
+    Friend WithEvents NewToolStripButton1 As System.Windows.Forms.ToolStripButton
     Friend WithEvents txtSearchtoolStrip As System.Windows.Forms.ToolStripTextBox
-    Friend WithEvents ToolStripButton2 As System.Windows.Forms.ToolStripButton
-    Friend WithEvents ToolStripButton3 As System.Windows.Forms.ToolStripButton
-    Friend WithEvents ToolStripButton4 As System.Windows.Forms.ToolStripButton
+    Friend WithEvents SearchToolStripButton2 As System.Windows.Forms.ToolStripButton
+    Friend WithEvents ImportToolStripButton3 As System.Windows.Forms.ToolStripButton
+    Friend WithEvents UpdateToolStripButton4 As System.Windows.Forms.ToolStripButton
     Friend WithEvents ofdOpen As System.Windows.Forms.OpenFileDialog
     Friend WithEvents lblPath As System.Windows.Forms.Label
-    Friend WithEvents lvMasterData As System.Windows.Forms.ListView
-    Friend WithEvents ColumnHeader3 As System.Windows.Forms.ColumnHeader
-    Friend WithEvents ColumnHeader4 As System.Windows.Forms.ColumnHeader
-    Friend WithEvents ColumnHeader5 As System.Windows.Forms.ColumnHeader
-    Friend WithEvents ColumnHeader6 As System.Windows.Forms.ColumnHeader
-    Friend WithEvents ColumnHeader7 As System.Windows.Forms.ColumnHeader
-    Friend WithEvents ColumnHeader8 As System.Windows.Forms.ColumnHeader
-    Friend WithEvents ColumnHeader9 As System.Windows.Forms.ColumnHeader
-    Friend WithEvents ColumnHeader10 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents ToolStripButton1 As System.Windows.Forms.ToolStripButton
 End Class

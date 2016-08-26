@@ -4,8 +4,18 @@ Public Class frmAddProduct
 
     Private IMD As ItemMaterData
     Dim fillData As String = "TBL_ITEMMASTERDATA"
+    Private isNew As Boolean = True
+    Private lockFRM As Boolean = False
 
     Private Sub btnsave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
+
+        If btnSave.Text = "&Modify" Then
+            isNew = False
+            LockFields(False)
+            Exit Sub
+        End If
+
+        EnabledTextField()
 
         If Not isValid() Then Exit Sub
         Dim ans As DialogResult = MsgBox("Do you want to save this transaction?", MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton2 + MsgBoxStyle.Information)
@@ -14,7 +24,7 @@ Public Class frmAddProduct
             Exit Sub
         Else
             Dim mySql As String = "SELECT * FROM " & fillData & " WHERE "
-            mySql &= String.Format("ITEMCODE ='{0}' OR DESCRIPTION LIKE '%{1}%'", txtItemCode.Text, txtDescription.Text)
+            mySql &= String.Format("ITEMCODE ='{0}'", txtItemCode.Text)
 
             Dim ds As DataSet = LoadSQL(mySql, fillData)
             If ds.Tables(fillData).Rows.Count > 0 Then
@@ -26,10 +36,10 @@ Public Class frmAddProduct
                     .DESCRIPTION = txtDescription.Text
                     .UnitofMeasure = txtUnitofMeasure.Text
                     .PRICE = txtPrice.Text
-                    .ONHOLDYN = cmbOnhold.Text
-                    .INVENTORIALBE = cmbInInven.Text
-                    .SALABLE = cmbIsSalable.Text
-                    .HASSERIAL = cmbHasSerial.Text
+                    .ONHOLDYN = txtOnHold.Text
+                    .INVENTORIALBE = txtInventoriable.Text
+                    .SALABLE = txtSalable.Text
+                    .HASSERIAL = txtHasSerial.Text
                     .SaveIMD()
 
                 End With
@@ -37,9 +47,28 @@ Public Class frmAddProduct
                 MsgBox("Transaction Saved", MsgBoxStyle.Information)
                 ClearTextField()
             End If
-        End If
+            End If
     End Sub
 
+    Private Sub loadIMDRow()
+
+        Dim mySql As String, ds As DataSet
+        mySql = "SELECT * FROM " & fillData
+        mySql &= String.Format(" WHERE ITEMCODE = '{0}'", txtItemCode.Text)
+        ds = LoadSQL(mySql, fillData)
+
+        For Each dr As DataRow In ds.Tables(fillData).Rows
+            txtDescription.Text = dr("DESCRIPTION")
+            txtUnitofMeasure.Text = dr("UNITOFMEASURE")
+            txtPrice.Text = dr("PRICE")
+            txtOnHold.Text = dr("ONHOLDYN")
+            txtInventoriable.Text = dr("INVENTORIABLE")
+            txtSalable.Text = dr("SALABLE")
+            txtHasSerial.Text = dr("HASSERIAL")
+        Next
+
+
+    End Sub
 
     Private Function isValid() As Boolean
 
@@ -47,10 +76,10 @@ Public Class frmAddProduct
         If txtDescription.Text = "" Then MsgBox("Please Complete All The Requirements", MsgBoxStyle.Information) : txtDescription.Focus() : Return False
         If txtUnitofMeasure.Text = "" Then MsgBox("Please Complete All The Requirements", MsgBoxStyle.Information) : txtUnitofMeasure.Focus() : Return False
         If txtPrice.Text = "" Then MsgBox("Please Complete All The Requirements", MsgBoxStyle.Information) : txtPrice.Focus() : Return False
-        If cmbOnhold.Text = "" Then MsgBox("Please Complete All The Requirements", MsgBoxStyle.Information) : cmbOnhold.Focus() : Return False
-        If cmbInInven.Text = "" Then MsgBox("Please Complete All The Requirements", MsgBoxStyle.Information) : cmbInInven.Focus() : Return False
-        If cmbIsSalable.Text = "" Then MsgBox("Please Complete All The Requirements", MsgBoxStyle.Information) : cmbIsSalable.Focus() : Return False
-        If cmbHasSerial.Text = "" Then MsgBox("Please Complete All The Requirements", MsgBoxStyle.Information) : cmbHasSerial.Focus() : Return False
+        If txtOnHold.Text = "" Then MsgBox("Please Complete All The Requirements", MsgBoxStyle.Information) : txtOnHold.Focus() : Return False
+        If txtInventoriable.Text = "" Then MsgBox("Please Complete All The Requirements", MsgBoxStyle.Information) : txtInventoriable.Focus() : Return False
+        If txtSalable.Text = "" Then MsgBox("Please Complete All The Requirements", MsgBoxStyle.Information) : txtSalable.Focus() : Return False
+        If txtHasSerial.Text = "" Then MsgBox("Please Complete All The Requirements", MsgBoxStyle.Information) : txtHasSerial.Focus() : Return False
         Return True
 
     End Function
@@ -59,16 +88,60 @@ Public Class frmAddProduct
         ClearTextField()
     End Sub
 
-    Friend Sub ClearTextField()
+    Private Sub EnabledTextField()
+        txtItemCode.Enabled = True
+        txtDescription.Enabled = True
+        txtUnitofMeasure.Enabled = True
+        txtPrice.Enabled = True
+        txtOnHold.Enabled = True
+        txtInventoriable.Enabled = True
+        txtSalable.Enabled = True
+        txtHasSerial.Enabled = True
+    End Sub
+
+    Private Sub ClearTextField()
         txtItemCode.Text = ""
         txtDescription.Text = ""
         txtUnitofMeasure.Text = ""
         txtPrice.Text = ""
-        cmbOnhold.SelectedItem = Nothing
-        cmbInInven.SelectedItem = Nothing
-        cmbIsSalable.SelectedItem = Nothing
-        cmbHasSerial.SelectedItem = Nothing
+        txtOnHold.Text = Nothing
+        txtInventoriable.Text = Nothing
+        txtSalable.Text = Nothing
+        txtHasSerial.Text = Nothing
         lblTitle.Text = "Adding New Item"
+    End Sub
+
+    Private Sub LockFields(ByVal st As Boolean)
+        lockFRM = st
+
+        Console.WriteLine(txtItemCode.BackColor)
+        txtItemCode.ReadOnly = st
+        txtDescription.ReadOnly = st
+        txtUnitofMeasure.ReadOnly = st
+        txtPrice.ReadOnly = st
+
+        txtOnHold.ReadOnly = st
+        txtInventoriable.ReadOnly = st
+        txtSalable.ReadOnly = st
+        txtHasSerial.ReadOnly = st
+        GroupBox1.Enabled = Not st
+
+        If st Then
+            btnSave.Text = "&Modify"
+        Else
+            btnSave.Text = "&Save"
+        End If
+    End Sub
+
+    Private Sub DisabledTextfield()
+        txtItemCode.Enabled = False
+        txtDescription.Enabled = False
+        txtUnitofMeasure.Enabled = False
+        txtPrice.Enabled = False
+        txtOnHold.Enabled = False
+        txtInventoriable.Enabled = False
+        txtSalable.Enabled = False
+        txtHasSerial.Enabled = False
     End Sub
 
     Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel.Click
@@ -77,19 +150,31 @@ Public Class frmAddProduct
     End Sub
 
     Friend Sub LoadIMDTransaction(ByVal tmpIMD As ItemMaterData)
+
         With tmpIMD
             txtItemCode.Text = .ITEMCODE
             txtDescription.Text = .DESCRIPTION
             txtUnitofMeasure.Text = .UnitofMeasure
             txtPrice.Text = .PRICE
-            cmbOnhold.Items.Clear()
-
-            cmbOnhold.SelectedItem = .ONHOLDYN
-            cmbInInven.Text = .INVENTORIALBE
-            cmbIsSalable.Text = .SALABLE
-            cmbHasSerial.Text = .HASSERIAL
+            txtOnHold.Text = .ONHOLDYN
+            txtInventoriable.Text = .INVENTORIALBE
+            txtSalable.Text = .SALABLE
+            txtHasSerial.Text = .HASSERIAL
         End With
+        LockFields(True)
     End Sub
 
     
+    Private Sub frmAddProduct_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+
+    End Sub
+
+
+    Private Sub txtItemCode_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtItemCode.TextChanged
+        If txtItemCode.Text = "" Then
+            ClearTextField()
+        Else
+            loadIMDRow()
+        End If
+    End Sub
 End Class

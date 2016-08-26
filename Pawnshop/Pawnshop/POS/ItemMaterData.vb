@@ -1,4 +1,4 @@
-﻿
+﻿Imports Microsoft.Office.Interop
 Public Class ItemMaterData
     Private fillData As String = "tbl_itemmasterdata"
     Private mySql As String, ds As DataSet
@@ -122,6 +122,24 @@ Public Class ItemMaterData
         End With
     End Sub
 
+    Public Sub UpdateIMD()
+        Dim mySql As String = "SELECT * FROM " & fillData & " WHERE IMD_ID = " & _IMDID
+        Dim ds As DataSet = LoadSQL(mySql, fillData)
+
+        With ds.Tables(0).Rows(0)
+            .Item("ITEMCODE") = _ITEMCODE
+            .Item("DESCRIPTION") = DESCRIPTION
+            .Item("UNITOFMEASURE") = _UNITOFMEASURE
+            .Item("PRICE") = _PRICE
+            .Item("ONHOLDYN") = _ONHOLDYN
+            .Item("INVENTORIABLE") = _INVENTORIABLE
+            .Item("SALABLE") = _SALABLE
+            .Item("HASSERIAL") = _HASSERIAL
+        End With
+
+        database.SaveEntry(ds, False)
+    End Sub
+
     Public Sub SaveIMD()
         mySql = "SELECT * FROM " & fillData
         ds = LoadSQL(mySql, fillData)
@@ -155,6 +173,9 @@ Public Class ItemMaterData
         Return ds.Tables(0).Rows(0).Item("IMD_ID")
     End Function
 #End Region
+
+
+    
 End Class
 
 
