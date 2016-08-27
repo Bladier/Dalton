@@ -13,6 +13,7 @@
         frmPawnItem = 6
         frmDollarSimple = 7
         frmMoneyExchange = 8
+        frmItemOrderList = 9
     End Enum
     ''' <summary>
     ''' This method select what form you want to go.
@@ -43,6 +44,13 @@
         Select Case gotoForm
             Case FormName.frmMoneyExchange
                 frmmoneyexchange.LoadCurrencyall(cr)
+        End Select
+    End Sub
+
+    Friend Sub ReloadFormFromSearch2(ByVal gotoForm As FormName, ByVal IMD As ItemMaterData)
+        Select Case gotoForm
+            Case FormName.frmItemOrderList
+                FrmItemOrderList.LoadIMDTransaction(IMD)
         End Select
     End Sub
 End Module

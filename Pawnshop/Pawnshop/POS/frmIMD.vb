@@ -1,5 +1,9 @@
 ﻿Public Class frmIMD
 
+    Dim fromOtherForm As Boolean = False
+    Friend GetIMD As ItemMaterData
+    Dim frmOriginal As formSwitch.FormName
+
     Private Sub frmIMD_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         LoadActive()
     End Sub
@@ -91,17 +95,32 @@
     End Sub
     Private Sub lvIMD_DoubleClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lvIMD.DoubleClick
 
-        If lvIMD.SelectedItems.Count = 0 Then Exit Sub
+        'If lvIMD.SelectedItems.Count = 0 Then Exit Sub
 
+        'Dim id As Integer = lvIMD.FocusedItem.Tag
+        'Dim tmpLoadIMD As New ItemMaterData
+        'tmpLoadIMD.LoadIMD(id)
+
+        'frmAddProduct.Show()
+        'frmAddProduct.LoadIMDTransaction(tmpLoadIMD)
+
+        'DisabledTextfield()
         Dim id As Integer = lvIMD.FocusedItem.Tag
         Dim tmpLoadIMD As New ItemMaterData
         tmpLoadIMD.LoadIMD(id)
 
-        frmAddProduct.Show()
-        frmAddProduct.LoadIMDTransaction(tmpLoadIMD)
+        FrmItemOrderList.Show()
+        FrmItemOrderList.LoadIMDTransaction(tmpLoadIMD)
 
-        DisabledTextfield()
+        'DisabledTextfield()
 
+    End Sub
+
+    Friend Sub SearchSelect(ByVal src As String, ByVal frmOrigin As formSwitch.FormName)
+        fromOtherForm = True
+
+        txtSearchtoolStrip.Text = src
+        frmOriginal = frmOrigin
     End Sub
 
     Private Sub txtSearchtoolStrip_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtSearchtoolStrip.TextChanged

@@ -313,6 +313,12 @@
     <Compile Include="POS\frmIMD.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="POS\frmItemOrderList.Designer.vb">
+      <DependentUpon>frmItemOrderList.vb</DependentUpon>
+    </Compile>
+    <Compile Include="POS\frmItemOrderList.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="POS\ImportIMDFile.Designer.vb">
       <DependentUpon>ImportIMDFile.vb</DependentUpon>
     </Compile>
@@ -695,6 +701,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="POS\frmIMD.resx">
       <DependentUpon>frmIMD.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="POS\frmItemOrderList.resx">
+      <DependentUpon>frmItemOrderList.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="POS\ImportIMDFile.resx">
       <DependentUpon>ImportIMDFile.vb</DependentUpon>
