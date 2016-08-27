@@ -44,6 +44,7 @@
         frmAddProduct.txtInventoriable.Enabled = False
         frmAddProduct.txtSalable.Enabled = False
         frmAddProduct.txtHasSerial.Enabled = False
+        frmAddProduct.btnSave.Enabled = False
     End Sub
 
     Private Sub txtSearchtoolStrip_KeyDown(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtSearchtoolStrip.KeyDown
@@ -108,5 +109,18 @@
             SearchIMD()
             txtSearchtoolStrip.Focus()
         End If
+    End Sub
+
+    Private Sub UpdateToolStripButton4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles UpdateToolStripButton4.Click
+        If lvIMD.SelectedItems.Count = 0 Then Exit Sub
+
+        Dim id As Integer = lvIMD.FocusedItem.Tag
+        Dim tmpLoadIMD As New ItemMaterData
+        tmpLoadIMD.LoadIMD(id)
+
+        frmAddProduct.Show()
+        frmAddProduct.LoadIMDTransaction(tmpLoadIMD)
+
+        DisabledTextfield()
     End Sub
 End Class

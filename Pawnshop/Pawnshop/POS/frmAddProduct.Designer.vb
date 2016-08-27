@@ -41,11 +41,11 @@ Partial Class frmAddProduct
         Me.txtItemCode = New System.Windows.Forms.TextBox()
         Me.lblItemCode = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.btnUpdate = New System.Windows.Forms.Button()
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.btnSave = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.lblTitle = New System.Windows.Forms.Label()
-        Me.btnUpdate = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -242,6 +242,22 @@ Partial Class frmAddProduct
         Me.GroupBox2.TabIndex = 3
         Me.GroupBox2.TabStop = False
         '
+        'btnUpdate
+        '
+        Me.btnUpdate.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        Me.btnUpdate.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.btnUpdate.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnUpdate.Image = CType(resources.GetObject("btnUpdate.Image"), System.Drawing.Image)
+        Me.btnUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnUpdate.Location = New System.Drawing.Point(32, 76)
+        Me.btnUpdate.Name = "btnUpdate"
+        Me.btnUpdate.Size = New System.Drawing.Size(75, 33)
+        Me.btnUpdate.TabIndex = 2
+        Me.btnUpdate.Text = "&Edit"
+        Me.btnUpdate.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnUpdate.UseVisualStyleBackColor = False
+        '
         'btnCancel
         '
         Me.btnCancel.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
@@ -294,22 +310,6 @@ Partial Class frmAddProduct
         Me.lblTitle.Size = New System.Drawing.Size(242, 42)
         Me.lblTitle.TabIndex = 1
         Me.lblTitle.Text = "Register New Item"
-        '
-        'btnUpdate
-        '
-        Me.btnUpdate.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        Me.btnUpdate.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.btnUpdate.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnUpdate.Image = CType(resources.GetObject("btnUpdate.Image"), System.Drawing.Image)
-        Me.btnUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnUpdate.Location = New System.Drawing.Point(32, 76)
-        Me.btnUpdate.Name = "btnUpdate"
-        Me.btnUpdate.Size = New System.Drawing.Size(75, 33)
-        Me.btnUpdate.TabIndex = 2
-        Me.btnUpdate.Text = "&Edit"
-        Me.btnUpdate.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnUpdate.UseVisualStyleBackColor = False
         '
         'frmAddProduct
         '

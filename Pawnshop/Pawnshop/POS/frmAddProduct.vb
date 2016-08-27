@@ -84,6 +84,8 @@ Public Class frmAddProduct
 
     Private Sub frmAddProduct_FormClosed(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles MyBase.FormClosed
         ClearTextField()
+        btnSave.Enabled = True
+        btnUpdate.Enabled = True
     End Sub
 
     Private Sub EnabledTextField()
@@ -176,6 +178,7 @@ Public Class frmAddProduct
 
         If btnUpdate.Text = "&Edit" Then
             btnUpdate.Text = "&Update"
+            btnSave.Enabled = False
             LockFields(False)
             txtItemCode.ReadOnly = True
             EnabledTextField()
@@ -189,6 +192,7 @@ Public Class frmAddProduct
         If ans = Windows.Forms.DialogResult.No Then
             MsgBox("Abort", MsgBoxStyle.Critical)
             ClearTextField()
+            btnSave.Enabled = True
             Exit Sub
 
         Else
@@ -209,5 +213,47 @@ Public Class frmAddProduct
             ClearTextField()
         End If
         txtItemCode.ReadOnly = False
+        btnSave.Enabled = True
+    End Sub
+
+ 
+    Private Sub txtOnHold_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtOnHold.KeyPress
+        If Not (Asc(e.KeyChar) = 8) Then
+            Dim allowedChars As String = "YNyn"
+            If Not allowedChars.Contains(e.KeyChar.ToString.ToLower) Then
+                e.KeyChar = ChrW(0)
+                e.Handled = True
+            End If
+        End If
+    End Sub
+
+    Private Sub txtInventoriable_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtInventoriable.KeyPress
+        If Not (Asc(e.KeyChar) = 8) Then
+            Dim allowedChars As String = "YNyn"
+            If Not allowedChars.Contains(e.KeyChar.ToString.ToLower) Then
+                e.KeyChar = ChrW(0)
+                e.Handled = True
+            End If
+        End If
+    End Sub
+
+    Private Sub txtSalable_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtSalable.KeyPress
+        If Not (Asc(e.KeyChar) = 8) Then
+            Dim allowedChars As String = "YNyn"
+            If Not allowedChars.Contains(e.KeyChar.ToString.ToLower) Then
+                e.KeyChar = ChrW(0)
+                e.Handled = True
+            End If
+        End If
+    End Sub
+
+    Private Sub txtHasSerial_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtHasSerial.KeyPress
+        If Not (Asc(e.KeyChar) = 8) Then
+            Dim allowedChars As String = "YNyn"
+            If Not allowedChars.Contains(e.KeyChar.ToString.ToLower) Then
+                e.KeyChar = ChrW(0)
+                e.Handled = True
+            End If
+        End If
     End Sub
 End Class
