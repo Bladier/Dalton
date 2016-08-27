@@ -66,8 +66,6 @@ Public Class frmAddProduct
             txtSalable.Text = dr("SALABLE")
             txtHasSerial.Text = dr("HASSERIAL")
         Next
-
-
     End Sub
 
     Private Function isValid() As Boolean
@@ -108,7 +106,7 @@ Public Class frmAddProduct
         txtInventoriable.Text = Nothing
         txtSalable.Text = Nothing
         txtHasSerial.Text = Nothing
-        lblTitle.Text = "Adding New Item"
+        lblTitle.Text = "Register New Item"
     End Sub
 
     Private Sub LockFields(ByVal st As Boolean)
@@ -126,11 +124,6 @@ Public Class frmAddProduct
         txtHasSerial.ReadOnly = st
         GroupBox1.Enabled = Not st
 
-        If st Then
-            btnSave.Text = "&Modify"
-        Else
-            btnSave.Text = "&Save"
-        End If
     End Sub
 
     Private Sub DisabledTextfield()
@@ -162,6 +155,7 @@ Public Class frmAddProduct
             txtHasSerial.Text = .HASSERIAL
         End With
         LockFields(True)
+
     End Sub
 
     
@@ -176,5 +170,44 @@ Public Class frmAddProduct
         Else
             loadIMDRow()
         End If
+    End Sub
+
+    Private Sub btnUpdate_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnUpdate.Click
+
+        If btnUpdate.Text = "&Edit" Then
+            btnUpdate.Text = "&Update"
+            LockFields(False)
+            txtItemCode.ReadOnly = True
+            EnabledTextField()
+            Exit Sub
+        End If
+
+        If Not isValid() Then Exit Sub
+
+        Dim ans As DialogResult = MsgBox("Do you want to Update this transaction?", MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton2 + MsgBoxStyle.Information)
+
+        If ans = Windows.Forms.DialogResult.No Then
+            MsgBox("Abort", MsgBoxStyle.Critical)
+            ClearTextField()
+            Exit Sub
+
+        Else
+            IMD = New ItemMaterData
+            With IMD
+                .ITEMCODE = Trim(txtItemCode.Text)
+                .DESCRIPTION = Trim(txtDescription.Text)
+                .UnitofMeasure = Trim(txtUnitofMeasure.Text)
+                .PRICE = Trim(txtPrice.Text)
+                .ONHOLDYN = Trim(txtOnHold.Text)
+                .INVENTORIALBE = Trim(txtInventoriable.Text)
+                .SALABLE = Trim(txtSalable.Text)
+                .HASSERIAL = Trim(txtHasSerial.Text)
+                .UpdateIMD()
+            End With
+
+            MsgBox("Item Successfully Updated", MsgBoxStyle.Information)
+            ClearTextField()
+        End If
+        txtItemCode.ReadOnly = False
     End Sub
 End Class

@@ -123,24 +123,25 @@ Public Class ItemMaterData
     End Sub
 
     Public Sub UpdateIMD()
-        Dim mySql As String = "SELECT * FROM " & fillData & " WHERE IMD_ID = " & _IMDID
+        Dim mySql As String = "SELECT * FROM " & fillData & " WHERE ITEMCODE = " & _ITEMCODE
         Dim ds As DataSet = LoadSQL(mySql, fillData)
-
-        With ds.Tables(0).Rows(0)
-            .Item("ITEMCODE") = _ITEMCODE
-            .Item("DESCRIPTION") = DESCRIPTION
-            .Item("UNITOFMEASURE") = _UNITOFMEASURE
-            .Item("PRICE") = _PRICE
-            .Item("ONHOLDYN") = _ONHOLDYN
-            .Item("INVENTORIABLE") = _INVENTORIABLE
-            .Item("SALABLE") = _SALABLE
-            .Item("HASSERIAL") = _HASSERIAL
-        End With
-
+        If ds.Tables(0).Rows.Count >= 1 Then
+            With ds.Tables(0).Rows(0)
+                .Item("ITEMCODE") = _ITEMCODE
+                .Item("DESCRIPTION") = DESCRIPTION
+                .Item("UNITOFMEASURE") = _UNITOFMEASURE
+                .Item("PRICE") = _PRICE
+                .Item("ONHOLDYN") = _ONHOLDYN
+                .Item("INVENTORIABLE") = _INVENTORIABLE
+                .Item("SALABLE") = _SALABLE
+                .Item("HASSERIAL") = _HASSERIAL
+            End With
+        End If
         database.SaveEntry(ds, False)
     End Sub
 
     Public Sub SaveIMD()
+
         mySql = "SELECT * FROM " & fillData
         ds = LoadSQL(mySql, fillData)
 
@@ -161,6 +162,9 @@ Public Class ItemMaterData
 
         database.SaveEntry(ds)
     End Sub
+
+  
+
 
    
     Public Function LastIDNumber() As Single

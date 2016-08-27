@@ -45,6 +45,7 @@ Partial Class frmAddProduct
         Me.btnSave = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.lblTitle = New System.Windows.Forms.Label()
+        Me.btnUpdate = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -232,11 +233,12 @@ Partial Class frmAddProduct
         'GroupBox2
         '
         Me.GroupBox2.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.GroupBox2.Controls.Add(Me.btnUpdate)
         Me.GroupBox2.Controls.Add(Me.btnCancel)
         Me.GroupBox2.Controls.Add(Me.btnSave)
-        Me.GroupBox2.Location = New System.Drawing.Point(375, 126)
+        Me.GroupBox2.Location = New System.Drawing.Point(371, 133)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(136, 127)
+        Me.GroupBox2.Size = New System.Drawing.Size(136, 175)
         Me.GroupBox2.TabIndex = 3
         Me.GroupBox2.TabStop = False
         '
@@ -248,7 +250,7 @@ Partial Class frmAddProduct
         Me.btnCancel.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCancel.Image = CType(resources.GetObject("btnCancel.Image"), System.Drawing.Image)
         Me.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnCancel.Location = New System.Drawing.Point(32, 74)
+        Me.btnCancel.Location = New System.Drawing.Point(32, 119)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(75, 33)
         Me.btnCancel.TabIndex = 1
@@ -264,7 +266,7 @@ Partial Class frmAddProduct
         Me.btnSave.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnSave.Image = CType(resources.GetObject("btnSave.Image"), System.Drawing.Image)
         Me.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnSave.Location = New System.Drawing.Point(32, 30)
+        Me.btnSave.Location = New System.Drawing.Point(32, 32)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(75, 33)
         Me.btnSave.TabIndex = 0
@@ -292,6 +294,22 @@ Partial Class frmAddProduct
         Me.lblTitle.Size = New System.Drawing.Size(242, 42)
         Me.lblTitle.TabIndex = 1
         Me.lblTitle.Text = "Register New Item"
+        '
+        'btnUpdate
+        '
+        Me.btnUpdate.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        Me.btnUpdate.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.btnUpdate.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnUpdate.Image = CType(resources.GetObject("btnUpdate.Image"), System.Drawing.Image)
+        Me.btnUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnUpdate.Location = New System.Drawing.Point(32, 76)
+        Me.btnUpdate.Name = "btnUpdate"
+        Me.btnUpdate.Size = New System.Drawing.Size(75, 33)
+        Me.btnUpdate.TabIndex = 2
+        Me.btnUpdate.Text = "&Edit"
+        Me.btnUpdate.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnUpdate.UseVisualStyleBackColor = False
         '
         'frmAddProduct
         '
@@ -336,4 +354,5 @@ Partial Class frmAddProduct
     Friend WithEvents txtSalable As System.Windows.Forms.TextBox
     Friend WithEvents txtInventoriable As System.Windows.Forms.TextBox
     Friend WithEvents txtOnHold As System.Windows.Forms.TextBox
+    Friend WithEvents btnUpdate As System.Windows.Forms.Button
 End Class

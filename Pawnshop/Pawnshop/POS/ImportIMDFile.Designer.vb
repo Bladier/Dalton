@@ -24,8 +24,9 @@ Partial Class ImportIMDFile
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ImportIMDFile))
         Me.ToolStrip = New System.Windows.Forms.ToolStrip()
-        Me.SaveToolStripButton2 = New System.Windows.Forms.ToolStripButton()
         Me.ImportToolStripButton3 = New System.Windows.Forms.ToolStripButton()
+        Me.SaveToolStripButton2 = New System.Windows.Forms.ToolStripButton()
+        Me.CancelToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.lvIMD = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -37,7 +38,6 @@ Partial Class ImportIMDFile
         Me.ColumnHeader16 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ofdOpen = New System.Windows.Forms.OpenFileDialog()
         Me.lblPath = New System.Windows.Forms.Label()
-        Me.CancelToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStrip.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -53,6 +53,14 @@ Partial Class ImportIMDFile
         Me.ToolStrip.TabIndex = 3
         Me.ToolStrip.Text = "ToolStrip"
         '
+        'ImportToolStripButton3
+        '
+        Me.ImportToolStripButton3.Image = CType(resources.GetObject("ImportToolStripButton3.Image"), System.Drawing.Image)
+        Me.ImportToolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ImportToolStripButton3.Name = "ImportToolStripButton3"
+        Me.ImportToolStripButton3.Size = New System.Drawing.Size(67, 37)
+        Me.ImportToolStripButton3.Text = "Import"
+        '
         'SaveToolStripButton2
         '
         Me.SaveToolStripButton2.Image = CType(resources.GetObject("SaveToolStripButton2.Image"), System.Drawing.Image)
@@ -61,13 +69,13 @@ Partial Class ImportIMDFile
         Me.SaveToolStripButton2.Size = New System.Drawing.Size(55, 37)
         Me.SaveToolStripButton2.Text = "Save"
         '
-        'ImportToolStripButton3
+        'CancelToolStripButton1
         '
-        Me.ImportToolStripButton3.Image = CType(resources.GetObject("ImportToolStripButton3.Image"), System.Drawing.Image)
-        Me.ImportToolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ImportToolStripButton3.Name = "ImportToolStripButton3"
-        Me.ImportToolStripButton3.Size = New System.Drawing.Size(67, 37)
-        Me.ImportToolStripButton3.Text = "Import"
+        Me.CancelToolStripButton1.Image = CType(resources.GetObject("CancelToolStripButton1.Image"), System.Drawing.Image)
+        Me.CancelToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.CancelToolStripButton1.Name = "CancelToolStripButton1"
+        Me.CancelToolStripButton1.Size = New System.Drawing.Size(66, 37)
+        Me.CancelToolStripButton1.Text = "Cancel"
         '
         'lvIMD
         '
@@ -138,14 +146,6 @@ Partial Class ImportIMDFile
         Me.lblPath.Size = New System.Drawing.Size(37, 18)
         Me.lblPath.TabIndex = 5
         Me.lblPath.Text = "Path"
-        '
-        'CancelToolStripButton1
-        '
-        Me.CancelToolStripButton1.Image = CType(resources.GetObject("CancelToolStripButton1.Image"), System.Drawing.Image)
-        Me.CancelToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.CancelToolStripButton1.Name = "CancelToolStripButton1"
-        Me.CancelToolStripButton1.Size = New System.Drawing.Size(66, 37)
-        Me.CancelToolStripButton1.Text = "Cancel"
         '
         'ImportIMDFile
         '
