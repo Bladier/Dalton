@@ -26,7 +26,7 @@ Partial Class ImportIMDFile
         Me.ToolStrip = New System.Windows.Forms.ToolStrip()
         Me.ImportToolStripButton3 = New System.Windows.Forms.ToolStripButton()
         Me.SaveToolStripButton2 = New System.Windows.Forms.ToolStripButton()
-        Me.CancelToolStripButton1 = New System.Windows.Forms.ToolStripButton()
+        Me.CloseToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.lvIMD = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -49,7 +49,7 @@ Partial Class ImportIMDFile
         Me.ToolStrip.AutoSize = False
         Me.ToolStrip.BackColor = System.Drawing.Color.LightSlateGray
         Me.ToolStrip.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ImportToolStripButton3, Me.SaveToolStripButton2, Me.CancelToolStripButton1})
+        Me.ToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ImportToolStripButton3, Me.SaveToolStripButton2, Me.CloseToolStripButton1})
         Me.ToolStrip.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip.Name = "ToolStrip"
         Me.ToolStrip.Size = New System.Drawing.Size(1069, 40)
@@ -72,13 +72,13 @@ Partial Class ImportIMDFile
         Me.SaveToolStripButton2.Size = New System.Drawing.Size(55, 37)
         Me.SaveToolStripButton2.Text = "Save"
         '
-        'CancelToolStripButton1
+        'CloseToolStripButton1
         '
-        Me.CancelToolStripButton1.Image = CType(resources.GetObject("CancelToolStripButton1.Image"), System.Drawing.Image)
-        Me.CancelToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.CancelToolStripButton1.Name = "CancelToolStripButton1"
-        Me.CancelToolStripButton1.Size = New System.Drawing.Size(66, 37)
-        Me.CancelToolStripButton1.Text = "Cancel"
+        Me.CloseToolStripButton1.Image = CType(resources.GetObject("CloseToolStripButton1.Image"), System.Drawing.Image)
+        Me.CloseToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.CloseToolStripButton1.Name = "CloseToolStripButton1"
+        Me.CloseToolStripButton1.Size = New System.Drawing.Size(60, 37)
+        Me.CloseToolStripButton1.Text = "Close"
         '
         'lvIMD
         '
@@ -200,7 +200,7 @@ Partial Class ImportIMDFile
     Friend WithEvents ColumnHeader16 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ofdOpen As System.Windows.Forms.OpenFileDialog
     Friend WithEvents lblPath As System.Windows.Forms.Label
-    Friend WithEvents CancelToolStripButton1 As System.Windows.Forms.ToolStripButton
+    Friend WithEvents CloseToolStripButton1 As System.Windows.Forms.ToolStripButton
     Friend WithEvents StatusStrip As System.Windows.Forms.StatusStrip
     Friend WithEvents ItemCountToolStripStatusLabel1 As System.Windows.Forms.ToolStripStatusLabel
 End Class

@@ -40,6 +40,7 @@ Public Class FrmItemOrderList
         frmIMD.UpdateToolStripButton4.Visible = False
 
         frmIMD.SearchSelect(secured_str, FormName.frmItemOrderList)
+        frmIMD.StartPosition = FormStartPosition.CenterScreen
         frmIMD.Show()
 
         frmIMD.txtSearchtoolStrip.Text = Me.txtSearch1.Text.ToString
@@ -117,5 +118,10 @@ Public Class FrmItemOrderList
 
     Private Sub txtSearch1_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtSearch1.TextChanged
         txtSearch1.ForeColor = Color.Red
+    End Sub
+
+    Private Sub btnClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClose.Click
+        Me.Hide()
+        frmPOSMain.Show()
     End Sub
 End Class

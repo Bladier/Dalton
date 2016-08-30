@@ -138,7 +138,13 @@
 
         frmAddProduct.Show()
         frmAddProduct.LoadIMDTransaction(tmpLoadIMD)
-
+        frmAddProduct.lblTitle.Text = "Updating Item"
         DisabledTextfield()
+
+    End Sub
+
+    Private Sub CloseToolStripButton1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CloseToolStripButton1.Click
+        Me.Hide()
+        frmPOSMain.Show()
     End Sub
 End Class

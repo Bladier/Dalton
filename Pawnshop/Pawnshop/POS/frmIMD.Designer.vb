@@ -38,6 +38,7 @@ Partial Class frmIMD
         Me.UpdateToolStripButton4 = New System.Windows.Forms.ToolStripButton()
         Me.txtSearchtoolStrip = New System.Windows.Forms.ToolStripTextBox()
         Me.SearchToolStripButton2 = New System.Windows.Forms.ToolStripButton()
+        Me.CloseToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -104,7 +105,7 @@ Partial Class frmIMD
         Me.ToolStrip1.AutoSize = False
         Me.ToolStrip1.BackColor = System.Drawing.Color.LightSlateGray
         Me.ToolStrip1.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewToolStripButton1, Me.UpdateToolStripButton4, Me.txtSearchtoolStrip, Me.SearchToolStripButton2})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewToolStripButton1, Me.UpdateToolStripButton4, Me.txtSearchtoolStrip, Me.SearchToolStripButton2, Me.CloseToolStripButton1})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Size = New System.Drawing.Size(980, 40)
@@ -146,6 +147,14 @@ Partial Class frmIMD
         Me.SearchToolStripButton2.Size = New System.Drawing.Size(67, 37)
         Me.SearchToolStripButton2.Text = "Search"
         '
+        'CloseToolStripButton1
+        '
+        Me.CloseToolStripButton1.Image = CType(resources.GetObject("CloseToolStripButton1.Image"), System.Drawing.Image)
+        Me.CloseToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.CloseToolStripButton1.Name = "CloseToolStripButton1"
+        Me.CloseToolStripButton1.Size = New System.Drawing.Size(60, 37)
+        Me.CloseToolStripButton1.Text = "Close"
+        '
         'frmIMD
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -177,4 +186,5 @@ Partial Class frmIMD
     Friend WithEvents SearchToolStripButton2 As System.Windows.Forms.ToolStripButton
     Friend WithEvents ColumnHeader3 As System.Windows.Forms.ColumnHeader
     Friend WithEvents UpdateToolStripButton4 As System.Windows.Forms.ToolStripButton
+    Friend WithEvents CloseToolStripButton1 As System.Windows.Forms.ToolStripButton
 End Class

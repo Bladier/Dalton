@@ -78,7 +78,7 @@ Public Class ImportIMDFile
         lblPath.Text = ofdOpen.FileName
     End Sub
 
-    Private Sub CancelToolStripButton1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CancelToolStripButton1.Click
+    Private Sub CloseToolStripButton1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CloseToolStripButton1.Click
         Me.Hide()
         frmPOSMain.Show()
     End Sub

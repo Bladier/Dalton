@@ -33,8 +33,13 @@ Partial Class ImportSTO
         Me.ToolStrip = New System.Windows.Forms.ToolStrip()
         Me.ImportToolStripButton3 = New System.Windows.Forms.ToolStripButton()
         Me.SaveToolStripButton2 = New System.Windows.Forms.ToolStripButton()
-        Me.CancelToolStripButton1 = New System.Windows.Forms.ToolStripButton()
+        Me.CloseToolStripButton1 = New System.Windows.Forms.ToolStripButton()
+        Me.StatusStrip = New System.Windows.Forms.StatusStrip()
+        Me.ItemCountToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ofdOpen = New System.Windows.Forms.OpenFileDialog()
+        Me.lblPath = New System.Windows.Forms.Label()
         Me.ToolStrip.SuspendLayout()
+        Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()
         '
         'lvIMD
@@ -85,7 +90,7 @@ Partial Class ImportSTO
         Me.ToolStrip.AutoSize = False
         Me.ToolStrip.BackColor = System.Drawing.Color.LightSlateGray
         Me.ToolStrip.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ImportToolStripButton3, Me.SaveToolStripButton2, Me.CancelToolStripButton1})
+        Me.ToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ImportToolStripButton3, Me.SaveToolStripButton2, Me.CloseToolStripButton1})
         Me.ToolStrip.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip.Name = "ToolStrip"
         Me.ToolStrip.Size = New System.Drawing.Size(1015, 40)
@@ -108,19 +113,54 @@ Partial Class ImportSTO
         Me.SaveToolStripButton2.Size = New System.Drawing.Size(55, 37)
         Me.SaveToolStripButton2.Text = "Save"
         '
-        'CancelToolStripButton1
+        'CloseToolStripButton1
         '
-        Me.CancelToolStripButton1.Image = CType(resources.GetObject("CancelToolStripButton1.Image"), System.Drawing.Image)
-        Me.CancelToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.CancelToolStripButton1.Name = "CancelToolStripButton1"
-        Me.CancelToolStripButton1.Size = New System.Drawing.Size(66, 37)
-        Me.CancelToolStripButton1.Text = "Cancel"
+        Me.CloseToolStripButton1.Image = CType(resources.GetObject("CloseToolStripButton1.Image"), System.Drawing.Image)
+        Me.CloseToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.CloseToolStripButton1.Name = "CloseToolStripButton1"
+        Me.CloseToolStripButton1.Size = New System.Drawing.Size(60, 37)
+        Me.CloseToolStripButton1.Text = "Close"
+        '
+        'StatusStrip
+        '
+        Me.StatusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ItemCountToolStripStatusLabel1})
+        Me.StatusStrip.Location = New System.Drawing.Point(0, 364)
+        Me.StatusStrip.Name = "StatusStrip"
+        Me.StatusStrip.Size = New System.Drawing.Size(1015, 22)
+        Me.StatusStrip.TabIndex = 7
+        Me.StatusStrip.Text = "StatusStrip1"
+        '
+        'ItemCountToolStripStatusLabel1
+        '
+        Me.ItemCountToolStripStatusLabel1.Name = "ItemCountToolStripStatusLabel1"
+        Me.ItemCountToolStripStatusLabel1.Size = New System.Drawing.Size(40, 17)
+        Me.ItemCountToolStripStatusLabel1.Text = "Count"
+        '
+        'ofdOpen
+        '
+        Me.ofdOpen.FileName = "OpenFileDialog1"
+        Me.ofdOpen.Filter = "PTU File |*.PTU"
+        '
+        'lblPath
+        '
+        Me.lblPath.AutoSize = True
+        Me.lblPath.BackColor = System.Drawing.Color.LightSlateGray
+        Me.lblPath.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.lblPath.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblPath.ForeColor = System.Drawing.Color.LightSlateGray
+        Me.lblPath.Location = New System.Drawing.Point(222, 10)
+        Me.lblPath.Name = "lblPath"
+        Me.lblPath.Size = New System.Drawing.Size(37, 18)
+        Me.lblPath.TabIndex = 9
+        Me.lblPath.Text = "Path"
         '
         'ImportSTO
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1015, 386)
+        Me.Controls.Add(Me.lblPath)
+        Me.Controls.Add(Me.StatusStrip)
         Me.Controls.Add(Me.lvIMD)
         Me.Controls.Add(Me.ToolStrip)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
@@ -129,7 +169,10 @@ Partial Class ImportSTO
         Me.Text = "Import STO"
         Me.ToolStrip.ResumeLayout(False)
         Me.ToolStrip.PerformLayout()
+        Me.StatusStrip.ResumeLayout(False)
+        Me.StatusStrip.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents lvIMD As System.Windows.Forms.ListView
@@ -142,5 +185,9 @@ Partial Class ImportSTO
     Friend WithEvents ToolStrip As System.Windows.Forms.ToolStrip
     Friend WithEvents ImportToolStripButton3 As System.Windows.Forms.ToolStripButton
     Friend WithEvents SaveToolStripButton2 As System.Windows.Forms.ToolStripButton
-    Friend WithEvents CancelToolStripButton1 As System.Windows.Forms.ToolStripButton
+    Friend WithEvents CloseToolStripButton1 As System.Windows.Forms.ToolStripButton
+    Friend WithEvents StatusStrip As System.Windows.Forms.StatusStrip
+    Friend WithEvents ItemCountToolStripStatusLabel1 As System.Windows.Forms.ToolStripStatusLabel
+    Friend WithEvents ofdOpen As System.Windows.Forms.OpenFileDialog
+    Friend WithEvents lblPath As System.Windows.Forms.Label
 End Class

@@ -1,4 +1,5 @@
 ﻿Public Class frmPOSMain
+
     Private Sub CloseChildForms()
         For Each frm As Form In Me.MdiChildren
             If frm.Name = "frmHome" Then
@@ -7,7 +8,7 @@
             End If
         Next
     End Sub
- 
+
 
     Private Sub ItemListToolStripButton1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ItemListToolStripButton1.Click
         CloseChildForms()
@@ -15,7 +16,7 @@
         ImportIMDFile.Show()
     End Sub
 
-  
+
     Private Sub POSToolStripButton1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles POSToolStripButton1.Click
         CloseChildForms()
         FrmItemOrderList.MdiParent = Me
@@ -32,5 +33,11 @@
         CloseChildForms()
         ImportSTO.MdiParent = Me
         ImportSTO.Show()
+    End Sub
+
+
+    Private Sub CloseToolStripButton1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CloseToolStripButton1.Click
+        Me.Hide()
+        frmMain.Show()
     End Sub
 End Class

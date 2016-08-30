@@ -50,6 +50,7 @@ Partial Class FrmItemOrderList
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.btnClose = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         CType(Me.pbHeader, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpItem.SuspendLayout()
@@ -249,6 +250,7 @@ Partial Class FrmItemOrderList
         'grpList
         '
         Me.grpList.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.grpList.Controls.Add(Me.btnClose)
         Me.grpList.Controls.Add(Me.lblPayment)
         Me.grpList.Controls.Add(Me.txtTotalPrice)
         Me.grpList.Controls.Add(Me.lblTotalPrice)
@@ -349,6 +351,22 @@ Partial Class FrmItemOrderList
         Me.ColumnHeader4.Text = "Quantity"
         Me.ColumnHeader4.Width = 77
         '
+        'btnClose
+        '
+        Me.btnClose.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        Me.btnClose.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.btnClose.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnClose.Image = CType(resources.GetObject("btnClose.Image"), System.Drawing.Image)
+        Me.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnClose.Location = New System.Drawing.Point(11, 302)
+        Me.btnClose.Name = "btnClose"
+        Me.btnClose.Size = New System.Drawing.Size(67, 33)
+        Me.btnClose.TabIndex = 14
+        Me.btnClose.Text = "&Close"
+        Me.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnClose.UseVisualStyleBackColor = False
+        '
         'FrmItemOrderList
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -400,4 +418,5 @@ Partial Class FrmItemOrderList
     Friend WithEvents txtSearch1 As System.Windows.Forms.TextBox
     Friend WithEvents pbHeader As System.Windows.Forms.PictureBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents btnClose As System.Windows.Forms.Button
 End Class

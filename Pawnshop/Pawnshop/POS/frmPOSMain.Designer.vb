@@ -31,14 +31,15 @@ Partial Class frmPOSMain
         Me.ImportSTOToolStripButton3 = New System.Windows.Forms.ToolStripButton()
         Me.POSToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.LoadTransactionToolStripButton1 = New System.Windows.Forms.ToolStripButton()
-        Me.CancelToolStripButton1 = New System.Windows.Forms.ToolStripButton()
+        Me.CloseToolStripButton1 = New System.Windows.Forms.ToolStripButton()
+        Me.StockInToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.ToolStrip.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.StockInToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(1233, 24)
@@ -63,7 +64,7 @@ Partial Class frmPOSMain
         Me.ToolStrip.AutoSize = False
         Me.ToolStrip.BackColor = System.Drawing.Color.LightSlateGray
         Me.ToolStrip.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ItemListToolStripButton1, Me.ImportSTOToolStripButton3, Me.POSToolStripButton1, Me.LoadTransactionToolStripButton1, Me.CancelToolStripButton1})
+        Me.ToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ItemListToolStripButton1, Me.ImportSTOToolStripButton3, Me.POSToolStripButton1, Me.LoadTransactionToolStripButton1, Me.CloseToolStripButton1})
         Me.ToolStrip.Location = New System.Drawing.Point(0, 24)
         Me.ToolStrip.Name = "ToolStrip"
         Me.ToolStrip.Size = New System.Drawing.Size(1233, 40)
@@ -102,13 +103,19 @@ Partial Class frmPOSMain
         Me.LoadTransactionToolStripButton1.Size = New System.Drawing.Size(133, 37)
         Me.LoadTransactionToolStripButton1.Text = "Load Master Data"
         '
-        'CancelToolStripButton1
+        'CloseToolStripButton1
         '
-        Me.CancelToolStripButton1.Image = CType(resources.GetObject("CancelToolStripButton1.Image"), System.Drawing.Image)
-        Me.CancelToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.CancelToolStripButton1.Name = "CancelToolStripButton1"
-        Me.CancelToolStripButton1.Size = New System.Drawing.Size(66, 37)
-        Me.CancelToolStripButton1.Text = "Cancel"
+        Me.CloseToolStripButton1.Image = CType(resources.GetObject("CloseToolStripButton1.Image"), System.Drawing.Image)
+        Me.CloseToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.CloseToolStripButton1.Name = "CloseToolStripButton1"
+        Me.CloseToolStripButton1.Size = New System.Drawing.Size(60, 37)
+        Me.CloseToolStripButton1.Text = "Close"
+        '
+        'StockInToolStripMenuItem
+        '
+        Me.StockInToolStripMenuItem.Name = "StockInToolStripMenuItem"
+        Me.StockInToolStripMenuItem.Size = New System.Drawing.Size(61, 20)
+        Me.StockInToolStripMenuItem.Text = "Stock In"
         '
         'frmPOSMain
         '
@@ -137,6 +144,7 @@ Partial Class frmPOSMain
     Friend WithEvents ItemListToolStripButton1 As System.Windows.Forms.ToolStripButton
     Friend WithEvents ImportSTOToolStripButton3 As System.Windows.Forms.ToolStripButton
     Friend WithEvents LoadTransactionToolStripButton1 As System.Windows.Forms.ToolStripButton
-    Friend WithEvents CancelToolStripButton1 As System.Windows.Forms.ToolStripButton
+    Friend WithEvents CloseToolStripButton1 As System.Windows.Forms.ToolStripButton
     Friend WithEvents POSToolStripButton1 As System.Windows.Forms.ToolStripButton
+    Friend WithEvents StockInToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class
