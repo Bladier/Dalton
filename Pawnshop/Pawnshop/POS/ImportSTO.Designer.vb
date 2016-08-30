@@ -43,9 +43,9 @@ Partial Class ImportSTO
         Me.lvIMD.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lvIMD.FullRowSelect = True
         Me.lvIMD.GridLines = True
-        Me.lvIMD.Location = New System.Drawing.Point(1, 41)
+        Me.lvIMD.Location = New System.Drawing.Point(7, 41)
         Me.lvIMD.Name = "lvIMD"
-        Me.lvIMD.Size = New System.Drawing.Size(1014, 341)
+        Me.lvIMD.Size = New System.Drawing.Size(1002, 320)
         Me.lvIMD.TabIndex = 6
         Me.lvIMD.UseCompatibleStateImageBehavior = False
         Me.lvIMD.View = System.Windows.Forms.View.Details
