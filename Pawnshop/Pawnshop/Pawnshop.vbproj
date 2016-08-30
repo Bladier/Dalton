@@ -179,6 +179,7 @@
     <Compile Include="AutoPatch\db1221.vb" />
     <Compile Include="AutoPatch\db1222.vb" />
     <Compile Include="AutoPatch\db1223.vb" />
+    <Compile Include="AutoPatch\db1224.vb" />
     <Compile Include="Classes\Borrowings.vb" />
     <Compile Include="Classes\CashInOut.vb" />
     <Compile Include="Classes\CashInOutTransaction.vb" />
@@ -284,6 +285,12 @@
     <Compile Include="Forms\diagOTPv2.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\ExtractDataFromDatabase.Designer.vb">
+      <DependentUpon>ExtractDataFromDatabase.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ExtractDataFromDatabase.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\frmBackUpDataSettings.Designer.vb">
       <DependentUpon>frmBackUpDataSettings.vb</DependentUpon>
     </Compile>
@@ -300,6 +307,7 @@
     <Compile Include="Modules\OneTimePassword.vb" />
     <Compile Include="Modules\otp.vb" />
     <Compile Include="Modules\PawningScheme.vb" />
+    <Compile Include="Modules\Void.vb" />
     <Compile Include="POS\Conn.vb" />
     <Compile Include="POS\frmAddProduct.Designer.vb">
       <DependentUpon>frmAddProduct.vb</DependentUpon>
@@ -701,6 +709,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\diagOTPv2.resx">
       <DependentUpon>diagOTPv2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ExtractDataFromDatabase.resx">
+      <DependentUpon>ExtractDataFromDatabase.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmBackUpDataSettings.resx">
       <DependentUpon>frmBackUpDataSettings.vb</DependentUpon>
