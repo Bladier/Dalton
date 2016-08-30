@@ -35,9 +35,9 @@ Partial Class frmIMD
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.NewToolStripButton1 = New System.Windows.Forms.ToolStripButton()
+        Me.UpdateToolStripButton4 = New System.Windows.Forms.ToolStripButton()
         Me.txtSearchtoolStrip = New System.Windows.Forms.ToolStripTextBox()
         Me.SearchToolStripButton2 = New System.Windows.Forms.ToolStripButton()
-        Me.UpdateToolStripButton4 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -47,9 +47,9 @@ Partial Class frmIMD
         Me.lvIMD.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lvIMD.FullRowSelect = True
         Me.lvIMD.GridLines = True
-        Me.lvIMD.Location = New System.Drawing.Point(6, 42)
+        Me.lvIMD.Location = New System.Drawing.Point(0, 42)
         Me.lvIMD.Name = "lvIMD"
-        Me.lvIMD.Size = New System.Drawing.Size(1164, 356)
+        Me.lvIMD.Size = New System.Drawing.Size(980, 382)
         Me.lvIMD.TabIndex = 1
         Me.lvIMD.UseCompatibleStateImageBehavior = False
         Me.lvIMD.View = System.Windows.Forms.View.Details
@@ -102,12 +102,12 @@ Partial Class frmIMD
         'ToolStrip1
         '
         Me.ToolStrip1.AutoSize = False
-        Me.ToolStrip1.BackColor = System.Drawing.Color.LightGray
+        Me.ToolStrip1.BackColor = System.Drawing.Color.LightSlateGray
         Me.ToolStrip1.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewToolStripButton1, Me.UpdateToolStripButton4, Me.txtSearchtoolStrip, Me.SearchToolStripButton2})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(1178, 40)
+        Me.ToolStrip1.Size = New System.Drawing.Size(980, 40)
         Me.ToolStrip1.TabIndex = 0
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -119,6 +119,14 @@ Partial Class frmIMD
         Me.NewToolStripButton1.Name = "NewToolStripButton1"
         Me.NewToolStripButton1.Size = New System.Drawing.Size(65, 40)
         Me.NewToolStripButton1.Text = "&New"
+        '
+        'UpdateToolStripButton4
+        '
+        Me.UpdateToolStripButton4.Image = CType(resources.GetObject("UpdateToolStripButton4.Image"), System.Drawing.Image)
+        Me.UpdateToolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.UpdateToolStripButton4.Name = "UpdateToolStripButton4"
+        Me.UpdateToolStripButton4.Size = New System.Drawing.Size(71, 37)
+        Me.UpdateToolStripButton4.Text = "Update"
         '
         'txtSearchtoolStrip
         '
@@ -138,21 +146,14 @@ Partial Class frmIMD
         Me.SearchToolStripButton2.Size = New System.Drawing.Size(67, 37)
         Me.SearchToolStripButton2.Text = "Search"
         '
-        'UpdateToolStripButton4
-        '
-        Me.UpdateToolStripButton4.Image = CType(resources.GetObject("UpdateToolStripButton4.Image"), System.Drawing.Image)
-        Me.UpdateToolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.UpdateToolStripButton4.Name = "UpdateToolStripButton4"
-        Me.UpdateToolStripButton4.Size = New System.Drawing.Size(71, 37)
-        Me.UpdateToolStripButton4.Text = "Update"
-        '
         'frmIMD
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1178, 401)
+        Me.ClientSize = New System.Drawing.Size(980, 424)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.lvIMD)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "frmIMD"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "ITEM MASTER DATA"

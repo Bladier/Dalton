@@ -38,13 +38,16 @@ Partial Class ImportIMDFile
         Me.ColumnHeader16 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ofdOpen = New System.Windows.Forms.OpenFileDialog()
         Me.lblPath = New System.Windows.Forms.Label()
+        Me.StatusStrip = New System.Windows.Forms.StatusStrip()
+        Me.ItemCountToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStrip.SuspendLayout()
+        Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()
         '
         'ToolStrip
         '
         Me.ToolStrip.AutoSize = False
-        Me.ToolStrip.BackColor = System.Drawing.Color.LightGray
+        Me.ToolStrip.BackColor = System.Drawing.Color.LightSlateGray
         Me.ToolStrip.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ImportToolStripButton3, Me.SaveToolStripButton2, Me.CancelToolStripButton1})
         Me.ToolStrip.Location = New System.Drawing.Point(0, 0)
@@ -83,9 +86,9 @@ Partial Class ImportIMDFile
         Me.lvIMD.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lvIMD.FullRowSelect = True
         Me.lvIMD.GridLines = True
-        Me.lvIMD.Location = New System.Drawing.Point(3, 41)
+        Me.lvIMD.Location = New System.Drawing.Point(5, 41)
         Me.lvIMD.Name = "lvIMD"
-        Me.lvIMD.Size = New System.Drawing.Size(1061, 356)
+        Me.lvIMD.Size = New System.Drawing.Size(1060, 333)
         Me.lvIMD.TabIndex = 4
         Me.lvIMD.UseCompatibleStateImageBehavior = False
         Me.lvIMD.View = System.Windows.Forms.View.Details
@@ -137,30 +140,48 @@ Partial Class ImportIMDFile
         'lblPath
         '
         Me.lblPath.AutoSize = True
-        Me.lblPath.BackColor = System.Drawing.Color.LightGray
+        Me.lblPath.BackColor = System.Drawing.Color.LightSlateGray
         Me.lblPath.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.lblPath.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblPath.ForeColor = System.Drawing.Color.LightGray
+        Me.lblPath.ForeColor = System.Drawing.Color.LightSlateGray
         Me.lblPath.Location = New System.Drawing.Point(229, 10)
         Me.lblPath.Name = "lblPath"
         Me.lblPath.Size = New System.Drawing.Size(37, 18)
         Me.lblPath.TabIndex = 5
         Me.lblPath.Text = "Path"
         '
+        'StatusStrip
+        '
+        Me.StatusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ItemCountToolStripStatusLabel1})
+        Me.StatusStrip.Location = New System.Drawing.Point(0, 377)
+        Me.StatusStrip.Name = "StatusStrip"
+        Me.StatusStrip.Size = New System.Drawing.Size(1069, 22)
+        Me.StatusStrip.TabIndex = 6
+        Me.StatusStrip.Text = "StatusStrip1"
+        '
+        'ItemCountToolStripStatusLabel1
+        '
+        Me.ItemCountToolStripStatusLabel1.Name = "ItemCountToolStripStatusLabel1"
+        Me.ItemCountToolStripStatusLabel1.Size = New System.Drawing.Size(40, 17)
+        Me.ItemCountToolStripStatusLabel1.Text = "Count"
+        '
         'ImportIMDFile
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1069, 399)
+        Me.Controls.Add(Me.StatusStrip)
         Me.Controls.Add(Me.lblPath)
         Me.Controls.Add(Me.lvIMD)
         Me.Controls.Add(Me.ToolStrip)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "ImportIMDFile"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Import Item Master Data File"
         Me.ToolStrip.ResumeLayout(False)
         Me.ToolStrip.PerformLayout()
+        Me.StatusStrip.ResumeLayout(False)
+        Me.StatusStrip.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -180,4 +201,6 @@ Partial Class ImportIMDFile
     Friend WithEvents ofdOpen As System.Windows.Forms.OpenFileDialog
     Friend WithEvents lblPath As System.Windows.Forms.Label
     Friend WithEvents CancelToolStripButton1 As System.Windows.Forms.ToolStripButton
+    Friend WithEvents StatusStrip As System.Windows.Forms.StatusStrip
+    Friend WithEvents ItemCountToolStripStatusLabel1 As System.Windows.Forms.ToolStripStatusLabel
 End Class

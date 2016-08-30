@@ -319,10 +319,22 @@
     <Compile Include="POS\frmItemOrderList.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="POS\frmPOSMain.Designer.vb">
+      <DependentUpon>frmPOSMain.vb</DependentUpon>
+    </Compile>
+    <Compile Include="POS\frmPOSMain.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="POS\ImportIMDFile.Designer.vb">
       <DependentUpon>ImportIMDFile.vb</DependentUpon>
     </Compile>
     <Compile Include="POS\ImportIMDFile.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="POS\ImportSTO.Designer.vb">
+      <DependentUpon>ImportSTO.vb</DependentUpon>
+    </Compile>
+    <Compile Include="POS\ImportSTO.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="POS\ItemMaterData.vb" />
@@ -705,8 +717,14 @@
     <EmbeddedResource Include="POS\frmItemOrderList.resx">
       <DependentUpon>frmItemOrderList.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="POS\frmPOSMain.resx">
+      <DependentUpon>frmPOSMain.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="POS\ImportIMDFile.resx">
       <DependentUpon>ImportIMDFile.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="POS\ImportSTO.resx">
+      <DependentUpon>ImportSTO.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\AuctionDailyReport.rdlc" />
     <EmbeddedResource Include="Reports\AuctionMonlyreport.rdlc">

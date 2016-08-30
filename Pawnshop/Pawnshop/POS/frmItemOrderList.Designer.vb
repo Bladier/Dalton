@@ -357,6 +357,7 @@ Partial Class FrmItemOrderList
         Me.ClientSize = New System.Drawing.Size(980, 424)
         Me.Controls.Add(Me.grpList)
         Me.Controls.Add(Me.Panel1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "FrmItemOrderList"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "frmItemOrderList"

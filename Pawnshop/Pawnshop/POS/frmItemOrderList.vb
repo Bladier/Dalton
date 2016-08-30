@@ -35,8 +35,13 @@ Public Class FrmItemOrderList
     Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
         Dim secured_str As String = txtSearch1.Text
         secured_str = DreadKnight(secured_str)
+
+        frmIMD.NewToolStripButton1.Visible = False
+        frmIMD.UpdateToolStripButton4.Visible = False
+
         frmIMD.SearchSelect(secured_str, FormName.frmItemOrderList)
         frmIMD.Show()
+
         frmIMD.txtSearchtoolStrip.Text = Me.txtSearch1.Text.ToString
         frmIMD.SearchToolStripButton2.PerformClick()
         Me.Hide()

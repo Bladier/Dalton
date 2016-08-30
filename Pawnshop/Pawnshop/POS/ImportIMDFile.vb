@@ -1,4 +1,5 @@
 ﻿Imports Microsoft.Office.Interop
+
 Public Class ImportIMDFile
 
     Dim filldata As String = "TBL_ITEMMASTERDATA"
@@ -10,6 +11,7 @@ Public Class ImportIMDFile
 
 
     Public Sub ImportToolStripButton3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ImportToolStripButton3.Click
+
         ofdOpen.ShowDialog()
         If lvIMD.Items.Count = 0 Then
             lOADEXCEL(lblPath.Text)
@@ -17,6 +19,9 @@ Public Class ImportIMDFile
             MsgBox("Contains " & lvIMD.Items.Count & " items")
             Exit Sub
         End If
+
+        ItemCountToolStripStatusLabel1.Text = "Item Count " & lvIMD.Items.Count
+
     End Sub
 
     Friend Sub lOADEXCEL(ByVal SRC As String)
@@ -75,7 +80,7 @@ Public Class ImportIMDFile
 
     Private Sub CancelToolStripButton1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CancelToolStripButton1.Click
         Me.Hide()
-        frmMain.Show()
+        frmPOSMain.Show()
     End Sub
 
     Private Sub SaveItemMaster(ByVal itemcode As String, ByVal description As String, ByVal UnitOfMeasure As String, ByVal Price As String,
@@ -140,4 +145,6 @@ Public Class ImportIMDFile
         End If
 
     End Sub
+
+   
 End Class

@@ -281,7 +281,7 @@
             MsgBoxAuthoriation("You don't have access to POS")
             Exit Sub
         End If
-        ImportIMDFile.ShowDialog()
+        frmPOSMain.ShowDialog()
     End Sub
 
     Private Sub CashCountToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CashCountToolStripMenuItem.Click
