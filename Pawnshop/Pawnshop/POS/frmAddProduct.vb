@@ -53,7 +53,7 @@ Public Class frmAddProduct
     Private Sub loadIMDRow()
 
         Dim mySql As String, ds As DataSet
-        mySql = "SELECT * FROM " & fillData
+        mySql = "SELECT FIRST * 50 FROM " & fillData
         mySql &= String.Format(" WHERE ITEMCODE = '{0}'", txtItemCode.Text)
         ds = LoadSQL(mySql, fillData)
 

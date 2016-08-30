@@ -73,7 +73,7 @@
         Dim MaxRow As Integer = ds.Tables(0).Rows.Count
         If MaxRow <= 0 Then
             MsgBox("Item not found", MsgBoxStyle.Critical)
-
+            lvIMD.Items.Clear()
             Exit Sub
         End If
 
@@ -111,8 +111,7 @@
 
         FrmItemOrderList.Show()
         FrmItemOrderList.LoadIMDTransaction(tmpLoadIMD)
-
-        'DisabledTextfield()
+        FrmItemOrderList.txtQuantity.Focus()
 
     End Sub
 

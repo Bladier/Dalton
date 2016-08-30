@@ -24,10 +24,14 @@ Partial Class FrmItemOrderList
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmItemOrderList))
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.pbHeader = New System.Windows.Forms.PictureBox()
         Me.lblTitle = New System.Windows.Forms.Label()
         Me.grpItem = New System.Windows.Forms.GroupBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.txtSearch1 = New System.Windows.Forms.TextBox()
         Me.txtQuantity = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.btnSearch = New System.Windows.Forms.Button()
         Me.btnaddCart = New System.Windows.Forms.Button()
         Me.txtPrice = New System.Windows.Forms.TextBox()
         Me.lblPrice = New System.Windows.Forms.Label()
@@ -35,11 +39,7 @@ Partial Class FrmItemOrderList
         Me.lblDescription = New System.Windows.Forms.Label()
         Me.txtItemCode = New System.Windows.Forms.TextBox()
         Me.lblItemCode = New System.Windows.Forms.Label()
-        Me.btnSearch = New System.Windows.Forms.Button()
         Me.grpList = New System.Windows.Forms.GroupBox()
-        Me.grpSearch = New System.Windows.Forms.GroupBox()
-        Me.txtSearch1 = New System.Windows.Forms.TextBox()
-        Me.Label3 = New System.Windows.Forms.Label()
         Me.lblPayment = New System.Windows.Forms.Label()
         Me.txtTotalPrice = New System.Windows.Forms.TextBox()
         Me.lblTotalPrice = New System.Windows.Forms.Label()
@@ -51,9 +51,9 @@ Partial Class FrmItemOrderList
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.Panel1.SuspendLayout()
+        CType(Me.pbHeader, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpItem.SuspendLayout()
         Me.grpList.SuspendLayout()
-        Me.grpSearch.SuspendLayout()
         Me.grpCart.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -61,11 +61,21 @@ Partial Class FrmItemOrderList
         '
         Me.Panel1.BackColor = System.Drawing.Color.LightSlateGray
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel1.Controls.Add(Me.pbHeader)
         Me.Panel1.Controls.Add(Me.lblTitle)
         Me.Panel1.Location = New System.Drawing.Point(1, 0)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(985, 66)
         Me.Panel1.TabIndex = 5
+        '
+        'pbHeader
+        '
+        Me.pbHeader.BackColor = System.Drawing.Color.Transparent
+        Me.pbHeader.Location = New System.Drawing.Point(941, 11)
+        Me.pbHeader.Name = "pbHeader"
+        Me.pbHeader.Size = New System.Drawing.Size(25, 39)
+        Me.pbHeader.TabIndex = 14
+        Me.pbHeader.TabStop = False
         '
         'lblTitle
         '
@@ -81,8 +91,11 @@ Partial Class FrmItemOrderList
         'grpItem
         '
         Me.grpItem.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.grpItem.Controls.Add(Me.Label2)
+        Me.grpItem.Controls.Add(Me.txtSearch1)
         Me.grpItem.Controls.Add(Me.txtQuantity)
         Me.grpItem.Controls.Add(Me.Label1)
+        Me.grpItem.Controls.Add(Me.btnSearch)
         Me.grpItem.Controls.Add(Me.btnaddCart)
         Me.grpItem.Controls.Add(Me.txtPrice)
         Me.grpItem.Controls.Add(Me.lblPrice)
@@ -90,107 +103,53 @@ Partial Class FrmItemOrderList
         Me.grpItem.Controls.Add(Me.lblDescription)
         Me.grpItem.Controls.Add(Me.txtItemCode)
         Me.grpItem.Controls.Add(Me.lblItemCode)
-        Me.grpItem.Location = New System.Drawing.Point(11, 80)
+        Me.grpItem.Location = New System.Drawing.Point(11, 19)
         Me.grpItem.Name = "grpItem"
-        Me.grpItem.Size = New System.Drawing.Size(403, 219)
+        Me.grpItem.Size = New System.Drawing.Size(403, 280)
         Me.grpItem.TabIndex = 6
         Me.grpItem.TabStop = False
         Me.grpItem.Text = "Order Item"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(76, 54)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(147, 13)
+        Me.Label2.TabIndex = 13
+        Me.Label2.Text = "Search Description/ItemCode"
+        '
+        'txtSearch1
+        '
+        Me.txtSearch1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtSearch1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtSearch1.ForeColor = System.Drawing.SystemColors.InactiveCaption
+        Me.txtSearch1.Location = New System.Drawing.Point(16, 29)
+        Me.txtSearch1.Name = "txtSearch1"
+        Me.txtSearch1.Size = New System.Drawing.Size(260, 22)
+        Me.txtSearch1.TabIndex = 0
+        Me.txtSearch1.Text = "Description"
         '
         'txtQuantity
         '
         Me.txtQuantity.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtQuantity.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtQuantity.Location = New System.Drawing.Point(124, 120)
+        Me.txtQuantity.Location = New System.Drawing.Point(124, 190)
         Me.txtQuantity.Name = "txtQuantity"
         Me.txtQuantity.Size = New System.Drawing.Size(251, 22)
-        Me.txtQuantity.TabIndex = 11
+        Me.txtQuantity.TabIndex = 5
+        Me.txtQuantity.Text = "Quantity"
         '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(47, 123)
+        Me.Label1.Location = New System.Drawing.Point(47, 193)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(56, 16)
         Me.Label1.TabIndex = 12
         Me.Label1.Text = "Quantity"
-        '
-        'btnaddCart
-        '
-        Me.btnaddCart.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        Me.btnaddCart.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnaddCart.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.btnaddCart.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnaddCart.Image = CType(resources.GetObject("btnaddCart.Image"), System.Drawing.Image)
-        Me.btnaddCart.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnaddCart.Location = New System.Drawing.Point(287, 157)
-        Me.btnaddCart.Name = "btnaddCart"
-        Me.btnaddCart.Size = New System.Drawing.Size(88, 33)
-        Me.btnaddCart.TabIndex = 10
-        Me.btnaddCart.Text = "&Add Cart"
-        Me.btnaddCart.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnaddCart.UseVisualStyleBackColor = False
-        '
-        'txtPrice
-        '
-        Me.txtPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtPrice.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPrice.Location = New System.Drawing.Point(124, 89)
-        Me.txtPrice.Name = "txtPrice"
-        Me.txtPrice.ReadOnly = True
-        Me.txtPrice.Size = New System.Drawing.Size(251, 22)
-        Me.txtPrice.TabIndex = 7
-        '
-        'lblPrice
-        '
-        Me.lblPrice.AutoSize = True
-        Me.lblPrice.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblPrice.Location = New System.Drawing.Point(64, 92)
-        Me.lblPrice.Name = "lblPrice"
-        Me.lblPrice.Size = New System.Drawing.Size(39, 16)
-        Me.lblPrice.TabIndex = 8
-        Me.lblPrice.Text = "Price"
-        '
-        'txtDescription
-        '
-        Me.txtDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtDescription.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtDescription.Location = New System.Drawing.Point(124, 58)
-        Me.txtDescription.Name = "txtDescription"
-        Me.txtDescription.ReadOnly = True
-        Me.txtDescription.Size = New System.Drawing.Size(251, 22)
-        Me.txtDescription.TabIndex = 5
-        '
-        'lblDescription
-        '
-        Me.lblDescription.AutoSize = True
-        Me.lblDescription.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDescription.Location = New System.Drawing.Point(30, 60)
-        Me.lblDescription.Name = "lblDescription"
-        Me.lblDescription.Size = New System.Drawing.Size(76, 16)
-        Me.lblDescription.TabIndex = 6
-        Me.lblDescription.Text = "Description"
-        '
-        'txtItemCode
-        '
-        Me.txtItemCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtItemCode.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtItemCode.Location = New System.Drawing.Point(124, 28)
-        Me.txtItemCode.Name = "txtItemCode"
-        Me.txtItemCode.ReadOnly = True
-        Me.txtItemCode.Size = New System.Drawing.Size(251, 22)
-        Me.txtItemCode.TabIndex = 4
-        '
-        'lblItemCode
-        '
-        Me.lblItemCode.AutoSize = True
-        Me.lblItemCode.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblItemCode.Location = New System.Drawing.Point(39, 30)
-        Me.lblItemCode.Name = "lblItemCode"
-        Me.lblItemCode.Size = New System.Drawing.Size(66, 16)
-        Me.lblItemCode.TabIndex = 3
-        Me.lblItemCode.Text = "ItemCode"
         '
         'btnSearch
         '
@@ -200,18 +159,96 @@ Partial Class FrmItemOrderList
         Me.btnSearch.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnSearch.Image = CType(resources.GetObject("btnSearch.Image"), System.Drawing.Image)
         Me.btnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnSearch.Location = New System.Drawing.Point(304, 18)
+        Me.btnSearch.Location = New System.Drawing.Point(286, 29)
         Me.btnSearch.Name = "btnSearch"
         Me.btnSearch.Size = New System.Drawing.Size(88, 23)
-        Me.btnSearch.TabIndex = 9
+        Me.btnSearch.TabIndex = 1
         Me.btnSearch.Text = "&Search"
         Me.btnSearch.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnSearch.UseVisualStyleBackColor = False
         '
+        'btnaddCart
+        '
+        Me.btnaddCart.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        Me.btnaddCart.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnaddCart.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.btnaddCart.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnaddCart.Image = CType(resources.GetObject("btnaddCart.Image"), System.Drawing.Image)
+        Me.btnaddCart.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnaddCart.Location = New System.Drawing.Point(287, 227)
+        Me.btnaddCart.Name = "btnaddCart"
+        Me.btnaddCart.Size = New System.Drawing.Size(88, 33)
+        Me.btnaddCart.TabIndex = 6
+        Me.btnaddCart.Text = "&Add Cart"
+        Me.btnaddCart.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnaddCart.UseVisualStyleBackColor = False
+        '
+        'txtPrice
+        '
+        Me.txtPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtPrice.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtPrice.Location = New System.Drawing.Point(124, 159)
+        Me.txtPrice.Name = "txtPrice"
+        Me.txtPrice.ReadOnly = True
+        Me.txtPrice.Size = New System.Drawing.Size(251, 22)
+        Me.txtPrice.TabIndex = 4
+        Me.txtPrice.Text = "Price"
+        '
+        'lblPrice
+        '
+        Me.lblPrice.AutoSize = True
+        Me.lblPrice.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblPrice.Location = New System.Drawing.Point(64, 162)
+        Me.lblPrice.Name = "lblPrice"
+        Me.lblPrice.Size = New System.Drawing.Size(39, 16)
+        Me.lblPrice.TabIndex = 8
+        Me.lblPrice.Text = "Price"
+        '
+        'txtDescription
+        '
+        Me.txtDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtDescription.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtDescription.Location = New System.Drawing.Point(124, 128)
+        Me.txtDescription.Name = "txtDescription"
+        Me.txtDescription.ReadOnly = True
+        Me.txtDescription.Size = New System.Drawing.Size(251, 22)
+        Me.txtDescription.TabIndex = 3
+        Me.txtDescription.Text = "Description"
+        '
+        'lblDescription
+        '
+        Me.lblDescription.AutoSize = True
+        Me.lblDescription.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDescription.Location = New System.Drawing.Point(30, 130)
+        Me.lblDescription.Name = "lblDescription"
+        Me.lblDescription.Size = New System.Drawing.Size(76, 16)
+        Me.lblDescription.TabIndex = 6
+        Me.lblDescription.Text = "Description"
+        '
+        'txtItemCode
+        '
+        Me.txtItemCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtItemCode.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtItemCode.Location = New System.Drawing.Point(124, 98)
+        Me.txtItemCode.Name = "txtItemCode"
+        Me.txtItemCode.ReadOnly = True
+        Me.txtItemCode.Size = New System.Drawing.Size(251, 22)
+        Me.txtItemCode.TabIndex = 2
+        Me.txtItemCode.Text = "ItemCode"
+        '
+        'lblItemCode
+        '
+        Me.lblItemCode.AutoSize = True
+        Me.lblItemCode.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblItemCode.Location = New System.Drawing.Point(39, 100)
+        Me.lblItemCode.Name = "lblItemCode"
+        Me.lblItemCode.Size = New System.Drawing.Size(66, 16)
+        Me.lblItemCode.TabIndex = 3
+        Me.lblItemCode.Text = "ItemCode"
+        '
         'grpList
         '
         Me.grpList.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.grpList.Controls.Add(Me.grpSearch)
         Me.grpList.Controls.Add(Me.lblPayment)
         Me.grpList.Controls.Add(Me.txtTotalPrice)
         Me.grpList.Controls.Add(Me.lblTotalPrice)
@@ -223,43 +260,13 @@ Partial Class FrmItemOrderList
         Me.grpList.TabIndex = 13
         Me.grpList.TabStop = False
         '
-        'grpSearch
-        '
-        Me.grpSearch.Controls.Add(Me.txtSearch1)
-        Me.grpSearch.Controls.Add(Me.Label3)
-        Me.grpSearch.Controls.Add(Me.btnSearch)
-        Me.grpSearch.Location = New System.Drawing.Point(11, 19)
-        Me.grpSearch.Name = "grpSearch"
-        Me.grpSearch.Size = New System.Drawing.Size(403, 55)
-        Me.grpSearch.TabIndex = 16
-        Me.grpSearch.TabStop = False
-        '
-        'txtSearch1
-        '
-        Me.txtSearch1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtSearch1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtSearch1.Location = New System.Drawing.Point(129, 18)
-        Me.txtSearch1.Name = "txtSearch1"
-        Me.txtSearch1.Size = New System.Drawing.Size(169, 22)
-        Me.txtSearch1.TabIndex = 13
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(6, 19)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(122, 16)
-        Me.Label3.TabIndex = 14
-        Me.Label3.Text = "Search Description"
-        '
         'lblPayment
         '
         Me.lblPayment.AutoSize = True
         Me.lblPayment.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.lblPayment.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblPayment.ForeColor = System.Drawing.Color.Red
-        Me.lblPayment.Location = New System.Drawing.Point(838, 306)
+        Me.lblPayment.Location = New System.Drawing.Point(870, 306)
         Me.lblPayment.Name = "lblPayment"
         Me.lblPayment.Size = New System.Drawing.Size(80, 22)
         Me.lblPayment.TabIndex = 15
@@ -270,17 +277,17 @@ Partial Class FrmItemOrderList
         Me.txtTotalPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtTotalPrice.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtTotalPrice.ForeColor = System.Drawing.Color.Red
-        Me.txtTotalPrice.Location = New System.Drawing.Point(659, 305)
+        Me.txtTotalPrice.Location = New System.Drawing.Point(691, 305)
         Me.txtTotalPrice.Name = "txtTotalPrice"
         Me.txtTotalPrice.Size = New System.Drawing.Size(173, 26)
         Me.txtTotalPrice.TabIndex = 13
-        Me.txtTotalPrice.Text = "Php."
+        Me.txtTotalPrice.Text = "TotalPrice"
         '
         'lblTotalPrice
         '
         Me.lblTotalPrice.AutoSize = True
         Me.lblTotalPrice.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTotalPrice.Location = New System.Drawing.Point(559, 307)
+        Me.lblTotalPrice.Location = New System.Drawing.Point(591, 307)
         Me.lblTotalPrice.Name = "lblTotalPrice"
         Me.lblTotalPrice.Size = New System.Drawing.Size(94, 20)
         Me.lblTotalPrice.TabIndex = 14
@@ -355,12 +362,11 @@ Partial Class FrmItemOrderList
         Me.Text = "frmItemOrderList"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        CType(Me.pbHeader, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grpItem.ResumeLayout(False)
         Me.grpItem.PerformLayout()
         Me.grpList.ResumeLayout(False)
         Me.grpList.PerformLayout()
-        Me.grpSearch.ResumeLayout(False)
-        Me.grpSearch.PerformLayout()
         Me.grpCart.ResumeLayout(False)
         Me.grpCart.PerformLayout()
         Me.ResumeLayout(False)
@@ -391,6 +397,6 @@ Partial Class FrmItemOrderList
     Friend WithEvents ColumnHeader3 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader4 As System.Windows.Forms.ColumnHeader
     Friend WithEvents txtSearch1 As System.Windows.Forms.TextBox
-    Friend WithEvents grpSearch As System.Windows.Forms.GroupBox
-    Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents pbHeader As System.Windows.Forms.PictureBox
+    Friend WithEvents Label2 As System.Windows.Forms.Label
 End Class

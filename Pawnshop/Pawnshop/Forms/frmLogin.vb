@@ -117,4 +117,5 @@
         frmMain.CheckStoreStatus()
         Me.Close()
     End Sub
+
 End Class
