@@ -26,13 +26,13 @@ Partial Class frmPOSMain
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.StockInToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStrip = New System.Windows.Forms.ToolStrip()
         Me.ItemListToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.ImportSTOToolStripButton3 = New System.Windows.Forms.ToolStripButton()
         Me.POSToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.LoadTransactionToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.CloseToolStripButton1 = New System.Windows.Forms.ToolStripButton()
-        Me.StockInToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.ToolStrip.SuspendLayout()
         Me.SuspendLayout()
@@ -58,6 +58,12 @@ Partial Class frmPOSMain
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
         Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(92, 22)
         Me.ExitToolStripMenuItem.Text = "&Exit"
+        '
+        'StockInToolStripMenuItem
+        '
+        Me.StockInToolStripMenuItem.Name = "StockInToolStripMenuItem"
+        Me.StockInToolStripMenuItem.Size = New System.Drawing.Size(61, 20)
+        Me.StockInToolStripMenuItem.Text = "Stock In"
         '
         'ToolStrip
         '
@@ -111,12 +117,6 @@ Partial Class frmPOSMain
         Me.CloseToolStripButton1.Size = New System.Drawing.Size(60, 37)
         Me.CloseToolStripButton1.Text = "Close"
         '
-        'StockInToolStripMenuItem
-        '
-        Me.StockInToolStripMenuItem.Name = "StockInToolStripMenuItem"
-        Me.StockInToolStripMenuItem.Size = New System.Drawing.Size(61, 20)
-        Me.StockInToolStripMenuItem.Text = "Stock In"
-        '
         'frmPOSMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -125,9 +125,10 @@ Partial Class frmPOSMain
         Me.Controls.Add(Me.ToolStrip)
         Me.Controls.Add(Me.MenuStrip1)
         Me.IsMdiContainer = True
+        Me.Location = New System.Drawing.Point(70, 60)
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "frmPOSMain"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "POS Main"
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()

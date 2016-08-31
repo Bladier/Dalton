@@ -3,8 +3,12 @@ Public Class FrmItemOrderList
     Dim drag As Boolean
     Dim mousex As Integer
     Dim mousey As Integer
-    Friend Sub LoadIMDTransaction(ByVal tmpIMD As ItemMaterData)
+    Dim index As Integer
 
+    Dim Price As Double, Quantity As Integer
+    Dim rowNum1 As Integer
+
+    Friend Sub LoadIMDTransaction(ByVal tmpIMD As ItemMaterData)
         With tmpIMD
             txtItemCode.Text = .ITEMCODE
             txtDescription.Text = .DESCRIPTION
@@ -13,23 +17,46 @@ Public Class FrmItemOrderList
     End Sub
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnaddCart.Click
-        If txtQuantity.Text = "" Then Exit Sub
+        If txtQuantity.Value = 0 Or txtDescription.Text = "" Or txtItemCode.Text = "" Or txtPrice.Text = "" Then Exit Sub
 
-        Dim List1 As ListViewItem
-        List1 = Me.lvItemOrderList.Items.Add(Me.txtItemCode.Text)
-        List1.SubItems.Add(Me.txtDescription.Text)
-        List1.SubItems.Add(Me.txtPrice.Text)
-        List1.SubItems.Add(Me.txtQuantity.Text)
+        For Each row As DataGridViewRow In DGItemOrderList.Rows
 
+            If row.Cells(0).Value.ToString().Equals(txtItemCode.Text) Then
+                DGItemOrderList.MultiSelect = False
+
+                MsgBox("Item ALready Added in the Order List", MsgBoxStyle.Information)
+                DGItemOrderList.Rows(row.Index).DefaultCellStyle.BackColor = Color.Red
+                Exit Sub
+            Else
+                DGItemOrderList.Rows(row.Index).DefaultCellStyle.BackColor = Color.White
+            End If
+        Next
+
+        Dim rowNum As Integer = DGItemOrderList.Rows.Add()
+        DGItemOrderList.Rows.Item(rowNum).Cells(0).Value = txtItemCode.Text
+        DGItemOrderList.Rows.Item(rowNum).Cells(1).Value = txtDescription.Text
+        DGItemOrderList.Rows.Item(rowNum).Cells(2).Value = txtPrice.Text
+        DGItemOrderList.Rows.Item(rowNum).Cells(3).Value = txtQuantity.Text
+        DGItemOrderList.Rows.Item(rowNum).Cells(4).Value = txtQuantity.Text * txtPrice.Text
+
+        'If Double.TryParse(DGItemOrderList.Rows(rowNum).Cells(2).Value.ToString(), Price) _
+        '   AndAlso Integer.TryParse(DGItemOrderList.Rows(rowNum).Cells(3).Value.ToString(), Quantity) Then
+
+        '    Dim SubTotal As Double = Price * Quantity
+        '    DGItemOrderList.Rows(rowNum).Cells(4).Value = CDbl(SubTotal.ToString())
+        'End If
+
+        CaLcUlateTotalPrice()
+        clearTextField()
+        txtSearch1.Focus()
     End Sub
 
-
-    Private Sub txtQuantity_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtQuantity.KeyPress
-        DigitOnly(e)
-        If isEnter(e) Then
-            btnaddCart.PerformClick()
-            clearTextField()
-        End If
+    Private Sub CaLcUlateTotalPrice()
+        Dim sum As Double = 0
+        For i As Integer = 0 To DGItemOrderList.Rows.Count - 1
+            sum += Convert.ToDouble(DGItemOrderList.Rows(i).Cells(4).Value)
+        Next
+        txtTotalPrice.Text = sum.ToString()
     End Sub
 
     Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
@@ -45,6 +72,9 @@ Public Class FrmItemOrderList
 
         frmIMD.txtSearchtoolStrip.Text = Me.txtSearch1.Text.ToString
         frmIMD.SearchToolStripButton2.PerformClick()
+
+        frmIMD.txtSearchtoolStrip.Focus()
+        frmIMD.StartPosition = FormStartPosition.CenterScreen
         Me.Hide()
     End Sub
 
@@ -54,30 +84,9 @@ Public Class FrmItemOrderList
         End If
     End Sub
 
-
-    Private Sub txtTotalPrice_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtTotalPrice.TextChanged
-
-    End Sub
-
-    Private Sub lvItemOrderList_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lvItemOrderList.SelectedIndexChanged
-        Dim dblTotal As Integer = 0
-        Dim dblTotal1 As Integer = 0
-        Dim dblTemp As Integer
-
-        For Each lvItem As ListViewItem In lvItemOrderList.Items
-            If Integer.TryParse(lvItem.SubItems(2).Text, dblTemp) Then
-                dblTotal = dblTemp
-            End If
-            If Integer.TryParse(lvItem.SubItems(3).Text, dblTemp) Then
-                dblTotal1 = dblTemp
-            End If
-        Next
-
-        txtTotalPrice.Text = dblTotal * dblTotal1
-        
-    End Sub
-
     Private Sub FrmItemOrderList_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        btnRemove.Enabled = False
+        btnUpdate.Enabled = False
         txtSearch1.Focus()
         clearTextField()
     End Sub
@@ -86,8 +95,7 @@ Public Class FrmItemOrderList
         txtItemCode.Text = ""
         txtDescription.Text = ""
         txtPrice.Text = ""
-        txtQuantity.Text = ""
-        txtTotalPrice.Text = ""
+        txtQuantity.Value = 1
     End Sub
 
 
@@ -123,5 +131,84 @@ Public Class FrmItemOrderList
     Private Sub btnClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClose.Click
         Me.Hide()
         frmPOSMain.Show()
+    End Sub
+
+    Private Sub txtTotalPrice_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtTotalPrice.TextChanged
+        If IsNumeric(txtTotalPrice.Text) Then
+            Dim temp As Double = txtTotalPrice.Text
+            txtTotalPrice.Text = Format(temp, "N")
+            txtTotalPrice.SelectionStart = txtTotalPrice.TextLength - 3
+        End If
+    End Sub
+
+    Private Sub DGItemOrderList_CellClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DGItemOrderList.CellClick
+
+        index = e.RowIndex
+        Dim selectedrow As DataGridViewRow
+        selectedrow = DGItemOrderList.Rows(index)
+        txtItemCode.Text = selectedrow.Cells(0).Value.ToString
+        txtDescription.Text = selectedrow.Cells(1).Value.ToString
+        txtPrice.Text = selectedrow.Cells(2).Value.ToString
+        txtQuantity.Text = selectedrow.Cells(3).Value.ToString
+        btnUpdate.Enabled = True
+        btnRemove.Enabled = True
+    End Sub
+
+    Private Sub btnUpdate_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnUpdate.Click
+        If txtQuantity.Value = 0 Or txtDescription.Text = "" Or txtItemCode.Text = "" Or txtPrice.Text = "" Then Exit Sub
+
+        For Each row As DataGridViewRow In DGItemOrderList.Rows
+
+            Dim result As String = MsgBox("Do you want to Update Order?", MsgBoxStyle.YesNo)
+
+            If result = DialogResult.Yes Then
+
+                Dim newDataRow As DataGridViewRow
+                newDataRow = DGItemOrderList.Rows(index)
+                newDataRow.Cells(0).Value = txtItemCode.Text
+                newDataRow.Cells(1).Value = txtDescription.Text
+                newDataRow.Cells(2).Value = txtPrice.Text
+                newDataRow.Cells(3).Value = txtQuantity.Text
+                newDataRow.Cells(4).Value = txtPrice.Text * txtQuantity.Text
+
+                If Double.TryParse(DGItemOrderList.Rows(rowNum1).Cells(2).Value.ToString(), Price) _
+                 AndAlso Integer.TryParse(DGItemOrderList.Rows(rowNum1).Cells(3).Value.ToString(), Quantity) Then
+
+                    Dim SubTotal As Double = Price * Quantity
+                    DGItemOrderList.Rows(rowNum1).Cells(4).Value = CDbl(SubTotal.ToString())
+
+                    DGItemOrderList.Rows(row.Index).DefaultCellStyle.BackColor = Color.White
+
+                    CaLcUlateTotalPrice()
+                    btnUpdate.Enabled = False
+                    clearTextField()
+                    Exit Sub
+                End If
+
+            Else
+
+                clearTextField()
+                DGItemOrderList.Rows(row.Index).DefaultCellStyle.BackColor = Color.White
+                btnUpdate.Enabled = False
+                Exit Sub
+            End If
+        Next
+    End Sub
+
+    Private Sub txtQuantity_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtQuantity.KeyPress
+        DigitOnly(e)
+        If isEnter(e) Then
+            btnaddCart.PerformClick()
+            clearTextField()
+        End If
+    End Sub
+
+    Private Sub btnRemove_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRemove.Click
+        For Each row As DataGridViewRow In DGItemOrderList.SelectedRows
+            DGItemOrderList.Rows.Remove(row)
+            CaLcUlateTotalPrice()
+            clearTextField()
+        Next
+        btnRemove.Enabled = False
     End Sub
 End Class

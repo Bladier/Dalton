@@ -27,9 +27,10 @@ Partial Class FrmItemOrderList
         Me.pbHeader = New System.Windows.Forms.PictureBox()
         Me.lblTitle = New System.Windows.Forms.Label()
         Me.grpItem = New System.Windows.Forms.GroupBox()
+        Me.btnUpdate = New System.Windows.Forms.Button()
+        Me.txtQuantity = New System.Windows.Forms.NumericUpDown()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtSearch1 = New System.Windows.Forms.TextBox()
-        Me.txtQuantity = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnSearch = New System.Windows.Forms.Button()
         Me.btnaddCart = New System.Windows.Forms.Button()
@@ -40,22 +41,26 @@ Partial Class FrmItemOrderList
         Me.txtItemCode = New System.Windows.Forms.TextBox()
         Me.lblItemCode = New System.Windows.Forms.Label()
         Me.grpList = New System.Windows.Forms.GroupBox()
+        Me.btnClose = New System.Windows.Forms.Button()
         Me.lblPayment = New System.Windows.Forms.Label()
         Me.txtTotalPrice = New System.Windows.Forms.TextBox()
         Me.lblTotalPrice = New System.Windows.Forms.Label()
         Me.grpCart = New System.Windows.Forms.GroupBox()
+        Me.DGItemOrderList = New System.Windows.Forms.DataGridView()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.lblItemOrderList = New System.Windows.Forms.Label()
-        Me.lvItemOrderList = New System.Windows.Forms.ListView()
-        Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.btnClose = New System.Windows.Forms.Button()
+        Me.btnRemove = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         CType(Me.pbHeader, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpItem.SuspendLayout()
+        CType(Me.txtQuantity, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpList.SuspendLayout()
         Me.grpCart.SuspendLayout()
+        CType(Me.DGItemOrderList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel1
@@ -92,9 +97,11 @@ Partial Class FrmItemOrderList
         'grpItem
         '
         Me.grpItem.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.grpItem.Controls.Add(Me.btnRemove)
+        Me.grpItem.Controls.Add(Me.btnUpdate)
+        Me.grpItem.Controls.Add(Me.txtQuantity)
         Me.grpItem.Controls.Add(Me.Label2)
         Me.grpItem.Controls.Add(Me.txtSearch1)
-        Me.grpItem.Controls.Add(Me.txtQuantity)
         Me.grpItem.Controls.Add(Me.Label1)
         Me.grpItem.Controls.Add(Me.btnSearch)
         Me.grpItem.Controls.Add(Me.btnaddCart)
@@ -110,6 +117,33 @@ Partial Class FrmItemOrderList
         Me.grpItem.TabIndex = 6
         Me.grpItem.TabStop = False
         Me.grpItem.Text = "Order Item"
+        '
+        'btnUpdate
+        '
+        Me.btnUpdate.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        Me.btnUpdate.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.btnUpdate.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnUpdate.Image = CType(resources.GetObject("btnUpdate.Image"), System.Drawing.Image)
+        Me.btnUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnUpdate.Location = New System.Drawing.Point(214, 227)
+        Me.btnUpdate.Name = "btnUpdate"
+        Me.btnUpdate.Size = New System.Drawing.Size(77, 33)
+        Me.btnUpdate.TabIndex = 15
+        Me.btnUpdate.Text = "&Update"
+        Me.btnUpdate.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnUpdate.UseVisualStyleBackColor = False
+        '
+        'txtQuantity
+        '
+        Me.txtQuantity.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtQuantity.Location = New System.Drawing.Point(124, 190)
+        Me.txtQuantity.Maximum = New Decimal(New Integer() {9999, 0, 0, 0})
+        Me.txtQuantity.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.txtQuantity.Name = "txtQuantity"
+        Me.txtQuantity.Size = New System.Drawing.Size(251, 22)
+        Me.txtQuantity.TabIndex = 14
+        Me.txtQuantity.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
         'Label2
         '
@@ -131,16 +165,6 @@ Partial Class FrmItemOrderList
         Me.txtSearch1.Size = New System.Drawing.Size(260, 22)
         Me.txtSearch1.TabIndex = 0
         Me.txtSearch1.Text = "Description"
-        '
-        'txtQuantity
-        '
-        Me.txtQuantity.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtQuantity.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtQuantity.Location = New System.Drawing.Point(124, 190)
-        Me.txtQuantity.Name = "txtQuantity"
-        Me.txtQuantity.Size = New System.Drawing.Size(251, 22)
-        Me.txtQuantity.TabIndex = 5
-        Me.txtQuantity.Text = "Quantity"
         '
         'Label1
         '
@@ -176,7 +200,7 @@ Partial Class FrmItemOrderList
         Me.btnaddCart.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnaddCart.Image = CType(resources.GetObject("btnaddCart.Image"), System.Drawing.Image)
         Me.btnaddCart.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnaddCart.Location = New System.Drawing.Point(287, 227)
+        Me.btnaddCart.Location = New System.Drawing.Point(118, 227)
         Me.btnaddCart.Name = "btnaddCart"
         Me.btnaddCart.Size = New System.Drawing.Size(88, 33)
         Me.btnaddCart.TabIndex = 6
@@ -262,6 +286,22 @@ Partial Class FrmItemOrderList
         Me.grpList.TabIndex = 13
         Me.grpList.TabStop = False
         '
+        'btnClose
+        '
+        Me.btnClose.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        Me.btnClose.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.btnClose.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnClose.Image = CType(resources.GetObject("btnClose.Image"), System.Drawing.Image)
+        Me.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnClose.Location = New System.Drawing.Point(11, 302)
+        Me.btnClose.Name = "btnClose"
+        Me.btnClose.Size = New System.Drawing.Size(67, 33)
+        Me.btnClose.TabIndex = 14
+        Me.btnClose.Text = "&Close"
+        Me.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnClose.UseVisualStyleBackColor = False
+        '
         'lblPayment
         '
         Me.lblPayment.AutoSize = True
@@ -283,7 +323,7 @@ Partial Class FrmItemOrderList
         Me.txtTotalPrice.Name = "txtTotalPrice"
         Me.txtTotalPrice.Size = New System.Drawing.Size(173, 26)
         Me.txtTotalPrice.TabIndex = 13
-        Me.txtTotalPrice.Text = "TotalPrice"
+        Me.txtTotalPrice.Text = "0.00"
         '
         'lblTotalPrice
         '
@@ -298,13 +338,59 @@ Partial Class FrmItemOrderList
         'grpCart
         '
         Me.grpCart.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.grpCart.Controls.Add(Me.DGItemOrderList)
         Me.grpCart.Controls.Add(Me.lblItemOrderList)
-        Me.grpCart.Controls.Add(Me.lvItemOrderList)
         Me.grpCart.Location = New System.Drawing.Point(420, 19)
         Me.grpCart.Name = "grpCart"
         Me.grpCart.Size = New System.Drawing.Size(533, 280)
         Me.grpCart.TabIndex = 13
         Me.grpCart.TabStop = False
+        '
+        'DGItemOrderList
+        '
+        Me.DGItemOrderList.AllowUserToAddRows = False
+        Me.DGItemOrderList.AllowUserToDeleteRows = False
+        Me.DGItemOrderList.BackgroundColor = System.Drawing.Color.LightSlateGray
+        Me.DGItemOrderList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DGItemOrderList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5})
+        Me.DGItemOrderList.Location = New System.Drawing.Point(16, 54)
+        Me.DGItemOrderList.Name = "DGItemOrderList"
+        Me.DGItemOrderList.ReadOnly = True
+        Me.DGItemOrderList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.DGItemOrderList.Size = New System.Drawing.Size(511, 196)
+        Me.DGItemOrderList.TabIndex = 17
+        '
+        'Column1
+        '
+        Me.Column1.HeaderText = "ItemCode"
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
+        '
+        'Column2
+        '
+        Me.Column2.HeaderText = "Description"
+        Me.Column2.Name = "Column2"
+        Me.Column2.ReadOnly = True
+        Me.Column2.Width = 150
+        '
+        'Column3
+        '
+        Me.Column3.HeaderText = "Price"
+        Me.Column3.Name = "Column3"
+        Me.Column3.ReadOnly = True
+        '
+        'Column4
+        '
+        Me.Column4.HeaderText = "Quantity"
+        Me.Column4.Name = "Column4"
+        Me.Column4.ReadOnly = True
+        Me.Column4.Width = 50
+        '
+        'Column5
+        '
+        Me.Column5.HeaderText = "SubTotal"
+        Me.Column5.Name = "Column5"
+        Me.Column5.ReadOnly = True
         '
         'lblItemOrderList
         '
@@ -318,54 +404,21 @@ Partial Class FrmItemOrderList
         Me.lblItemOrderList.TabIndex = 16
         Me.lblItemOrderList.Text = "Item Order List"
         '
-        'lvItemOrderList
+        'btnRemove
         '
-        Me.lvItemOrderList.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4})
-        Me.lvItemOrderList.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lvItemOrderList.FullRowSelect = True
-        Me.lvItemOrderList.GridLines = True
-        Me.lvItemOrderList.Location = New System.Drawing.Point(10, 50)
-        Me.lvItemOrderList.Name = "lvItemOrderList"
-        Me.lvItemOrderList.Size = New System.Drawing.Size(516, 216)
-        Me.lvItemOrderList.TabIndex = 0
-        Me.lvItemOrderList.UseCompatibleStateImageBehavior = False
-        Me.lvItemOrderList.View = System.Windows.Forms.View.Details
-        '
-        'ColumnHeader1
-        '
-        Me.ColumnHeader1.Text = "ItemCode"
-        Me.ColumnHeader1.Width = 93
-        '
-        'ColumnHeader2
-        '
-        Me.ColumnHeader2.Text = "Description"
-        Me.ColumnHeader2.Width = 245
-        '
-        'ColumnHeader3
-        '
-        Me.ColumnHeader3.Text = "Price"
-        Me.ColumnHeader3.Width = 96
-        '
-        'ColumnHeader4
-        '
-        Me.ColumnHeader4.Text = "Quantity"
-        Me.ColumnHeader4.Width = 77
-        '
-        'btnClose
-        '
-        Me.btnClose.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        Me.btnClose.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.btnClose.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnClose.Image = CType(resources.GetObject("btnClose.Image"), System.Drawing.Image)
-        Me.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnClose.Location = New System.Drawing.Point(11, 302)
-        Me.btnClose.Name = "btnClose"
-        Me.btnClose.Size = New System.Drawing.Size(67, 33)
-        Me.btnClose.TabIndex = 14
-        Me.btnClose.Text = "&Close"
-        Me.btnClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnClose.UseVisualStyleBackColor = False
+        Me.btnRemove.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        Me.btnRemove.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.btnRemove.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnRemove.Image = CType(resources.GetObject("btnRemove.Image"), System.Drawing.Image)
+        Me.btnRemove.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnRemove.Location = New System.Drawing.Point(297, 227)
+        Me.btnRemove.Name = "btnRemove"
+        Me.btnRemove.Size = New System.Drawing.Size(77, 33)
+        Me.btnRemove.TabIndex = 16
+        Me.btnRemove.Text = "&Remove"
+        Me.btnRemove.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnRemove.UseVisualStyleBackColor = False
         '
         'FrmItemOrderList
         '
@@ -384,10 +437,12 @@ Partial Class FrmItemOrderList
         CType(Me.pbHeader, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grpItem.ResumeLayout(False)
         Me.grpItem.PerformLayout()
+        CType(Me.txtQuantity, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grpList.ResumeLayout(False)
         Me.grpList.PerformLayout()
         Me.grpCart.ResumeLayout(False)
         Me.grpCart.PerformLayout()
+        CType(Me.DGItemOrderList, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -400,7 +455,6 @@ Partial Class FrmItemOrderList
     Friend WithEvents lblItemCode As System.Windows.Forms.Label
     Friend WithEvents txtPrice As System.Windows.Forms.TextBox
     Friend WithEvents lblPrice As System.Windows.Forms.Label
-    Friend WithEvents txtQuantity As System.Windows.Forms.TextBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents btnaddCart As System.Windows.Forms.Button
     Friend WithEvents btnSearch As System.Windows.Forms.Button
@@ -410,13 +464,17 @@ Partial Class FrmItemOrderList
     Friend WithEvents txtTotalPrice As System.Windows.Forms.TextBox
     Friend WithEvents lblTotalPrice As System.Windows.Forms.Label
     Friend WithEvents lblItemOrderList As System.Windows.Forms.Label
-    Friend WithEvents lvItemOrderList As System.Windows.Forms.ListView
-    Friend WithEvents ColumnHeader1 As System.Windows.Forms.ColumnHeader
-    Friend WithEvents ColumnHeader2 As System.Windows.Forms.ColumnHeader
-    Friend WithEvents ColumnHeader3 As System.Windows.Forms.ColumnHeader
-    Friend WithEvents ColumnHeader4 As System.Windows.Forms.ColumnHeader
     Friend WithEvents txtSearch1 As System.Windows.Forms.TextBox
     Friend WithEvents pbHeader As System.Windows.Forms.PictureBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents btnClose As System.Windows.Forms.Button
+    Friend WithEvents DGItemOrderList As System.Windows.Forms.DataGridView
+    Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column2 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column4 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column5 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents txtQuantity As System.Windows.Forms.NumericUpDown
+    Friend WithEvents btnUpdate As System.Windows.Forms.Button
+    Friend WithEvents btnRemove As System.Windows.Forms.Button
 End Class

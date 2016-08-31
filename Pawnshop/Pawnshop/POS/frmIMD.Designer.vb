@@ -50,7 +50,7 @@ Partial Class frmIMD
         Me.lvIMD.GridLines = True
         Me.lvIMD.Location = New System.Drawing.Point(0, 42)
         Me.lvIMD.Name = "lvIMD"
-        Me.lvIMD.Size = New System.Drawing.Size(980, 382)
+        Me.lvIMD.Size = New System.Drawing.Size(980, 370)
         Me.lvIMD.TabIndex = 1
         Me.lvIMD.UseCompatibleStateImageBehavior = False
         Me.lvIMD.View = System.Windows.Forms.View.Details

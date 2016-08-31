@@ -22,7 +22,7 @@
 
     End Sub
 
-    Friend Sub LoadActive(Optional ByVal mySql As String = "SELECT * FROM TBL_ITEMMASTERDATA WHERE IMD_ID > 0")
+    Friend Sub LoadActive(Optional ByVal mySql As String = "SELECT FIRST 50 * FROM TBL_ITEMMASTERDATA")
         Dim ds As DataSet
         ds = LoadSQL(mySql)
 
@@ -58,7 +58,7 @@
     Private Sub SearchToolStripButton2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SearchToolStripButton2.Click
 
         If txtSearchtoolStrip.Text = "Search" Then Exit Sub
-
+        If txtSearchtoolStrip.Text = "" Then Exit Sub
         SearchIMD()
         txtSearchtoolStrip.Focus()
     End Sub
@@ -122,13 +122,6 @@
         frmOriginal = frmOrigin
     End Sub
 
-    Private Sub txtSearchtoolStrip_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtSearchtoolStrip.TextChanged
-        If txtSearchtoolStrip.Text = "" Then
-            SearchIMD()
-            txtSearchtoolStrip.Focus()
-        End If
-    End Sub
-
     Private Sub UpdateToolStripButton4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles UpdateToolStripButton4.Click
         If lvIMD.SelectedItems.Count = 0 Then Exit Sub
 
@@ -147,4 +140,7 @@
         Me.Hide()
         frmPOSMain.Show()
     End Sub
+
+  
+
 End Class

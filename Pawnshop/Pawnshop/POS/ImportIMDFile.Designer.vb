@@ -86,7 +86,7 @@ Partial Class ImportIMDFile
         Me.lvIMD.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lvIMD.FullRowSelect = True
         Me.lvIMD.GridLines = True
-        Me.lvIMD.Location = New System.Drawing.Point(5, 41)
+        Me.lvIMD.Location = New System.Drawing.Point(12, 41)
         Me.lvIMD.Name = "lvIMD"
         Me.lvIMD.Size = New System.Drawing.Size(1060, 333)
         Me.lvIMD.TabIndex = 4
