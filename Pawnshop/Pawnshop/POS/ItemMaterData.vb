@@ -104,6 +104,7 @@ Public Class ItemMaterData
             LoadIMDbyRow(dr)
         Next
     End Sub
+
     Public Sub LoadIMDAllRow(ByVal dr As DataRow)
         LoadIMDbyRow(dr)
     End Sub
@@ -120,6 +121,46 @@ Public Class ItemMaterData
             _SALABLE = .Item("SALABLE")
             _HASSERIAL = .Item("HASSERIAL")
         End With
+    End Sub
+
+    Friend Sub SaveItemMaster()
+
+        Try
+            Dim mySql As String = "SELECT * FROM " & fillData & " WHERE ITEMCODE = '" & _ITEMCODE & "'"
+            Dim ds As DataSet
+            ds = LoadSQL(mySql, filldata)
+
+            If ds.Tables(0).Rows.Count >= 1 Then
+                With ds.Tables(0).Rows(0)
+                    .Item("DESCRIPTION") = _DESCRIPTION
+                    .Item("UNITOFMEASURE") = _UNITOFMEASURE
+                    .Item("PRICE") = _PRICE
+                    .Item("ONHOLDYN") = _ONHOLDYN
+                    .Item("INVENTORIABLE") = _INVENTORIABLE
+                    .Item("SALABLE") = _SALABLE
+                    .Item("HASSERIAL") = _HASSERIAL
+                End With
+                database.SaveEntry(ds, False)
+            Else
+                Dim dsNewRow As DataRow
+                dsNewRow = ds.Tables(filldata).NewRow
+                With dsNewRow
+                    .Item("ITEMCODE") = _ITEMCODE
+                    .Item("DESCRIPTION") = _DESCRIPTION
+                    .Item("UNITOFMEASURE") = _UNITOFMEASURE
+                    .Item("PRICE") = _PRICE
+                    .Item("ONHOLDYN") = _ONHOLDYN
+                    .Item("INVENTORIABLE") = _INVENTORIABLE
+                    .Item("SALABLE") = _SALABLE
+                    .Item("HASSERIAL") = _HASSERIAL
+                End With
+                ds.Tables(filldata).Rows.Add(dsNewRow)
+                database.SaveEntry(ds)
+            End If
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 
     Public Sub UpdateIMD()
@@ -163,10 +204,6 @@ Public Class ItemMaterData
         database.SaveEntry(ds)
     End Sub
 
-  
-
-
-   
     Public Function LastIDNumber() As Single
         Dim mySql As String = "SELECT * FROM " & fillData & " ORDER BY IMD_ID DESC"
         Dim ds As DataSet = LoadSQL(mySql)
@@ -178,8 +215,6 @@ Public Class ItemMaterData
     End Function
 #End Region
 
-
-    
 End Class
 
 
