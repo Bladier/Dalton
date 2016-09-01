@@ -22,6 +22,7 @@ Partial Class frmAddProduct
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAddProduct))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.txtHasSerial = New System.Windows.Forms.TextBox()
@@ -46,9 +47,11 @@ Partial Class frmAddProduct
         Me.btnSave = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.lblTitle = New System.Windows.Forms.Label()
+        Me.ErrorProvider = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.Panel1.SuspendLayout()
+        CType(Me.ErrorProvider, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -311,6 +314,10 @@ Partial Class frmAddProduct
         Me.lblTitle.TabIndex = 1
         Me.lblTitle.Text = "Register New Item"
         '
+        'ErrorProvider
+        '
+        Me.ErrorProvider.ContainerControl = Me
+        '
         'frmAddProduct
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -329,6 +336,7 @@ Partial Class frmAddProduct
         Me.GroupBox2.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        CType(Me.ErrorProvider, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -355,4 +363,5 @@ Partial Class frmAddProduct
     Friend WithEvents txtInventoriable As System.Windows.Forms.TextBox
     Friend WithEvents txtOnHold As System.Windows.Forms.TextBox
     Friend WithEvents btnUpdate As System.Windows.Forms.Button
+    Friend WithEvents ErrorProvider As System.Windows.Forms.ErrorProvider
 End Class

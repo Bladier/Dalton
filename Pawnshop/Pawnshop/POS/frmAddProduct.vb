@@ -8,6 +8,84 @@ Public Class frmAddProduct
     Private lockFRM As Boolean = False
 
     Private Sub btnsave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
+        For Each ctrl In Me.Controls
+            If TypeOf ctrl Is GroupBox Then
+                For Each ct In ctrl.Controls
+                    If TypeOf ct Is TextBox Then
+                        If ct.Text = "" Then
+                            ErrorProvider.SetError(ct, "Please Fill all Fields")
+                            Exit Sub
+                        End If
+                    End If
+
+                Next
+            End If
+
+        Next
+        'If txtItemCode.Text = "" Then
+        '    ErrorProvider.SetError(txtItemCode, "Textbox must be filled up.")
+        '    txtItemCode.Focus()
+        '    Exit Sub
+        'Else
+        '    ErrorProvider.SetError(txtItemCode, "")
+        'End If
+
+        'If txtDescription.Text = "" Then
+        '    ErrorProvider.SetError(txtDescription, "Textbox must be filled up.")
+        '    txtDescription.Focus()
+        '    Exit Sub
+        'Else
+        '    ErrorProvider.SetError(txtDescription, "")
+        'End If
+
+        'If txtUnitofMeasure.Text = "" Then
+        '    ErrorProvider.SetError(txtUnitofMeasure, "Textbox must be filled up.")
+        '    txtUnitofMeasure.Focus()
+        '    Exit Sub
+        'Else
+        '    ErrorProvider.SetError(txtUnitofMeasure, "")
+        'End If
+
+        'If txtPrice.Text = "" Then
+        '    ErrorProvider.SetError(txtPrice, "Textbox must be filled up.")
+        '    txtPrice.Focus()
+        '    Exit Sub
+        'Else
+        '    ErrorProvider.SetError(txtPrice, "")
+        'End If
+
+        'If txtOnHold.Text = "" Then
+        '    ErrorProvider.SetError(txtOnHold, "Textbox must be filled up.")
+        '    txtOnHold.Focus()
+        '    Exit Sub
+        'Else
+        '    ErrorProvider.SetError(txtOnHold, "")
+        'End If
+
+        'If txtInventoriable.Text = "" Then
+        '    ErrorProvider.SetError(txtInventoriable, "Textbox must be filled up.")
+        '    txtInventoriable.Focus()
+        '    Exit Sub
+        'Else
+        '    ErrorProvider.SetError(txtInventoriable, "")
+
+        'End If
+
+        'If txtSalable.Text = "" Then
+        '    ErrorProvider.SetError(txtSalable, "Textbox must be filled up.")
+        '    txtSalable.Focus()
+        '    Exit Sub
+        'Else
+        '    ErrorProvider.SetError(txtSalable, "")
+        'End If
+
+        'If txtHasSerial.Text = "" Then
+        '    ErrorProvider.SetError(txtHasSerial, "Textbox must be filled up.")
+        '    txtHasSerial.Focus()
+        '    Exit Sub
+        'Else
+        '    ErrorProvider.SetError(txtHasSerial, "")
+        'End If
 
         If btnSave.Text = "&Modify" Then
             isNew = False
@@ -17,7 +95,7 @@ Public Class frmAddProduct
 
         EnabledTextField()
 
-        If Not isValid() Then Exit Sub
+        'If Not isValid() Then Exit Sub
         Dim ans As DialogResult = MsgBox("Do you want to save this transaction?", MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton2 + MsgBoxStyle.Information)
 
         If ans = Windows.Forms.DialogResult.No Then
@@ -47,7 +125,7 @@ Public Class frmAddProduct
                 MsgBox("Transaction Saved", MsgBoxStyle.Information)
                 ClearTextField()
             End If
-            End If
+        End If
     End Sub
 
     Private Sub loadIMDRow()
@@ -254,6 +332,77 @@ Public Class frmAddProduct
                 e.KeyChar = ChrW(0)
                 e.Handled = True
             End If
+        End If
+    End Sub
+
+    Private Sub txtPrice_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtPrice.KeyPress
+        DigitOnly(e)
+    End Sub
+
+    Private Sub ErrorProvidertextfield()
+        If txtItemCode.Text = "" Then
+            ErrorProvider.SetError(txtItemCode, "Textbox must be filled up.")
+            txtItemCode.Focus()
+            Exit Sub
+        Else
+            ErrorProvider.SetError(txtItemCode, "")
+        End If
+
+        If txtDescription.Text = "" Then
+            ErrorProvider.SetError(txtDescription, "Textbox must be filled up.")
+            txtDescription.Focus()
+            Exit Sub
+        Else
+            ErrorProvider.SetError(txtDescription, "")
+        End If
+
+        If txtUnitofMeasure.Text = "" Then
+            ErrorProvider.SetError(txtUnitofMeasure, "Textbox must be filled up.")
+            txtUnitofMeasure.Focus()
+            Exit Sub
+        Else
+            ErrorProvider.SetError(txtUnitofMeasure, "")
+        End If
+
+        If txtPrice.Text = "" Then
+            ErrorProvider.SetError(txtPrice, "Textbox must be filled up.")
+            txtPrice.Focus()
+            Exit Sub
+        Else
+            ErrorProvider.SetError(txtPrice, "")
+        End If
+
+        If txtOnHold.Text = "" Then
+            ErrorProvider.SetError(txtOnHold, "Textbox must be filled up.")
+            txtOnHold.Focus()
+            Exit Sub
+        Else
+            ErrorProvider.SetError(txtOnHold, "")
+        End If
+
+        If txtInventoriable.Text = "" Then
+            ErrorProvider.SetError(txtInventoriable, "Textbox must be filled up.")
+            txtInventoriable.Focus()
+            Exit Sub
+        Else
+            ErrorProvider.SetError(txtInventoriable, "")
+
+        End If
+
+        If txtSalable.Text = "" Then
+            ErrorProvider.SetError(txtSalable, "Textbox must be filled up.")
+            txtSalable.Focus()
+            Exit Sub
+        Else
+            ErrorProvider.SetError(txtSalable, "")
+        End If
+
+        If txtHasSerial.Text = "" Then
+            ErrorProvider.SetError(txtHasSerial, "Textbox must be filled up.")
+            txtHasSerial.Focus()
+            Exit Sub
+        Else
+            ErrorProvider.SetError(txtHasSerial, "")
         End If
     End Sub
 End Class

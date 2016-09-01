@@ -1,5 +1,7 @@
-﻿Imports System.Windows.Forms.ListView
+﻿
+
 Public Class FrmItemOrderList
+
     Dim drag As Boolean
     Dim mousex As Integer
     Dim mousey As Integer
@@ -152,6 +154,7 @@ Public Class FrmItemOrderList
         txtQuantity.Text = selectedrow.Cells(3).Value.ToString
         btnUpdate.Enabled = True
         btnRemove.Enabled = True
+        btnaddCart.Enabled = False
     End Sub
 
     Private Sub btnUpdate_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnUpdate.Click
@@ -181,6 +184,7 @@ Public Class FrmItemOrderList
 
                     CaLcUlateTotalPrice()
                     btnUpdate.Enabled = False
+                    btnaddCart.Enabled = True
                     clearTextField()
                     Exit Sub
                 End If
@@ -199,7 +203,6 @@ Public Class FrmItemOrderList
         DigitOnly(e)
         If isEnter(e) Then
             btnaddCart.PerformClick()
-            clearTextField()
         End If
     End Sub
 
@@ -210,5 +213,6 @@ Public Class FrmItemOrderList
             clearTextField()
         Next
         btnRemove.Enabled = False
+        btnaddCart.Enabled = True
     End Sub
 End Class
