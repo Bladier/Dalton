@@ -22,70 +22,6 @@ Public Class frmAddProduct
             End If
 
         Next
-        'If txtItemCode.Text = "" Then
-        '    ErrorProvider.SetError(txtItemCode, "Textbox must be filled up.")
-        '    txtItemCode.Focus()
-        '    Exit Sub
-        'Else
-        '    ErrorProvider.SetError(txtItemCode, "")
-        'End If
-
-        'If txtDescription.Text = "" Then
-        '    ErrorProvider.SetError(txtDescription, "Textbox must be filled up.")
-        '    txtDescription.Focus()
-        '    Exit Sub
-        'Else
-        '    ErrorProvider.SetError(txtDescription, "")
-        'End If
-
-        'If txtUnitofMeasure.Text = "" Then
-        '    ErrorProvider.SetError(txtUnitofMeasure, "Textbox must be filled up.")
-        '    txtUnitofMeasure.Focus()
-        '    Exit Sub
-        'Else
-        '    ErrorProvider.SetError(txtUnitofMeasure, "")
-        'End If
-
-        'If txtPrice.Text = "" Then
-        '    ErrorProvider.SetError(txtPrice, "Textbox must be filled up.")
-        '    txtPrice.Focus()
-        '    Exit Sub
-        'Else
-        '    ErrorProvider.SetError(txtPrice, "")
-        'End If
-
-        'If txtOnHold.Text = "" Then
-        '    ErrorProvider.SetError(txtOnHold, "Textbox must be filled up.")
-        '    txtOnHold.Focus()
-        '    Exit Sub
-        'Else
-        '    ErrorProvider.SetError(txtOnHold, "")
-        'End If
-
-        'If txtInventoriable.Text = "" Then
-        '    ErrorProvider.SetError(txtInventoriable, "Textbox must be filled up.")
-        '    txtInventoriable.Focus()
-        '    Exit Sub
-        'Else
-        '    ErrorProvider.SetError(txtInventoriable, "")
-
-        'End If
-
-        'If txtSalable.Text = "" Then
-        '    ErrorProvider.SetError(txtSalable, "Textbox must be filled up.")
-        '    txtSalable.Focus()
-        '    Exit Sub
-        'Else
-        '    ErrorProvider.SetError(txtSalable, "")
-        'End If
-
-        'If txtHasSerial.Text = "" Then
-        '    ErrorProvider.SetError(txtHasSerial, "Textbox must be filled up.")
-        '    txtHasSerial.Focus()
-        '    Exit Sub
-        'Else
-        '    ErrorProvider.SetError(txtHasSerial, "")
-        'End If
 
         If btnSave.Text = "&Modify" Then
             isNew = False
@@ -95,7 +31,6 @@ Public Class frmAddProduct
 
         EnabledTextField()
 
-        'If Not isValid() Then Exit Sub
         Dim ans As DialogResult = MsgBox("Do you want to save this transaction?", MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton2 + MsgBoxStyle.Information)
 
         If ans = Windows.Forms.DialogResult.No Then
@@ -234,7 +169,8 @@ Public Class frmAddProduct
             txtSalable.Text = .SALABLE
             txtHasSerial.Text = .HASSERIAL
         End With
-        LockFields(True)
+        'LockFields(True)
+        txtItemCode.Enabled = False
 
     End Sub
 
