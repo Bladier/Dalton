@@ -73,9 +73,9 @@ Partial Class frmAddProduct
         Me.GroupBox1.Controls.Add(Me.txtItemCode)
         Me.GroupBox1.Controls.Add(Me.lblItemCode)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(20, 86)
+        Me.GroupBox1.Location = New System.Drawing.Point(8, 71)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(345, 304)
+        Me.GroupBox1.Size = New System.Drawing.Size(336, 319)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Add Item"
@@ -84,7 +84,7 @@ Partial Class frmAddProduct
         '
         Me.txtHasSerial.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtHasSerial.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtHasSerial.Location = New System.Drawing.Point(134, 253)
+        Me.txtHasSerial.Location = New System.Drawing.Point(144, 243)
         Me.txtHasSerial.Name = "txtHasSerial"
         Me.txtHasSerial.Size = New System.Drawing.Size(173, 22)
         Me.txtHasSerial.TabIndex = 8
@@ -93,7 +93,7 @@ Partial Class frmAddProduct
         '
         Me.txtSalable.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtSalable.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtSalable.Location = New System.Drawing.Point(134, 223)
+        Me.txtSalable.Location = New System.Drawing.Point(144, 213)
         Me.txtSalable.Name = "txtSalable"
         Me.txtSalable.Size = New System.Drawing.Size(173, 22)
         Me.txtSalable.TabIndex = 7
@@ -102,7 +102,7 @@ Partial Class frmAddProduct
         '
         Me.txtInventoriable.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtInventoriable.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtInventoriable.Location = New System.Drawing.Point(134, 193)
+        Me.txtInventoriable.Location = New System.Drawing.Point(144, 183)
         Me.txtInventoriable.Name = "txtInventoriable"
         Me.txtInventoriable.Size = New System.Drawing.Size(173, 22)
         Me.txtInventoriable.TabIndex = 6
@@ -111,7 +111,7 @@ Partial Class frmAddProduct
         '
         Me.txtOnHold.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtOnHold.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtOnHold.Location = New System.Drawing.Point(134, 162)
+        Me.txtOnHold.Location = New System.Drawing.Point(144, 152)
         Me.txtOnHold.Name = "txtOnHold"
         Me.txtOnHold.Size = New System.Drawing.Size(173, 22)
         Me.txtOnHold.TabIndex = 5
@@ -120,7 +120,7 @@ Partial Class frmAddProduct
         '
         Me.txtPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtPrice.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPrice.Location = New System.Drawing.Point(134, 130)
+        Me.txtPrice.Location = New System.Drawing.Point(144, 120)
         Me.txtPrice.Name = "txtPrice"
         Me.txtPrice.Size = New System.Drawing.Size(173, 22)
         Me.txtPrice.TabIndex = 4
@@ -129,7 +129,7 @@ Partial Class frmAddProduct
         '
         Me.txtUnitofMeasure.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtUnitofMeasure.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtUnitofMeasure.Location = New System.Drawing.Point(134, 100)
+        Me.txtUnitofMeasure.Location = New System.Drawing.Point(144, 90)
         Me.txtUnitofMeasure.Name = "txtUnitofMeasure"
         Me.txtUnitofMeasure.Size = New System.Drawing.Size(173, 22)
         Me.txtUnitofMeasure.TabIndex = 3
@@ -138,7 +138,7 @@ Partial Class frmAddProduct
         '
         Me.txtDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtDescription.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtDescription.Location = New System.Drawing.Point(134, 70)
+        Me.txtDescription.Location = New System.Drawing.Point(144, 60)
         Me.txtDescription.Name = "txtDescription"
         Me.txtDescription.Size = New System.Drawing.Size(173, 22)
         Me.txtDescription.TabIndex = 2
@@ -147,7 +147,7 @@ Partial Class frmAddProduct
         '
         Me.lblHasSerial.AutoSize = True
         Me.lblHasSerial.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblHasSerial.Location = New System.Drawing.Point(13, 254)
+        Me.lblHasSerial.Location = New System.Drawing.Point(23, 244)
         Me.lblHasSerial.Name = "lblHasSerial"
         Me.lblHasSerial.Size = New System.Drawing.Size(102, 16)
         Me.lblHasSerial.TabIndex = 8
@@ -157,7 +157,7 @@ Partial Class frmAddProduct
         '
         Me.lblisSale.AutoSize = True
         Me.lblisSale.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblisSale.Location = New System.Drawing.Point(29, 225)
+        Me.lblisSale.Location = New System.Drawing.Point(39, 215)
         Me.lblisSale.Name = "lblisSale"
         Me.lblisSale.Size = New System.Drawing.Size(86, 16)
         Me.lblisSale.TabIndex = 7
@@ -167,7 +167,7 @@ Partial Class frmAddProduct
         '
         Me.lblisInv.AutoSize = True
         Me.lblisInv.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblisInv.Location = New System.Drawing.Point(1, 195)
+        Me.lblisInv.Location = New System.Drawing.Point(11, 185)
         Me.lblisInv.Name = "lblisInv"
         Me.lblisInv.Size = New System.Drawing.Size(116, 16)
         Me.lblisInv.TabIndex = 6
@@ -177,7 +177,7 @@ Partial Class frmAddProduct
         '
         Me.lblonHoldYN.AutoSize = True
         Me.lblonHoldYN.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblonHoldYN.Location = New System.Drawing.Point(26, 166)
+        Me.lblonHoldYN.Location = New System.Drawing.Point(36, 156)
         Me.lblonHoldYN.Name = "lblonHoldYN"
         Me.lblonHoldYN.Size = New System.Drawing.Size(91, 16)
         Me.lblonHoldYN.TabIndex = 5
@@ -187,7 +187,7 @@ Partial Class frmAddProduct
         '
         Me.lblPrice.AutoSize = True
         Me.lblPrice.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblPrice.Location = New System.Drawing.Point(73, 137)
+        Me.lblPrice.Location = New System.Drawing.Point(83, 127)
         Me.lblPrice.Name = "lblPrice"
         Me.lblPrice.Size = New System.Drawing.Size(39, 16)
         Me.lblPrice.TabIndex = 4
@@ -197,7 +197,7 @@ Partial Class frmAddProduct
         '
         Me.lblUnitOfMeasure.AutoSize = True
         Me.lblUnitOfMeasure.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblUnitOfMeasure.Location = New System.Drawing.Point(19, 102)
+        Me.lblUnitOfMeasure.Location = New System.Drawing.Point(29, 92)
         Me.lblUnitOfMeasure.Name = "lblUnitOfMeasure"
         Me.lblUnitOfMeasure.Size = New System.Drawing.Size(97, 16)
         Me.lblUnitOfMeasure.TabIndex = 3
@@ -207,7 +207,7 @@ Partial Class frmAddProduct
         '
         Me.lblDescription.AutoSize = True
         Me.lblDescription.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDescription.Location = New System.Drawing.Point(40, 72)
+        Me.lblDescription.Location = New System.Drawing.Point(50, 62)
         Me.lblDescription.Name = "lblDescription"
         Me.lblDescription.Size = New System.Drawing.Size(76, 16)
         Me.lblDescription.TabIndex = 2
@@ -217,7 +217,7 @@ Partial Class frmAddProduct
         '
         Me.txtItemCode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtItemCode.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtItemCode.Location = New System.Drawing.Point(134, 40)
+        Me.txtItemCode.Location = New System.Drawing.Point(144, 30)
         Me.txtItemCode.Name = "txtItemCode"
         Me.txtItemCode.Size = New System.Drawing.Size(173, 22)
         Me.txtItemCode.TabIndex = 1
@@ -226,7 +226,7 @@ Partial Class frmAddProduct
         '
         Me.lblItemCode.AutoSize = True
         Me.lblItemCode.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblItemCode.Location = New System.Drawing.Point(49, 42)
+        Me.lblItemCode.Location = New System.Drawing.Point(59, 32)
         Me.lblItemCode.Name = "lblItemCode"
         Me.lblItemCode.Size = New System.Drawing.Size(66, 16)
         Me.lblItemCode.TabIndex = 0
@@ -237,9 +237,9 @@ Partial Class frmAddProduct
         Me.GroupBox2.BackColor = System.Drawing.SystemColors.ControlLight
         Me.GroupBox2.Controls.Add(Me.btnCancel)
         Me.GroupBox2.Controls.Add(Me.btnSave)
-        Me.GroupBox2.Location = New System.Drawing.Point(371, 133)
+        Me.GroupBox2.Location = New System.Drawing.Point(350, 131)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(136, 135)
+        Me.GroupBox2.Size = New System.Drawing.Size(116, 135)
         Me.GroupBox2.TabIndex = 3
         Me.GroupBox2.TabStop = False
         '
@@ -251,7 +251,7 @@ Partial Class frmAddProduct
         Me.btnCancel.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnCancel.Image = CType(resources.GetObject("btnCancel.Image"), System.Drawing.Image)
         Me.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnCancel.Location = New System.Drawing.Point(32, 77)
+        Me.btnCancel.Location = New System.Drawing.Point(16, 73)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(75, 33)
         Me.btnCancel.TabIndex = 1
@@ -267,7 +267,7 @@ Partial Class frmAddProduct
         Me.btnSave.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnSave.Image = CType(resources.GetObject("btnSave.Image"), System.Drawing.Image)
         Me.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnSave.Location = New System.Drawing.Point(32, 32)
+        Me.btnSave.Location = New System.Drawing.Point(16, 28)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(75, 33)
         Me.btnSave.TabIndex = 0
@@ -305,7 +305,7 @@ Partial Class frmAddProduct
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.ClientSize = New System.Drawing.Size(519, 408)
+        Me.ClientSize = New System.Drawing.Size(477, 408)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
