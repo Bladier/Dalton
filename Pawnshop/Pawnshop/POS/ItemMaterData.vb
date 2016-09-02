@@ -141,6 +141,7 @@ Public Class ItemMaterData
                     .Item("HASSERIAL") = _HASSERIAL
                 End With
                 database.SaveEntry(ds, False)
+                MsgBox("Transaction Successfully Updated", MsgBoxStyle.Information)
             Else
                 Dim dsNewRow As DataRow
                 dsNewRow = ds.Tables(filldata).NewRow
@@ -156,6 +157,7 @@ Public Class ItemMaterData
                 End With
                 ds.Tables(filldata).Rows.Add(dsNewRow)
                 database.SaveEntry(ds)
+                MsgBox("Transaction Saved", MsgBoxStyle.Information)
             End If
 
         Catch ex As Exception

@@ -4,32 +4,17 @@ Public Class frmAddProduct
 
     Private IMD As ItemMaterData
     Dim fillData As String = "TBL_ITEMMASTERDATA"
-    Private isNew As Boolean = True
-    Private lockFRM As Boolean = False
+
+
 
     Private Sub btnsave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
-        For Each ctrl In Me.Controls
-            If TypeOf ctrl Is GroupBox Then
-                For Each ct In ctrl.Controls
-                    If TypeOf ct Is TextBox Then
-                        If ct.Text = "" Then
-                            ErrorProvider.SetError(ct, "Please Fill all Fields")
-                            Exit Sub
-                        End If
-                    End If
-
-                Next
-            End If
-
-        Next
 
         If btnSave.Text = "&Modify" Then
-            isNew = False
-            LockFields(False)
+            btnSave.Text = "&Save"
+            EnabledTextField()
+            txtItemCode.Enabled = False
             Exit Sub
         End If
-
-        EnabledTextField()
 
         Dim ans As DialogResult = MsgBox("Do you want to save this transaction?", MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton2 + MsgBoxStyle.Information)
 
@@ -49,9 +34,8 @@ Public Class frmAddProduct
                     .HASSERIAL = txtHasSerial.Text
                     .SaveItemMaster()
 
-                End With
+            End With
 
-                MsgBox("Transaction Saved", MsgBoxStyle.Information)
                 ClearTextField()
         End If
         frmIMD.LoadActive()
@@ -118,22 +102,6 @@ Public Class frmAddProduct
         lblTitle.Text = "Register New Item"
     End Sub
 
-    Private Sub LockFields(ByVal st As Boolean)
-        lockFRM = st
-
-        Console.WriteLine(txtItemCode.BackColor)
-        txtItemCode.ReadOnly = st
-        txtDescription.ReadOnly = st
-        txtUnitofMeasure.ReadOnly = st
-        txtPrice.ReadOnly = st
-
-        txtOnHold.ReadOnly = st
-        txtInventoriable.ReadOnly = st
-        txtSalable.ReadOnly = st
-        txtHasSerial.ReadOnly = st
-        GroupBox1.Enabled = Not st
-
-    End Sub
 
     Private Sub DisabledTextfield()
         txtItemCode.Enabled = False
@@ -180,7 +148,7 @@ Public Class frmAddProduct
 
         If btnUpdate.Text = "&Edit" Then
             btnUpdate.Text = "&Update"
-            LockFields(False)
+
             txtItemCode.ReadOnly = True
             EnabledTextField()
             Exit Sub

@@ -48,7 +48,6 @@
         frmAddProduct.txtInventoriable.Enabled = False
         frmAddProduct.txtSalable.Enabled = False
         frmAddProduct.txtHasSerial.Enabled = False
-        frmAddProduct.btnSave.Enabled = False
     End Sub
 
     Private Sub txtSearchtoolStrip_KeyDown(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtSearchtoolStrip.KeyDown
@@ -129,11 +128,12 @@
         Dim tmpLoadIMD As New ItemMaterData
         tmpLoadIMD.LoadIMD(id)
 
-        frmAddProduct.Show()
+        frmAddProduct.ShowDialog()
         frmAddProduct.LoadIMDTransaction(tmpLoadIMD)
         frmAddProduct.lblTitle.Text = "Updating Item"
-        'DisabledTextfield()
 
+        DisabledTextfield()
+        frmAddProduct.btnSave.Text = "&Modify"
     End Sub
 
     Private Sub CloseToolStripButton1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CloseToolStripButton1.Click
