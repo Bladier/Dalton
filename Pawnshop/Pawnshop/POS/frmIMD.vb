@@ -132,7 +132,7 @@
         frmAddProduct.Show()
         frmAddProduct.LoadIMDTransaction(tmpLoadIMD)
         frmAddProduct.lblTitle.Text = "Updating Item"
-        DisabledTextfield()
+        'DisabledTextfield()
 
     End Sub
 

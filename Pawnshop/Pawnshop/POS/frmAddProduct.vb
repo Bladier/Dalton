@@ -36,13 +36,7 @@ Public Class frmAddProduct
         If ans = Windows.Forms.DialogResult.No Then
             Exit Sub
         Else
-            Dim mySql As String = "SELECT * FROM " & fillData & " WHERE "
-            mySql &= String.Format("ITEMCODE ='{0}'", txtItemCode.Text)
 
-            Dim ds As DataSet = LoadSQL(mySql, fillData)
-            If ds.Tables(fillData).Rows.Count > 0 Then
-                MsgBox("Data Already Exist!", MsgBoxStyle.Exclamation, "Add New Data!")
-            Else
                 IMD = New ItemMaterData
                 With IMD
                     .ITEMCODE = txtItemCode.Text
@@ -53,14 +47,14 @@ Public Class frmAddProduct
                     .INVENTORIALBE = txtInventoriable.Text
                     .SALABLE = txtSalable.Text
                     .HASSERIAL = txtHasSerial.Text
-                    .SaveIMD()
+                    .SaveItemMaster()
 
                 End With
 
                 MsgBox("Transaction Saved", MsgBoxStyle.Information)
                 ClearTextField()
-            End If
         End If
+        frmIMD.LoadActive()
     End Sub
 
     Private Sub loadIMDRow()
@@ -174,12 +168,6 @@ Public Class frmAddProduct
 
     End Sub
 
-    
-    Private Sub frmAddProduct_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
-    End Sub
-
-
     Private Sub txtItemCode_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtItemCode.TextChanged
         If txtItemCode.Text = "" Then
             ClearTextField()
@@ -192,7 +180,6 @@ Public Class frmAddProduct
 
         If btnUpdate.Text = "&Edit" Then
             btnUpdate.Text = "&Update"
-            btnSave.Enabled = False
             LockFields(False)
             txtItemCode.ReadOnly = True
             EnabledTextField()
