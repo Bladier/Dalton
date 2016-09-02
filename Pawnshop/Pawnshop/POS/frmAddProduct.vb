@@ -6,7 +6,6 @@ Public Class frmAddProduct
     Dim fillData As String = "TBL_ITEMMASTERDATA"
 
 
-
     Private Sub btnsave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
 
         If btnSave.Text = "&Modify" Then
@@ -21,7 +20,7 @@ Public Class frmAddProduct
         If ans = Windows.Forms.DialogResult.No Then
             Exit Sub
         Else
-
+            If Not isValid() Then Exit Sub
                 IMD = New ItemMaterData
                 With IMD
                     .ITEMCODE = txtItemCode.Text
@@ -76,7 +75,6 @@ Public Class frmAddProduct
     Private Sub frmAddProduct_FormClosed(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles MyBase.FormClosed
         ClearTextField()
         btnSave.Enabled = True
-        btnUpdate.Enabled = True
     End Sub
 
     Private Sub EnabledTextField()
@@ -144,48 +142,7 @@ Public Class frmAddProduct
         End If
     End Sub
 
-    Private Sub btnUpdate_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnUpdate.Click
 
-        If btnUpdate.Text = "&Edit" Then
-            btnUpdate.Text = "&Update"
-
-            txtItemCode.ReadOnly = True
-            EnabledTextField()
-            Exit Sub
-        End If
-
-        If Not isValid() Then Exit Sub
-
-        Dim ans As DialogResult = MsgBox("Do you want to Update this transaction?", MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton2 + MsgBoxStyle.Information)
-
-        If ans = Windows.Forms.DialogResult.No Then
-            MsgBox("Abort", MsgBoxStyle.Critical)
-            ClearTextField()
-            btnSave.Enabled = True
-            Exit Sub
-
-        Else
-            IMD = New ItemMaterData
-            With IMD
-                .ITEMCODE = Trim(txtItemCode.Text)
-                .DESCRIPTION = Trim(txtDescription.Text)
-                .UnitofMeasure = Trim(txtUnitofMeasure.Text)
-                .PRICE = Trim(txtPrice.Text)
-                .ONHOLDYN = Trim(txtOnHold.Text)
-                .INVENTORIALBE = Trim(txtInventoriable.Text)
-                .SALABLE = Trim(txtSalable.Text)
-                .HASSERIAL = Trim(txtHasSerial.Text)
-                .UpdateIMD()
-            End With
-
-            MsgBox("Item Successfully Updated", MsgBoxStyle.Information)
-            ClearTextField()
-        End If
-        txtItemCode.ReadOnly = False
-        btnSave.Enabled = True
-    End Sub
-
- 
     Private Sub txtOnHold_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtOnHold.KeyPress
         If Not (Asc(e.KeyChar) = 8) Then
             Dim allowedChars As String = "YNyn"
@@ -295,5 +252,9 @@ Public Class frmAddProduct
         Else
             ErrorProvider.SetError(txtHasSerial, "")
         End If
+    End Sub
+
+    Private Sub frmAddProduct_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+
     End Sub
 End Class

@@ -94,15 +94,6 @@
     End Sub
     Private Sub lvIMD_DoubleClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lvIMD.DoubleClick
 
-        'If lvIMD.SelectedItems.Count = 0 Then Exit Sub
-
-        'Dim id As Integer = lvIMD.FocusedItem.Tag
-        'Dim tmpLoadIMD As New ItemMaterData
-        'tmpLoadIMD.LoadIMD(id)
-
-        'frmAddProduct.Show()
-        'frmAddProduct.LoadIMDTransaction(tmpLoadIMD)
-
         'DisabledTextfield()
         Dim id As Integer = lvIMD.FocusedItem.Tag
         Dim tmpLoadIMD As New ItemMaterData
@@ -140,7 +131,5 @@
         Me.Hide()
         frmPOSMain.Show()
     End Sub
-
-  
 
 End Class
