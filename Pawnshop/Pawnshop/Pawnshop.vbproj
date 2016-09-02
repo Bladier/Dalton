@@ -346,6 +346,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="POS\ItemMaterData.vb" />
+    <Compile Include="POS\MOD_IMD.vb" />
     <Compile Include="Reports\diagMoneyTransferBracketing.Designer.vb">
       <DependentUpon>diagMoneyTransferBracketing.vb</DependentUpon>
     </Compile>

@@ -123,12 +123,12 @@ Public Class ItemMaterData
         End With
     End Sub
 
-    Friend Sub SaveItemMaster()
+    Friend Sub SaveUpdateItemMaster()
 
         Try
             Dim mySql As String = "SELECT * FROM " & fillData & " WHERE ITEMCODE = '" & _ITEMCODE & "'"
             Dim ds As DataSet
-            ds = LoadSQL(mySql, filldata)
+            ds = LoadSQL(mySql, fillData)
 
             If ds.Tables(0).Rows.Count >= 1 Then
                 With ds.Tables(0).Rows(0)
@@ -144,7 +144,7 @@ Public Class ItemMaterData
                 MsgBox("Transaction Successfully Updated", MsgBoxStyle.Information)
             Else
                 Dim dsNewRow As DataRow
-                dsNewRow = ds.Tables(filldata).NewRow
+                dsNewRow = ds.Tables(fillData).NewRow
                 With dsNewRow
                     .Item("ITEMCODE") = _ITEMCODE
                     .Item("DESCRIPTION") = _DESCRIPTION
@@ -155,7 +155,7 @@ Public Class ItemMaterData
                     .Item("SALABLE") = _SALABLE
                     .Item("HASSERIAL") = _HASSERIAL
                 End With
-                ds.Tables(filldata).Rows.Add(dsNewRow)
+                ds.Tables(fillData).Rows.Add(dsNewRow)
                 database.SaveEntry(ds)
                 MsgBox("Transaction Saved", MsgBoxStyle.Information)
             End If
@@ -163,47 +163,6 @@ Public Class ItemMaterData
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
-    End Sub
-
-    Public Sub UpdateIMD()
-        Dim mySql As String = "SELECT * FROM " & fillData & " WHERE ITEMCODE = " & _ITEMCODE
-        Dim ds As DataSet = LoadSQL(mySql, fillData)
-        If ds.Tables(0).Rows.Count >= 1 Then
-            With ds.Tables(0).Rows(0)
-                .Item("ITEMCODE") = _ITEMCODE
-                .Item("DESCRIPTION") = DESCRIPTION
-                .Item("UNITOFMEASURE") = _UNITOFMEASURE
-                .Item("PRICE") = _PRICE
-                .Item("ONHOLDYN") = _ONHOLDYN
-                .Item("INVENTORIABLE") = _INVENTORIABLE
-                .Item("SALABLE") = _SALABLE
-                .Item("HASSERIAL") = _HASSERIAL
-            End With
-        End If
-        database.SaveEntry(ds, False)
-    End Sub
-
-    Public Sub SaveIMD()
-
-        mySql = "SELECT * FROM " & fillData
-        ds = LoadSQL(mySql, fillData)
-
-        Dim dsNewRow As DataRow
-        dsNewRow = ds.Tables(fillData).NewRow
-        With dsNewRow
-            .Item("IMD_ID") = LastIDNumber() + 1
-            .Item("ITEMCODE") = _ITEMCODE
-            .Item("DESCRIPTION") = DESCRIPTION
-            .Item("UNITOFMEASURE") = _UNITOFMEASURE
-            .Item("PRICE") = _PRICE
-            .Item("ONHOLDYN") = _ONHOLDYN
-            .Item("INVENTORIABLE") = _INVENTORIABLE
-            .Item("SALABLE") = _SALABLE
-            .Item("HASSERIAL") = _HASSERIAL
-        End With
-        ds.Tables(fillData).Rows.Add(dsNewRow)
-
-        database.SaveEntry(ds)
     End Sub
 
     Public Function LastIDNumber() As Single

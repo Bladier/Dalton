@@ -102,7 +102,7 @@
         FrmItemOrderList.Show()
         FrmItemOrderList.LoadIMDTransaction(tmpLoadIMD)
         FrmItemOrderList.txtQuantity.Focus()
-
+        Me.Close()
     End Sub
 
     Friend Sub SearchSelect(ByVal src As String, ByVal frmOrigin As formSwitch.FormName)
@@ -119,12 +119,13 @@
         Dim tmpLoadIMD As New ItemMaterData
         tmpLoadIMD.LoadIMD(id)
 
-        frmAddProduct.ShowDialog()
+        frmAddProduct.Show()
         frmAddProduct.LoadIMDTransaction(tmpLoadIMD)
         frmAddProduct.lblTitle.Text = "Updating Item"
 
         DisabledTextfield()
         frmAddProduct.btnSave.Text = "&Modify"
+        Me.Hide()
     End Sub
 
     Private Sub CloseToolStripButton1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CloseToolStripButton1.Click

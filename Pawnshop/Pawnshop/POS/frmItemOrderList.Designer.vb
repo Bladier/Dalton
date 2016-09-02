@@ -27,6 +27,7 @@ Partial Class FrmItemOrderList
         Me.pbHeader = New System.Windows.Forms.PictureBox()
         Me.lblTitle = New System.Windows.Forms.Label()
         Me.grpItem = New System.Windows.Forms.GroupBox()
+        Me.btnRemove = New System.Windows.Forms.Button()
         Me.btnUpdate = New System.Windows.Forms.Button()
         Me.txtQuantity = New System.Windows.Forms.NumericUpDown()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -53,7 +54,6 @@ Partial Class FrmItemOrderList
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.lblItemOrderList = New System.Windows.Forms.Label()
-        Me.btnRemove = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         CType(Me.pbHeader, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpItem.SuspendLayout()
@@ -117,6 +117,22 @@ Partial Class FrmItemOrderList
         Me.grpItem.TabIndex = 6
         Me.grpItem.TabStop = False
         Me.grpItem.Text = "Order Item"
+        '
+        'btnRemove
+        '
+        Me.btnRemove.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        Me.btnRemove.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.btnRemove.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnRemove.Image = CType(resources.GetObject("btnRemove.Image"), System.Drawing.Image)
+        Me.btnRemove.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnRemove.Location = New System.Drawing.Point(297, 227)
+        Me.btnRemove.Name = "btnRemove"
+        Me.btnRemove.Size = New System.Drawing.Size(77, 33)
+        Me.btnRemove.TabIndex = 16
+        Me.btnRemove.Text = "&Remove"
+        Me.btnRemove.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnRemove.UseVisualStyleBackColor = False
         '
         'btnUpdate
         '
@@ -316,11 +332,13 @@ Partial Class FrmItemOrderList
         '
         'txtTotalPrice
         '
+        Me.txtTotalPrice.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.txtTotalPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtTotalPrice.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtTotalPrice.ForeColor = System.Drawing.Color.Red
         Me.txtTotalPrice.Location = New System.Drawing.Point(691, 305)
         Me.txtTotalPrice.Name = "txtTotalPrice"
+        Me.txtTotalPrice.ReadOnly = True
         Me.txtTotalPrice.Size = New System.Drawing.Size(173, 26)
         Me.txtTotalPrice.TabIndex = 13
         Me.txtTotalPrice.Text = "0.00"
@@ -403,22 +421,6 @@ Partial Class FrmItemOrderList
         Me.lblItemOrderList.Size = New System.Drawing.Size(131, 22)
         Me.lblItemOrderList.TabIndex = 16
         Me.lblItemOrderList.Text = "Item Order List"
-        '
-        'btnRemove
-        '
-        Me.btnRemove.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        Me.btnRemove.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Popup
-        Me.btnRemove.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnRemove.Image = CType(resources.GetObject("btnRemove.Image"), System.Drawing.Image)
-        Me.btnRemove.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnRemove.Location = New System.Drawing.Point(297, 227)
-        Me.btnRemove.Name = "btnRemove"
-        Me.btnRemove.Size = New System.Drawing.Size(77, 33)
-        Me.btnRemove.TabIndex = 16
-        Me.btnRemove.Text = "&Remove"
-        Me.btnRemove.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnRemove.UseVisualStyleBackColor = False
         '
         'FrmItemOrderList
         '

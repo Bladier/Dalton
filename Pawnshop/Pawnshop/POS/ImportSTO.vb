@@ -1,12 +1,48 @@
 ﻿Imports Microsoft.Office.Interop
+Imports System.IO
 Public Class ImportSTO
     Private DSSTO As New DataSet
+    Private DateTime As DateTime = System.DateTime.Now
+
+ 
+
     Private Sub SaveToolStripButton2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SaveToolStripButton2.Click
+        SFD.ShowDialog()
+
+
+        If System.IO.File.Exists(txtdest.Text) = True Then
+            Dim objWriter As New System.IO.StreamWriter(txtdest.Text)
+            objWriter.Write(txtdest.Text)
+            objWriter.Close()
+            MsgBox("Text written to file")
+        Else
+            MsgBox("File Does Not Exist")
+        End If
+
+
+        Dim iCount As Integer
+        Dim iLoop As Integer
+        iCount = lvIMD.Items.Count
+        Dim lvitem
+        If Not lvIMD.Items.Count = 1 Then
+            Do Until iLoop = lvIMD.Items.Count
+                lvitem = lvIMD.Items.Item(iLoop)
+                With lvitem
+                    SaveSTO(lvitem.subitems(0).text, lvitem.subitems(1).text, lvitem.subitems(2).Text, _
+                                   lvitem.subitems(3).Text, lvitem.subitems(4).Text, lvitem.SUBITEMS(5).TEXT)
+                End With
+                iLoop = iLoop + 1
+                lvitem = Nothing
+            Loop
+            MsgBox("Successfully Saved", MsgBoxStyle.Information)
+        End If
 
     End Sub
 
     Private Sub ImportToolStripButton3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ImportToolStripButton3.Click
+
         ofdOpen.ShowDialog()
+
         If lvIMD.Items.Count = 0 Then
             lOADEXCEL(lblPath.Text)
         Else
@@ -69,7 +105,22 @@ Public Class ImportSTO
             lvIMD.Items.Add(listRow)
         Next
 
+        lvIMD.Columns(3).Width = 0
+        lvIMD.Columns(4).Width = 0
+        lvIMD.Columns(5).Width = 0
+
         CloseExcel(ItemMasterData)
         Console.WriteLine("Database Records: " & DSSTO.Tables(0).Rows.Count)
+    End Sub
+
+    Private Sub ImportSTO_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+
+        lvIMD.Columns(3).Width = 0
+        lvIMD.Columns(4).Width = 0
+        lvIMD.Columns(5).Width = 0
+    End Sub
+
+    Private Sub SFD_FileOk(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles SFD.FileOk
+
     End Sub
 End Class

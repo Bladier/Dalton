@@ -38,6 +38,8 @@ Partial Class ImportSTO
         Me.ItemCountToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ofdOpen = New System.Windows.Forms.OpenFileDialog()
         Me.lblPath = New System.Windows.Forms.Label()
+        Me.SFD = New System.Windows.Forms.SaveFileDialog()
+        Me.DatetimeToolStripStatusLabel = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()
@@ -50,7 +52,7 @@ Partial Class ImportSTO
         Me.lvIMD.GridLines = True
         Me.lvIMD.Location = New System.Drawing.Point(7, 41)
         Me.lvIMD.Name = "lvIMD"
-        Me.lvIMD.Size = New System.Drawing.Size(1002, 320)
+        Me.lvIMD.Size = New System.Drawing.Size(591, 320)
         Me.lvIMD.TabIndex = 6
         Me.lvIMD.UseCompatibleStateImageBehavior = False
         Me.lvIMD.View = System.Windows.Forms.View.Details
@@ -93,7 +95,7 @@ Partial Class ImportSTO
         Me.ToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ImportToolStripButton3, Me.SaveToolStripButton2, Me.CloseToolStripButton1})
         Me.ToolStrip.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip.Name = "ToolStrip"
-        Me.ToolStrip.Size = New System.Drawing.Size(1015, 40)
+        Me.ToolStrip.Size = New System.Drawing.Size(602, 40)
         Me.ToolStrip.TabIndex = 5
         Me.ToolStrip.Text = "ToolStrip"
         '
@@ -123,10 +125,10 @@ Partial Class ImportSTO
         '
         'StatusStrip
         '
-        Me.StatusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ItemCountToolStripStatusLabel1})
+        Me.StatusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ItemCountToolStripStatusLabel1, Me.DatetimeToolStripStatusLabel})
         Me.StatusStrip.Location = New System.Drawing.Point(0, 364)
         Me.StatusStrip.Name = "StatusStrip"
-        Me.StatusStrip.Size = New System.Drawing.Size(1015, 22)
+        Me.StatusStrip.Size = New System.Drawing.Size(602, 22)
         Me.StatusStrip.TabIndex = 7
         Me.StatusStrip.Text = "StatusStrip1"
         '
@@ -154,11 +156,21 @@ Partial Class ImportSTO
         Me.lblPath.TabIndex = 9
         Me.lblPath.Text = "Path"
         '
+        'SFD
+        '
+        Me.SFD.Filter = "TEXTFILE |*.txt"
+        '
+        'DatetimeToolStripStatusLabel
+        '
+        Me.DatetimeToolStripStatusLabel.Name = "DatetimeToolStripStatusLabel"
+        Me.DatetimeToolStripStatusLabel.Size = New System.Drawing.Size(58, 17)
+        Me.DatetimeToolStripStatusLabel.Text = "DateTime"
+        '
         'ImportSTO
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1015, 386)
+        Me.ClientSize = New System.Drawing.Size(602, 386)
         Me.Controls.Add(Me.lblPath)
         Me.Controls.Add(Me.StatusStrip)
         Me.Controls.Add(Me.lvIMD)
@@ -190,4 +202,6 @@ Partial Class ImportSTO
     Friend WithEvents ItemCountToolStripStatusLabel1 As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents ofdOpen As System.Windows.Forms.OpenFileDialog
     Friend WithEvents lblPath As System.Windows.Forms.Label
+    Friend WithEvents SFD As System.Windows.Forms.SaveFileDialog
+    Friend WithEvents DatetimeToolStripStatusLabel As System.Windows.Forms.ToolStripStatusLabel
 End Class

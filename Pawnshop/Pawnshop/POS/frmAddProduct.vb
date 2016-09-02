@@ -21,22 +21,23 @@ Public Class frmAddProduct
             Exit Sub
         Else
             If Not isValid() Then Exit Sub
-                IMD = New ItemMaterData
-                With IMD
-                    .ITEMCODE = txtItemCode.Text
-                    .DESCRIPTION = txtDescription.Text
-                    .UnitofMeasure = txtUnitofMeasure.Text
-                    .PRICE = txtPrice.Text
-                    .ONHOLDYN = txtOnHold.Text
-                    .INVENTORIALBE = txtInventoriable.Text
-                    .SALABLE = txtSalable.Text
-                    .HASSERIAL = txtHasSerial.Text
-                    .SaveItemMaster()
+            IMD = New ItemMaterData
+            With IMD
+                .ITEMCODE = txtItemCode.Text
+                .DESCRIPTION = txtDescription.Text
+                .UnitofMeasure = txtUnitofMeasure.Text
+                .PRICE = txtPrice.Text
+                .ONHOLDYN = txtOnHold.Text
+                .INVENTORIALBE = txtInventoriable.Text
+                .SALABLE = txtSalable.Text
+                .HASSERIAL = txtHasSerial.Text
+                .SaveUpdateItemMaster()
 
             End With
 
-                ClearTextField()
+            ClearTextField()
         End If
+        EnabledTextField()
         frmIMD.LoadActive()
     End Sub
 
@@ -114,7 +115,7 @@ Public Class frmAddProduct
 
     Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel.Click
         Me.Hide()
-        frmIMD.Show()
+        frmPOSMain.Show()
     End Sub
 
     Friend Sub LoadIMDTransaction(ByVal tmpIMD As ItemMaterData)

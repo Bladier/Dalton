@@ -12,6 +12,7 @@ Public Class ImportIMDFile
 
     Public Sub ImportToolStripButton3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ImportToolStripButton3.Click
 
+
         ofdOpen.ShowDialog()
         If lvIMD.Items.Count = 0 Then
             lOADEXCEL(lblPath.Text)
@@ -83,47 +84,7 @@ Public Class ImportIMDFile
         frmPOSMain.Show()
     End Sub
 
-    Private Sub SaveItemMaster(ByVal itemcode As String, ByVal description As String, ByVal UnitOfMeasure As String, ByVal Price As String,
-                               ByVal OnHold As String, ByVal IsINV As String, ByVal IsSale As String, ByVal HasSerial As String)
-
-
-        Try
-            Dim mySql As String = "SELECT * FROM " & filldata & " WHERE ITEMCODE = '" & itemcode & "'"
-            Dim ds As DataSet
-            ds = LoadSQL(mySql, filldata)
-
-            If ds.Tables(0).Rows.Count >= 1 Then
-                With ds.Tables(0).Rows(0)
-                    .Item("DESCRIPTION") = description
-                    .Item("UNITOFMEASURE") = UnitOfMeasure
-                    .Item("PRICE") = Price
-                    .Item("ONHOLDYN") = OnHold
-                    .Item("INVENTORIABLE") = IsINV
-                    .Item("SALABLE") = IsSale
-                    .Item("HASSERIAL") = HasSerial
-                End With
-                database.SaveEntry(ds, False)
-            Else
-                Dim dsNewRow As DataRow
-                dsNewRow = ds.Tables(filldata).NewRow
-                With dsNewRow
-                    .Item("ITEMCODE") = itemcode
-                    .Item("DESCRIPTION") = description
-                    .Item("UNITOFMEASURE") = UnitOfMeasure
-                    .Item("PRICE") = Price
-                    .Item("ONHOLDYN") = OnHold
-                    .Item("INVENTORIABLE") = IsINV
-                    .Item("SALABLE") = IsSale
-                    .Item("HASSERIAL") = HasSerial
-                End With
-                ds.Tables(filldata).Rows.Add(dsNewRow)
-                database.SaveEntry(ds)
-            End If
-
-        Catch ex As Exception
-            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
-    End Sub
+   
 
     Private Sub SaveToolStripButton2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SaveToolStripButton2.Click
         Dim iCount As Integer
