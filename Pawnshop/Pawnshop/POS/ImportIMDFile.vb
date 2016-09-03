@@ -28,7 +28,7 @@ Public Class ImportIMDFile
     Friend Sub lOADEXCEL(ByVal SRC As String)
         Dim ItemMasterData As Excel.Application
         Dim MaxEntries As Integer
-
+        If lblPath.Text = "Path" Then Exit Sub
         ItemMasterData = OpenExcel(lblPath.Text)
         DSIMD.Tables.Add(tbl_IMD)
 

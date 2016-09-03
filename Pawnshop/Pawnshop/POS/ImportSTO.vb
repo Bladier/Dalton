@@ -2,43 +2,71 @@
 Imports System.IO
 Public Class ImportSTO
     Private DSSTO As New DataSet
-    Private DateTime As DateTime = System.DateTime.Now
+    Private DateTime1 As DateTime = System.DateTime.Now
+    Private ContactInfoStreamWriter As StreamWriter
 
- 
+    Dim ds As New DataSet
 
     Private Sub SaveToolStripButton2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SaveToolStripButton2.Click
+        If lvIMD.Items.Count = 0 Then Exit Sub
         SFD.ShowDialog()
+        Dim curQTY As Integer
 
+        Using objWriter As New StreamWriter(SFD.FileName)
+            objWriter.Write(lvIMD.Items(1).SubItems(4).Text)
+            objWriter.Write("  ;  ")
+            objWriter.Write(DateTime1)
+        End Using
 
-        If System.IO.File.Exists(txtdest.Text) = True Then
-            Dim objWriter As New System.IO.StreamWriter(txtdest.Text)
-            objWriter.Write(txtdest.Text)
-            objWriter.Close()
-            MsgBox("Text written to file")
-        Else
-            MsgBox("File Does Not Exist")
-        End If
+        Dim itemcode As String
+        Dim description As String
+        Dim quantity As Integer
+        Dim whsCode As String
+        Dim STONO As Integer
+        Dim STODate As Date
+    
 
+        For I As Integer = 0 To DSSTO.Tables(0).Rows.Count - 1
+            itemcode = lvIMD.Items(I).SubItems(0).Text
+            description = lvIMD.Items(I).SubItems(1).Text
+            quantity = lvIMD.Items(I).SubItems(2).Text
+            whsCode = lvIMD.Items(I).SubItems(3).Text
+            STONO = lvIMD.Items(I).SubItems(4).Text
+            STODate = lvIMD.Items(I).SubItems(5).Text
 
-        Dim iCount As Integer
-        Dim iLoop As Integer
-        iCount = lvIMD.Items.Count
-        Dim lvitem
-        If Not lvIMD.Items.Count = 1 Then
-            Do Until iLoop = lvIMD.Items.Count
-                lvitem = lvIMD.Items.Item(iLoop)
-                With lvitem
-                    SaveSTO(lvitem.subitems(0).text, lvitem.subitems(1).text, lvitem.subitems(2).Text, _
-                                   lvitem.subitems(3).Text, lvitem.subitems(4).Text, lvitem.SUBITEMS(5).TEXT)
-                End With
-                iLoop = iLoop + 1
-                lvitem = Nothing
-            Loop
-            MsgBox("Successfully Saved", MsgBoxStyle.Information)
-        End If
+            For Each lvi As ListViewItem In lvIMD.Items
+                Dim LvItemCode As String = lvi.SubItems(0).Text
+                Dim filldata As String = "TBL_STO_POS"
+                Dim mySql As String = "SELECT * FROM " & filldata & " WHERE ITEMCODE = '" & LvItemCode & "'"
+                ds = LoadSQL(mySql, filldata)
+                If ds.Tables(0).Rows.Count >= 1 Then
+
+                    curQTY = ds.Tables(0).Rows(0).Item("QUANTITY")
+                End If
+                SaveSTO(itemcode, description, quantity, whsCode, STONO, STODate, curQTY:=curQTY)
+            Next
+
+        Next
+            'Dim iCount As Integer
+            'Dim iLoop As Integer
+            'iCount = lvIMD.Items.Count
+            'Dim lvitem
+            'If Not lvIMD.Items.Count = 1 Then
+            '    Do Until iLoop = lvIMD.Items.Count
+            '        lvitem = lvIMD.Items.Item(iLoop)
+            '        With lvitem
+            '            SaveSTO(lvitem.subitems(0).text, lvitem.subitems(1).text, lvitem.subitems(2).Text, _
+            '                 lvitem.subitems(3).Text, lvitem.subitems(4).Text, lvitem.SUBITEMS(5).TEXT)
+            '        End With
+
+            '        iLoop = iLoop + 1
+            '        lvitem = Nothing
+            '    Loop
+            '    MsgBox("Successfully Saved", MsgBoxStyle.Information)
+            'End If
 
     End Sub
-
+   
     Private Sub ImportToolStripButton3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ImportToolStripButton3.Click
 
         ofdOpen.ShowDialog()
@@ -65,7 +93,7 @@ Public Class ImportSTO
     Friend Sub lOADEXCEL(ByVal SRC As String)
         Dim ItemMasterData As Excel.Application
         Dim MaxEntries As Integer
-
+        If lblPath.Text = "Path" Then Exit Sub
         ItemMasterData = OpenExcel(lblPath.Text)
         DSSTO.Tables.Add(tbl_STO)
 
@@ -104,23 +132,23 @@ Public Class ImportSTO
             Next
             lvIMD.Items.Add(listRow)
         Next
-
-        lvIMD.Columns(3).Width = 0
-        lvIMD.Columns(4).Width = 0
-        lvIMD.Columns(5).Width = 0
-
         CloseExcel(ItemMasterData)
         Console.WriteLine("Database Records: " & DSSTO.Tables(0).Rows.Count)
     End Sub
 
     Private Sub ImportSTO_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
         lvIMD.Columns(3).Width = 0
         lvIMD.Columns(4).Width = 0
         lvIMD.Columns(5).Width = 0
+
     End Sub
 
     Private Sub SFD_FileOk(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles SFD.FileOk
 
     End Sub
+
+  
+    
+    
+  
 End Class

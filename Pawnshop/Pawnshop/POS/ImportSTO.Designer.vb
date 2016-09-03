@@ -39,7 +39,6 @@ Partial Class ImportSTO
         Me.ofdOpen = New System.Windows.Forms.OpenFileDialog()
         Me.lblPath = New System.Windows.Forms.Label()
         Me.SFD = New System.Windows.Forms.SaveFileDialog()
-        Me.DatetimeToolStripStatusLabel = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()
@@ -125,7 +124,7 @@ Partial Class ImportSTO
         '
         'StatusStrip
         '
-        Me.StatusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ItemCountToolStripStatusLabel1, Me.DatetimeToolStripStatusLabel})
+        Me.StatusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ItemCountToolStripStatusLabel1})
         Me.StatusStrip.Location = New System.Drawing.Point(0, 364)
         Me.StatusStrip.Name = "StatusStrip"
         Me.StatusStrip.Size = New System.Drawing.Size(602, 22)
@@ -159,12 +158,6 @@ Partial Class ImportSTO
         'SFD
         '
         Me.SFD.Filter = "TEXTFILE |*.txt"
-        '
-        'DatetimeToolStripStatusLabel
-        '
-        Me.DatetimeToolStripStatusLabel.Name = "DatetimeToolStripStatusLabel"
-        Me.DatetimeToolStripStatusLabel.Size = New System.Drawing.Size(58, 17)
-        Me.DatetimeToolStripStatusLabel.Text = "DateTime"
         '
         'ImportSTO
         '
@@ -203,5 +196,4 @@ Partial Class ImportSTO
     Friend WithEvents ofdOpen As System.Windows.Forms.OpenFileDialog
     Friend WithEvents lblPath As System.Windows.Forms.Label
     Friend WithEvents SFD As System.Windows.Forms.SaveFileDialog
-    Friend WithEvents DatetimeToolStripStatusLabel As System.Windows.Forms.ToolStripStatusLabel
 End Class
