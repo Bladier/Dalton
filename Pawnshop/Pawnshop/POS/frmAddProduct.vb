@@ -67,9 +67,11 @@ Public Class frmAddProduct
             txtSalable.Text = dr("SALABLE")
             txtHasSerial.Text = dr("HASSERIAL")
         Next
+
     End Sub
 
     Private Function isValid(ByVal tmpTextbox As TextBox)
+
         Dim tmpFill As String = "Please Fill the Fields"
         If tmpTextbox.Text = "" Then
             ErrorProvider.SetError(tmpTextbox, tmpFill)
@@ -79,6 +81,7 @@ Public Class frmAddProduct
             ErrorProvider.SetError(tmpTextbox, String.Empty)
         End If
         Return True
+
     End Function
 
     Private Sub frmAddProduct_FormClosed(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles MyBase.FormClosed
@@ -87,6 +90,7 @@ Public Class frmAddProduct
     End Sub
 
     Private Sub EnabledTextField()
+
         txtItemCode.Enabled = True
         txtDescription.Enabled = True
         txtUnitofMeasure.Enabled = True
@@ -95,9 +99,11 @@ Public Class frmAddProduct
         txtInventoriable.Enabled = True
         txtSalable.Enabled = True
         txtHasSerial.Enabled = True
+
     End Sub
 
     Private Sub ClearTextField()
+
         txtItemCode.Text = ""
         txtDescription.Text = ""
         txtUnitofMeasure.Text = ""
@@ -107,8 +113,8 @@ Public Class frmAddProduct
         txtSalable.Text = Nothing
         txtHasSerial.Text = Nothing
         lblTitle.Text = "Register New Item"
-    End Sub
 
+    End Sub
 
     Private Sub DisabledTextfield()
         txtItemCode.Enabled = False
@@ -151,38 +157,8 @@ Public Class frmAddProduct
         End If
     End Sub
 
-
-    Private Sub txtOnHold_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtOnHold.KeyPress
-        If Not (Asc(e.KeyChar) = 8) Then
-            Dim allowedChars As String = "YNyn"
-            If Not allowedChars.Contains(e.KeyChar.ToString.ToLower) Then
-                e.KeyChar = ChrW(0)
-                e.Handled = True
-            End If
-        End If
-    End Sub
-
-    Private Sub txtInventoriable_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtInventoriable.KeyPress
-        If Not (Asc(e.KeyChar) = 8) Then
-            Dim allowedChars As String = "YNyn"
-            If Not allowedChars.Contains(e.KeyChar.ToString.ToLower) Then
-                e.KeyChar = ChrW(0)
-                e.Handled = True
-            End If
-        End If
-    End Sub
-
-    Private Sub txtSalable_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtSalable.KeyPress
-        If Not (Asc(e.KeyChar) = 8) Then
-            Dim allowedChars As String = "YNyn"
-            If Not allowedChars.Contains(e.KeyChar.ToString.ToLower) Then
-                e.KeyChar = ChrW(0)
-                e.Handled = True
-            End If
-        End If
-    End Sub
-
-    Private Sub txtHasSerial_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtHasSerial.KeyPress
+    Private Sub txtOnHold_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtOnHold.KeyPress, txtInventoriable.KeyPress,
+        txtSalable.KeyPress, txtHasSerial.KeyPress
         If Not (Asc(e.KeyChar) = 8) Then
             Dim allowedChars As String = "YNyn"
             If Not allowedChars.Contains(e.KeyChar.ToString.ToLower) Then
@@ -196,7 +172,4 @@ Public Class frmAddProduct
         DigitOnly(e)
     End Sub
 
-    Private Sub frmAddProduct_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
-    End Sub
 End Class
