@@ -15,12 +15,22 @@ Public Class frmAddProduct
             Exit Sub
         End If
 
+        If Not isValid(txtItemCode) Then Exit Sub
+        If Not isValid(txtDescription) Then Exit Sub
+        If Not isValid(txtUnitofMeasure) Then Exit Sub
+        If Not isValid(txtPrice) Then Exit Sub
+        If Not isValid(txtOnHold) Then Exit Sub
+        If Not isValid(txtInventoriable) Then Exit Sub
+        If Not isValid(txtSalable) Then Exit Sub
+        If Not isValid(txtHasSerial) Then Exit Sub
+
         Dim ans As DialogResult = MsgBox("Do you want to save this transaction?", MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton2 + MsgBoxStyle.Information)
 
         If ans = Windows.Forms.DialogResult.No Then
             Exit Sub
         Else
-            If Not isValid() Then Exit Sub
+            'If Not isValid() Then Exit Sub
+           
             IMD = New ItemMaterData
             With IMD
                 .ITEMCODE = txtItemCode.Text
@@ -59,75 +69,16 @@ Public Class frmAddProduct
         Next
     End Sub
 
-    Private Function isValid() As Boolean
+    Private Function isValid(ByVal tmpTextbox As TextBox)
         Dim tmpFill As String = "Please Fill the Fields"
-
-        If txtItemCode.Text = "" Then
-            ErrorProvider.SetError(txtItemCode, tmpFill)
-            txtItemCode.Focus()
+        If tmpTextbox.Text = "" Then
+            ErrorProvider.SetError(tmpTextbox, tmpFill)
+            tmpTextbox.Focus()
             Return False
         Else
-            ErrorProvider.SetError(txtItemCode, String.Empty)
-        End If
-
-        If txtDescription.Text = "" Then
-            ErrorProvider.SetError(txtDescription, tmpFill)
-            txtDescription.Focus()
-            Return False
-        Else
-            ErrorProvider.SetError(txtDescription, String.Empty)
-        End If
-
-        If txtUnitofMeasure.Text = "" Then
-            ErrorProvider.SetError(txtUnitofMeasure, tmpFill)
-            txtUnitofMeasure.Focus()
-            Return False
-        Else
-            ErrorProvider.SetError(txtUnitofMeasure, String.Empty)
-        End If
-
-        If txtPrice.Text = "" Then
-            ErrorProvider.SetError(txtPrice, tmpFill)
-            txtPrice.Focus()
-            Return False
-        Else
-            ErrorProvider.SetError(txtPrice, String.Empty)
-        End If
-
-        If txtOnHold.Text = "" Then
-            ErrorProvider.SetError(txtOnHold, tmpFill)
-            txtOnHold.Focus()
-            Return False
-        Else
-            ErrorProvider.SetError(txtOnHold, String.Empty)
-        End If
-
-        If txtInventoriable.Text = "" Then
-            ErrorProvider.SetError(txtInventoriable, tmpFill)
-            txtInventoriable.Focus()
-            Return False
-        Else
-            ErrorProvider.SetError(txtInventoriable, String.Empty)
-
-        End If
-
-        If txtSalable.Text = "" Then
-            ErrorProvider.SetError(txtSalable, tmpFill)
-            txtSalable.Focus()
-            Return False
-        Else
-            ErrorProvider.SetError(txtSalable, String.Empty)
-        End If
-
-        If txtHasSerial.Text = "" Then
-            ErrorProvider.SetError(txtHasSerial, tmpFill)
-            txtHasSerial.Focus()
-            Return False
-        Else
-            ErrorProvider.SetError(txtHasSerial, String.Empty)
+            ErrorProvider.SetError(tmpTextbox, String.Empty)
         End If
         Return True
-
     End Function
 
     Private Sub frmAddProduct_FormClosed(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles MyBase.FormClosed
