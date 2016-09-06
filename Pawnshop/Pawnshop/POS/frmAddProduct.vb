@@ -15,12 +15,22 @@ Public Class frmAddProduct
             Exit Sub
         End If
 
+        If Not isValid(txtItemCode) Then Exit Sub
+        If Not isValid(txtDescription) Then Exit Sub
+        If Not isValid(txtUnitofMeasure) Then Exit Sub
+        If Not isValid(txtPrice) Then Exit Sub
+        If Not isValid(txtOnHold) Then Exit Sub
+        If Not isValid(txtInventoriable) Then Exit Sub
+        If Not isValid(txtSalable) Then Exit Sub
+        If Not isValid(txtHasSerial) Then Exit Sub
+
         Dim ans As DialogResult = MsgBox("Do you want to save this transaction?", MsgBoxStyle.YesNo + MsgBoxStyle.DefaultButton2 + MsgBoxStyle.Information)
 
         If ans = Windows.Forms.DialogResult.No Then
             Exit Sub
         Else
-            If Not isValid() Then Exit Sub
+            'If Not isValid() Then Exit Sub
+           
             IMD = New ItemMaterData
             With IMD
                 .ITEMCODE = txtItemCode.Text
@@ -57,74 +67,18 @@ Public Class frmAddProduct
             txtSalable.Text = dr("SALABLE")
             txtHasSerial.Text = dr("HASSERIAL")
         Next
+
     End Sub
 
-    Private Function isValid() As Boolean
+    Private Function isValid(ByVal tmpTextbox As TextBox)
+
         Dim tmpFill As String = "Please Fill the Fields"
-
-        If txtItemCode.Text = "" Then
-            ErrorProvider.SetError(txtItemCode, tmpFill)
-            txtItemCode.Focus()
+        If tmpTextbox.Text = "" Then
+            ErrorProvider.SetError(tmpTextbox, tmpFill)
+            tmpTextbox.Focus()
             Return False
         Else
-            ErrorProvider.SetError(txtItemCode, String.Empty)
-        End If
-
-        If txtDescription.Text = "" Then
-            ErrorProvider.SetError(txtDescription, tmpFill)
-            txtDescription.Focus()
-            Return False
-        Else
-            ErrorProvider.SetError(txtDescription, String.Empty)
-        End If
-
-        If txtUnitofMeasure.Text = "" Then
-            ErrorProvider.SetError(txtUnitofMeasure, tmpFill)
-            txtUnitofMeasure.Focus()
-            Return False
-        Else
-            ErrorProvider.SetError(txtUnitofMeasure, String.Empty)
-        End If
-
-        If txtPrice.Text = "" Then
-            ErrorProvider.SetError(txtPrice, tmpFill)
-            txtPrice.Focus()
-            Return False
-        Else
-            ErrorProvider.SetError(txtPrice, String.Empty)
-        End If
-
-        If txtOnHold.Text = "" Then
-            ErrorProvider.SetError(txtOnHold, tmpFill)
-            txtOnHold.Focus()
-            Return False
-        Else
-            ErrorProvider.SetError(txtOnHold, String.Empty)
-        End If
-
-        If txtInventoriable.Text = "" Then
-            ErrorProvider.SetError(txtInventoriable, tmpFill)
-            txtInventoriable.Focus()
-            Return False
-        Else
-            ErrorProvider.SetError(txtInventoriable, String.Empty)
-
-        End If
-
-        If txtSalable.Text = "" Then
-            ErrorProvider.SetError(txtSalable, tmpFill)
-            txtSalable.Focus()
-            Return False
-        Else
-            ErrorProvider.SetError(txtSalable, String.Empty)
-        End If
-
-        If txtHasSerial.Text = "" Then
-            ErrorProvider.SetError(txtHasSerial, tmpFill)
-            txtHasSerial.Focus()
-            Return False
-        Else
-            ErrorProvider.SetError(txtHasSerial, String.Empty)
+            ErrorProvider.SetError(tmpTextbox, String.Empty)
         End If
         Return True
 
@@ -136,6 +90,7 @@ Public Class frmAddProduct
     End Sub
 
     Private Sub EnabledTextField()
+
         txtItemCode.Enabled = True
         txtDescription.Enabled = True
         txtUnitofMeasure.Enabled = True
@@ -144,9 +99,11 @@ Public Class frmAddProduct
         txtInventoriable.Enabled = True
         txtSalable.Enabled = True
         txtHasSerial.Enabled = True
+
     End Sub
 
     Private Sub ClearTextField()
+
         txtItemCode.Text = ""
         txtDescription.Text = ""
         txtUnitofMeasure.Text = ""
@@ -156,8 +113,8 @@ Public Class frmAddProduct
         txtSalable.Text = Nothing
         txtHasSerial.Text = Nothing
         lblTitle.Text = "Register New Item"
-    End Sub
 
+    End Sub
 
     Private Sub DisabledTextfield()
         txtItemCode.Enabled = False
@@ -200,38 +157,8 @@ Public Class frmAddProduct
         End If
     End Sub
 
-
-    Private Sub txtOnHold_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtOnHold.KeyPress
-        If Not (Asc(e.KeyChar) = 8) Then
-            Dim allowedChars As String = "YNyn"
-            If Not allowedChars.Contains(e.KeyChar.ToString.ToLower) Then
-                e.KeyChar = ChrW(0)
-                e.Handled = True
-            End If
-        End If
-    End Sub
-
-    Private Sub txtInventoriable_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtInventoriable.KeyPress
-        If Not (Asc(e.KeyChar) = 8) Then
-            Dim allowedChars As String = "YNyn"
-            If Not allowedChars.Contains(e.KeyChar.ToString.ToLower) Then
-                e.KeyChar = ChrW(0)
-                e.Handled = True
-            End If
-        End If
-    End Sub
-
-    Private Sub txtSalable_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtSalable.KeyPress
-        If Not (Asc(e.KeyChar) = 8) Then
-            Dim allowedChars As String = "YNyn"
-            If Not allowedChars.Contains(e.KeyChar.ToString.ToLower) Then
-                e.KeyChar = ChrW(0)
-                e.Handled = True
-            End If
-        End If
-    End Sub
-
-    Private Sub txtHasSerial_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtHasSerial.KeyPress
+    Private Sub txtOnHold_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtOnHold.KeyPress, txtInventoriable.KeyPress,
+        txtSalable.KeyPress, txtHasSerial.KeyPress
         If Not (Asc(e.KeyChar) = 8) Then
             Dim allowedChars As String = "YNyn"
             If Not allowedChars.Contains(e.KeyChar.ToString.ToLower) Then
@@ -245,7 +172,4 @@ Public Class frmAddProduct
         DigitOnly(e)
     End Sub
 
-    Private Sub frmAddProduct_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
-    End Sub
 End Class

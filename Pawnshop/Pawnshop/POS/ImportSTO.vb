@@ -1,9 +1,10 @@
 ﻿Imports Microsoft.Office.Interop
 Imports System.IO
+
 Public Class ImportSTO
+
     Private DSSTO As New DataSet
     Private DateTime1 As DateTime = System.DateTime.Now
-
 
 
 
@@ -12,6 +13,7 @@ Public Class ImportSTO
         SFD.ShowDialog()
 
 
+  
         Using objWriter As New StreamWriter(SFD.FileName)
             objWriter.Write(lvIMD.Items(1).SubItems(4).Text)
             objWriter.Write("  ;  ")
