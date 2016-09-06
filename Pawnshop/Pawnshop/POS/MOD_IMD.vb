@@ -45,8 +45,7 @@
     End Sub
 
 
-    Public Sub SaveSTO(ByVal ITEMCODE As String, ByVal DESCRIPTION As String, ByVal QUANTITY As Integer, ByVal WSHCODE As String, ByVal STONO As String, ByVal STODATE As Date, _
-                       Optional ByVal curQTY As Integer = 0)
+    Public Sub SaveSTO(ByVal ITEMCODE As String, ByVal DESCRIPTION As String, ByVal QUANTITY As Integer, ByVal WSHCODE As String, ByVal STONO As String, ByVal STODATE As Date)
 
         Dim filldata As String = "TBL_STO_POS"
         Try
@@ -55,15 +54,15 @@
             ds = LoadSQL(mySql, filldata)
 
             If ds.Tables(0).Rows.Count >= 1 Then
-
-                    With ds.Tables(0).Rows(0)
-                        .Item("DESCRIPTION") = DESCRIPTION
-                        .Item("QUANTITY") = QUANTITY + curQTY
-                        .Item("WSHCODE") = WSHCODE
-                        .Item("STONO") = STONO
-                        .Item("STO_DATE") = STODATE
-                    End With
-                    database.SaveEntry(ds, False)
+                Dim CurQTY As Integer = ds.Tables(0).Rows(0).Item("QUANTITY")
+                With ds.Tables(0).Rows(0)
+                    .Item("DESCRIPTION") = DESCRIPTION
+                    .Item("QUANTITY") = CurQTY + QUANTITY
+                    .Item("WSHCODE") = WSHCODE
+                    .Item("STONO") = STONO
+                    .Item("STO_DATE") = STODATE
+                End With
+                database.SaveEntry(ds, False)
 
             Else
                 Dim dsNewRow As DataRow

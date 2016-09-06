@@ -5,6 +5,10 @@
     Dim frmOriginal As formSwitch.FormName
 
     Private Sub frmIMD_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        lvIMD.Columns(0).Width = 0
+        lvIMD.Columns(1).Width = 70
+        lvIMD.Columns(2).Width = 200
+
         LoadActive()
     End Sub
 

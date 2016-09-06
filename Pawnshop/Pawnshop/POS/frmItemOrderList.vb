@@ -10,6 +10,8 @@ Public Class FrmItemOrderList
     Dim Price As Double, Quantity As Integer
     Dim rowNum1 As Integer
 
+    Const vat As Double = 1.12
+
     Friend Sub LoadIMDTransaction(ByVal tmpIMD As ItemMaterData)
         With tmpIMD
             txtItemCode.Text = .ITEMCODE
@@ -41,24 +43,20 @@ Public Class FrmItemOrderList
         DGItemOrderList.Rows.Item(rowNum).Cells(3).Value = txtQuantity.Text
         DGItemOrderList.Rows.Item(rowNum).Cells(4).Value = txtQuantity.Text * txtPrice.Text
 
-        'If Double.TryParse(DGItemOrderList.Rows(rowNum).Cells(2).Value.ToString(), Price) _
-        '   AndAlso Integer.TryParse(DGItemOrderList.Rows(rowNum).Cells(3).Value.ToString(), Quantity) Then
-
-        '    Dim SubTotal As Double = Price * Quantity
-        '    DGItemOrderList.Rows(rowNum).Cells(4).Value = CDbl(SubTotal.ToString())
-        'End If
-
         CaLcUlateTotalPrice()
         clearTextField()
         txtSearch1.Focus()
     End Sub
 
     Private Sub CaLcUlateTotalPrice()
+
         Dim sum As Double = 0
         For i As Integer = 0 To DGItemOrderList.Rows.Count - 1
             sum += Convert.ToDouble(DGItemOrderList.Rows(i).Cells(4).Value)
         Next
-        txtTotalPrice.Text = sum.ToString()
+
+        txtTotalPrice.Text = sum.ToString
+        'txtTotalPrice.Text = Format(Double.Parse(sum.ToString), "###,###,##0.00")
     End Sub
 
     Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
@@ -98,6 +96,10 @@ Public Class FrmItemOrderList
         txtDescription.Text = ""
         txtPrice.Text = ""
         txtQuantity.Value = 1
+
+        txtTINNo.Text = ""
+        txtCustomerName.Text = ""
+        txtAddress.Text = ""
     End Sub
 
 
@@ -126,22 +128,20 @@ Public Class FrmItemOrderList
         End With
     End Sub
 
+
+    Private Sub UserField() Handles txtCustomerCash.GotFocus
+        With txtCustomerCash
+            .Text = ""
+            .ForeColor = System.Drawing.SystemColors.WindowText
+            .Font = New System.Drawing.Font("Microsoft Sans Serif", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        End With
+    End Sub
+
     Private Sub txtSearch1_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtSearch1.TextChanged
         txtSearch1.ForeColor = Color.Red
     End Sub
 
-    Private Sub btnClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClose.Click
-        Me.Hide()
-        frmPOSMain.Show()
-    End Sub
-
-    Private Sub txtTotalPrice_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtTotalPrice.TextChanged
-        If IsNumeric(txtTotalPrice.Text) Then
-            Dim temp As Double = txtTotalPrice.Text
-            txtTotalPrice.Text = Format(temp, "N")
-            txtTotalPrice.SelectionStart = txtTotalPrice.TextLength - 3
-        End If
-    End Sub
+  
 
     Private Sub DGItemOrderList_CellClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DGItemOrderList.CellClick
 
@@ -210,9 +210,49 @@ Public Class FrmItemOrderList
         For Each row As DataGridViewRow In DGItemOrderList.SelectedRows
             DGItemOrderList.Rows.Remove(row)
             CaLcUlateTotalPrice()
+            ComputeAmountDue()
             clearTextField()
         Next
         btnRemove.Enabled = False
         btnaddCart.Enabled = True
+    End Sub
+
+
+    Private Sub txtCustomerCash_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtCustomerCash.TextChanged
+        If DGItemOrderList.RowCount.ToString <= 0 Then Exit Sub
+
+        If txtCustomerCash.Text = "0.00" Then Exit Sub
+    End Sub
+
+    Private Sub btnClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClose.Click
+        Me.Close()
+        frmPOSMain.Show()
+    End Sub
+
+    Private Sub btnEnter_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEnter.Click
+
+        If DGItemOrderList.RowCount.ToString <= 0 Then Exit Sub
+        If txtTINNo.Text = "" Or txtCustomerName.Text = "" Or txtAddress.Text = "" Then Exit Sub
+
+        ComputeAmountDue()
+    End Sub
+
+    Private Sub ComputeAmountDue()
+        Dim VatSales As Double = Val(txtTotalPrice.Text) / vat
+
+        Dim change As Double = Val(txtCustomerCash.Text.ToString) - Val(txtTotalPrice.Text.ToString)
+        'txtChange.Text = change ' Double.Parse(change, 2)
+
+        txtChange.Text = Format(Double.Parse(change), "###,###,##0.00")
+    End Sub
+
+    Private Sub txtCustomerCash_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtCustomerCash.KeyPress
+        If isEnter(e) Then btnEnter.PerformClick()
+        DigitOnly(e)
+    End Sub
+
+   
+    Private Sub txtTINNo_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtTINNo.KeyPress
+        DigitOnly(e)
     End Sub
 End Class

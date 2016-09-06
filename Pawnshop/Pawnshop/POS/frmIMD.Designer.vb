@@ -39,18 +39,19 @@ Partial Class frmIMD
         Me.txtSearchtoolStrip = New System.Windows.Forms.ToolStripTextBox()
         Me.SearchToolStripButton2 = New System.Windows.Forms.ToolStripButton()
         Me.CloseToolStripButton1 = New System.Windows.Forms.ToolStripButton()
+        Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'lvIMD
         '
-        Me.lvIMD.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader11, Me.ColumnHeader12, Me.ColumnHeader13, Me.ColumnHeader14, Me.ColumnHeader15, Me.ColumnHeader16, Me.ColumnHeader3})
+        Me.lvIMD.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader11, Me.ColumnHeader12, Me.ColumnHeader13, Me.ColumnHeader14, Me.ColumnHeader15, Me.ColumnHeader16, Me.ColumnHeader3, Me.ColumnHeader4})
         Me.lvIMD.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lvIMD.FullRowSelect = True
         Me.lvIMD.GridLines = True
         Me.lvIMD.Location = New System.Drawing.Point(0, 42)
         Me.lvIMD.Name = "lvIMD"
-        Me.lvIMD.Size = New System.Drawing.Size(980, 370)
+        Me.lvIMD.Size = New System.Drawing.Size(1036, 370)
         Me.lvIMD.TabIndex = 1
         Me.lvIMD.UseCompatibleStateImageBehavior = False
         Me.lvIMD.View = System.Windows.Forms.View.Details
@@ -108,7 +109,7 @@ Partial Class frmIMD
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewToolStripButton1, Me.UpdateToolStripButton4, Me.txtSearchtoolStrip, Me.SearchToolStripButton2, Me.CloseToolStripButton1})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(980, 40)
+        Me.ToolStrip1.Size = New System.Drawing.Size(1042, 40)
         Me.ToolStrip1.TabIndex = 0
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -155,11 +156,16 @@ Partial Class frmIMD
         Me.CloseToolStripButton1.Size = New System.Drawing.Size(60, 37)
         Me.CloseToolStripButton1.Text = "Close"
         '
+        'ColumnHeader4
+        '
+        Me.ColumnHeader4.Text = "ON HAND"
+        Me.ColumnHeader4.Width = 97
+        '
         'frmIMD
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(980, 424)
+        Me.ClientSize = New System.Drawing.Size(1042, 424)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.lvIMD)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
@@ -187,4 +193,5 @@ Partial Class frmIMD
     Friend WithEvents ColumnHeader3 As System.Windows.Forms.ColumnHeader
     Friend WithEvents UpdateToolStripButton4 As System.Windows.Forms.ToolStripButton
     Friend WithEvents CloseToolStripButton1 As System.Windows.Forms.ToolStripButton
+    Friend WithEvents ColumnHeader4 As System.Windows.Forms.ColumnHeader
 End Class
