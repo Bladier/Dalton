@@ -4,21 +4,14 @@ Public Class ImportSTO
     Private DSSTO As New DataSet
     Private DateTime As DateTime = System.DateTime.Now
 
- 
-
     Private Sub SaveToolStripButton2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SaveToolStripButton2.Click
         SFD.ShowDialog()
 
-
-        If System.IO.File.Exists(txtdest.Text) = True Then
-            Dim objWriter As New System.IO.StreamWriter(txtdest.Text)
-            objWriter.Write(txtdest.Text)
-            objWriter.Close()
-            MsgBox("Text written to file")
-        Else
-            MsgBox("File Does Not Exist")
-        End If
-
+       Using objWriter As New StreamWriter(SFD.FileName)
+            objWriter.Write(lvIMD.Items(1).SubItems(4).Text)
+            objWriter.Write("  ;  ")
+            objWriter.Write(DateTime)
+        End Using
 
         Dim iCount As Integer
         Dim iLoop As Integer
