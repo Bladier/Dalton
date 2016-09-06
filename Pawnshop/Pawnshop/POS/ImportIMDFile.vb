@@ -5,14 +5,7 @@ Public Class ImportIMDFile
     Dim filldata As String = "TBL_ITEMMASTERDATA"
     Private DSIMD As New DataSet
 
-    Private Sub ImportIMDFile_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
-    End Sub
-
-
     Public Sub ImportToolStripButton3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ImportToolStripButton3.Click
-
-
         ofdOpen.ShowDialog()
         If lvIMD.Items.Count = 0 Then
             lOADEXCEL(lblPath.Text)

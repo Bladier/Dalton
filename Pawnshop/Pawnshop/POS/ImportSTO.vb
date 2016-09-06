@@ -1,13 +1,15 @@
 ﻿Imports Microsoft.Office.Interop
 Imports System.IO
+
 Public Class ImportSTO
+
     Private DSSTO As New DataSet
     Private DateTime As DateTime = System.DateTime.Now
 
     Private Sub SaveToolStripButton2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SaveToolStripButton2.Click
         SFD.ShowDialog()
 
-       Using objWriter As New StreamWriter(SFD.FileName)
+        Using objWriter As New StreamWriter(SFD.FileName)
             objWriter.Write(lvIMD.Items(1).SubItems(4).Text)
             objWriter.Write("  ;  ")
             objWriter.Write(DateTime)
