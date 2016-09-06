@@ -235,6 +235,8 @@ Public Class FrmItemOrderList
         If txtTINNo.Text = "" Or txtCustomerName.Text = "" Or txtAddress.Text = "" Then Exit Sub
 
         ComputeAmountDue()
+
+       
     End Sub
 
     Private Sub ComputeAmountDue()

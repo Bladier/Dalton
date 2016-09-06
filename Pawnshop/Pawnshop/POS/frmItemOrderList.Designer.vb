@@ -56,11 +56,6 @@ Partial Class FrmItemOrderList
         Me.LineShape1 = New Microsoft.VisualBasic.PowerPacks.LineShape()
         Me.grpCart = New System.Windows.Forms.GroupBox()
         Me.DGItemOrderList = New System.Windows.Forms.DataGridView()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.txtAddress = New System.Windows.Forms.TextBox()
         Me.txtTINNo = New System.Windows.Forms.TextBox()
@@ -68,6 +63,11 @@ Partial Class FrmItemOrderList
         Me.Label5 = New System.Windows.Forms.Label()
         Me.txtCustomerName = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel1.SuspendLayout()
         CType(Me.pbHeader, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpItem.SuspendLayout()
@@ -483,38 +483,6 @@ Partial Class FrmItemOrderList
         Me.DGItemOrderList.Size = New System.Drawing.Size(550, 171)
         Me.DGItemOrderList.TabIndex = 17
         '
-        'Column1
-        '
-        Me.Column1.HeaderText = "ItemCode"
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
-        '
-        'Column2
-        '
-        Me.Column2.HeaderText = "Description"
-        Me.Column2.Name = "Column2"
-        Me.Column2.ReadOnly = True
-        Me.Column2.Width = 150
-        '
-        'Column3
-        '
-        Me.Column3.HeaderText = "Price"
-        Me.Column3.Name = "Column3"
-        Me.Column3.ReadOnly = True
-        '
-        'Column4
-        '
-        Me.Column4.HeaderText = "Quantity"
-        Me.Column4.Name = "Column4"
-        Me.Column4.ReadOnly = True
-        Me.Column4.Width = 50
-        '
-        'Column5
-        '
-        Me.Column5.HeaderText = "SubTotal"
-        Me.Column5.Name = "Column5"
-        Me.Column5.ReadOnly = True
-        '
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.txtAddress)
@@ -591,6 +559,38 @@ Partial Class FrmItemOrderList
         Me.Label4.TabIndex = 19
         Me.Label4.Text = "Customer Name"
         '
+        'Column1
+        '
+        Me.Column1.HeaderText = "ItemCode"
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
+        '
+        'Column2
+        '
+        Me.Column2.HeaderText = "Description"
+        Me.Column2.Name = "Column2"
+        Me.Column2.ReadOnly = True
+        Me.Column2.Width = 150
+        '
+        'Column3
+        '
+        Me.Column3.HeaderText = "Price"
+        Me.Column3.Name = "Column3"
+        Me.Column3.ReadOnly = True
+        '
+        'Column4
+        '
+        Me.Column4.HeaderText = "Quantity"
+        Me.Column4.Name = "Column4"
+        Me.Column4.ReadOnly = True
+        Me.Column4.Width = 60
+        '
+        'Column5
+        '
+        Me.Column5.HeaderText = "SubTotal"
+        Me.Column5.Name = "Column5"
+        Me.Column5.ReadOnly = True
+        '
         'FrmItemOrderList
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -632,11 +632,6 @@ Partial Class FrmItemOrderList
     Friend WithEvents pbHeader As System.Windows.Forms.PictureBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents DGItemOrderList As System.Windows.Forms.DataGridView
-    Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column2 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column4 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column5 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents txtQuantity As System.Windows.Forms.NumericUpDown
     Friend WithEvents btnUpdate As System.Windows.Forms.Button
     Friend WithEvents btnRemove As System.Windows.Forms.Button
@@ -664,4 +659,9 @@ Partial Class FrmItemOrderList
     Friend WithEvents LineShape1 As Microsoft.VisualBasic.PowerPacks.LineShape
     Friend WithEvents btnClose As System.Windows.Forms.Button
     Friend WithEvents btnEnter As System.Windows.Forms.Button
+    Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column2 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column4 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column5 As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class
