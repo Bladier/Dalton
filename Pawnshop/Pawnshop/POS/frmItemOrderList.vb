@@ -236,7 +236,9 @@ Public Class FrmItemOrderList
 
         ComputeAmountDue()
 
-       
+
+      
+        frmReciept.Show()
     End Sub
 
     Private Sub ComputeAmountDue()
