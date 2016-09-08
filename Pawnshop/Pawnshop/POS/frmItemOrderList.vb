@@ -1,6 +1,8 @@
-﻿
+﻿Imports System.Drawing.Printing
+Imports Microsoft.Reporting.WinForms
 
 Public Class FrmItemOrderList
+
 
     Dim drag As Boolean
     Dim mousex As Integer
@@ -141,7 +143,7 @@ Public Class FrmItemOrderList
         txtSearch1.ForeColor = Color.Red
     End Sub
 
-  
+
 
     Private Sub DGItemOrderList_CellClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DGItemOrderList.CellClick
 
@@ -229,17 +231,53 @@ Public Class FrmItemOrderList
         frmPOSMain.Show()
     End Sub
 
+
     Private Sub btnEnter_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEnter.Click
 
+      
+        'PrintPreviewDialog1.Document = PrintDocument1 'PrintPreviewDialog associate with PrintDocument.
+        'PrintPreviewDialog1.ShowDialog()
+
+
+        If Not isvalid() Then Exit Sub
         If DGItemOrderList.RowCount.ToString <= 0 Then Exit Sub
         If txtTINNo.Text = "" Or txtCustomerName.Text = "" Or txtAddress.Text = "" Then Exit Sub
 
         ComputeAmountDue()
 
 
-      
-        frmReciept.Show()
     End Sub
+
+
+    Private Function isvalid() As Boolean
+        If txtTINNo.Text = "" Then txtTINNo.Focus() : Return False
+        If txtCustomerName.Text = "" Then txtCustomerName.Focus() : Return False
+        If txtAddress.Text = "" Then txtAddress.Focus() : Return False
+        If txtCustomerCash.Text = "0.00" Then txtCustomerCash.Focus() : Return False
+        Return True
+    End Function
+
+    Public Function DatagridData() As System.Data.DataTable
+        Dim dt As New System.Data.DataTable
+
+        dt.Columns.Add("DESCRIPTION", Type.GetType("System.String"))
+        dt.Columns.Add("PRICE", Type.GetType("System.String"))
+        dt.Columns.Add("QUANTITY", Type.GetType("System.String"))
+        dt.Columns.Add("SUBTOTAL", Type.GetType("System.String"))
+
+        For i = 0 To DGItemOrderList.Rows.Count - 1
+            Dim r As DataRow
+            r = dt.NewRow
+            r("DESCRIPTION") = DGItemOrderList.Item(1, i).Value.ToString
+            r("PRICE") = DGItemOrderList.Item(2, i).Value.ToString
+            r("QUANTITY") = DGItemOrderList.Item(3, i).Value.ToString
+            r("SUBTOTAL") = DGItemOrderList.Item(4, i).Value.ToString
+            dt.Rows.Add(r)
+        Next
+
+        Return dt
+    End Function
+
 
     Private Sub ComputeAmountDue()
         Dim VatSales As Double = Val(txtTotalPrice.Text) / vat
@@ -255,8 +293,35 @@ Public Class FrmItemOrderList
         DigitOnly(e)
     End Sub
 
-   
     Private Sub txtTINNo_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtTINNo.KeyPress
         DigitOnly(e)
+    End Sub
+
+
+    Private Sub PrintDocument1_PrintPage(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintPageEventArgs) Handles PrintDocument1.PrintPage
+        Dim font1 As New Font("Arial", 16, FontStyle.Regular)
+        e.Graphics.DrawString("Sold to:" & txtCustomerName.Text, font1, Brushes.Black, 50, 100)
+
+        Dim font2 As New Font("Arial", 16, FontStyle.Regular)
+        e.Graphics.DrawString("Total:" & txtTotalPrice.Text, font1, Brushes.Black, 50, 150)
+
+        Dim font3 As New Font("Arial", 16, FontStyle.Regular)
+        e.Graphics.DrawString("Cash:" & txtCustomerCash.Text, font1, Brushes.Black, 50, 200)
+
+        Dim font4 As New Font("Arial", 16, FontStyle.Regular)
+        e.Graphics.DrawString("Change:" & txtChange.Text, font1, Brushes.Black, 50, 250)
+
+        'Dim rec As New Rectangle(10, 10, 100, 20)
+        'e.Graphics.DrawRectangle(Pens.Black, rec)
+        'e.Graphics.DrawString(Column1.HeaderText, SystemFonts.DefaultFont, Brushes.Black, rec)
+        'e.Graphics.DrawString(Column2.HeaderText, SystemFonts.DefaultFont, Brushes.Black, rec)
+
+      
+
+    End Sub
+
+
+    Private Sub Button1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+        MsgBox(SALESTRANSACTIONID)
     End Sub
 End Class

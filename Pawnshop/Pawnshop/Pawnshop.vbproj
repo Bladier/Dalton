@@ -353,6 +353,7 @@
     </Compile>
     <Compile Include="POS\ItemMaterData.vb" />
     <Compile Include="POS\MOD_IMD.vb" />
+    <Compile Include="POS\POS_SALES.vb" />
     <Compile Include="Reports\diagMoneyTransferBracketing.Designer.vb">
       <DependentUpon>diagMoneyTransferBracketing.vb</DependentUpon>
     </Compile>

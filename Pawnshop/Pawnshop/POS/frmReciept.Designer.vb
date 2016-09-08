@@ -23,31 +23,27 @@ Partial Class frmReciept
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
-        Me.PrintPreviewControl1 = New System.Windows.Forms.PrintPreviewControl()
+        Me.ReportViewer1 = New Microsoft.Reporting.WinForms.ReportViewer()
         Me.SuspendLayout()
         '
         'PrintDocument1
         '
         '
-        'PrintPreviewControl1
+        'ReportViewer1
         '
-        Me.PrintPreviewControl1.AutoZoom = False
-        Me.PrintPreviewControl1.Document = Me.PrintDocument1
-        Me.PrintPreviewControl1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.PrintPreviewControl1.Location = New System.Drawing.Point(28, 30)
-        Me.PrintPreviewControl1.Margin = New System.Windows.Forms.Padding(1, 0, 1, 0)
-        Me.PrintPreviewControl1.Name = "PrintPreviewControl1"
-        Me.PrintPreviewControl1.Padding = New System.Windows.Forms.Padding(1)
-        Me.PrintPreviewControl1.Size = New System.Drawing.Size(853, 350)
-        Me.PrintPreviewControl1.TabIndex = 0
-        Me.PrintPreviewControl1.Zoom = 1.0R
+        Me.ReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ReportViewer1.LocalReport.ReportEmbeddedResource = "Pawnshop.Report1.rdlc"
+        Me.ReportViewer1.Location = New System.Drawing.Point(0, 0)
+        Me.ReportViewer1.Name = "ReportViewer1"
+        Me.ReportViewer1.Size = New System.Drawing.Size(999, 481)
+        Me.ReportViewer1.TabIndex = 0
         '
         'frmReciept
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(999, 481)
-        Me.Controls.Add(Me.PrintPreviewControl1)
+        Me.Controls.Add(Me.ReportViewer1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Name = "frmReciept"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -56,5 +52,5 @@ Partial Class frmReciept
 
     End Sub
     Friend WithEvents PrintDocument1 As System.Drawing.Printing.PrintDocument
-    Friend WithEvents PrintPreviewControl1 As System.Windows.Forms.PrintPreviewControl
+    Friend WithEvents ReportViewer1 As Microsoft.Reporting.WinForms.ReportViewer
 End Class

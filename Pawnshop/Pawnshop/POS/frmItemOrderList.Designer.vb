@@ -68,6 +68,9 @@ Partial Class FrmItemOrderList
         Me.Label5 = New System.Windows.Forms.Label()
         Me.txtCustomerName = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.PrintPreviewDialog1 = New System.Windows.Forms.PrintPreviewDialog()
+        Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         CType(Me.pbHeader, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpItem.SuspendLayout()
@@ -459,6 +462,7 @@ Partial Class FrmItemOrderList
         'grpCart
         '
         Me.grpCart.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.grpCart.Controls.Add(Me.Button1)
         Me.grpCart.Controls.Add(Me.btnRemove)
         Me.grpCart.Controls.Add(Me.DGItemOrderList)
         Me.grpCart.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -591,6 +595,30 @@ Partial Class FrmItemOrderList
         Me.Label4.TabIndex = 19
         Me.Label4.Text = "Customer Name"
         '
+        'PrintPreviewDialog1
+        '
+        Me.PrintPreviewDialog1.AutoScrollMargin = New System.Drawing.Size(0, 0)
+        Me.PrintPreviewDialog1.AutoScrollMinSize = New System.Drawing.Size(0, 0)
+        Me.PrintPreviewDialog1.ClientSize = New System.Drawing.Size(400, 300)
+        Me.PrintPreviewDialog1.Document = Me.PrintDocument1
+        Me.PrintPreviewDialog1.Enabled = True
+        Me.PrintPreviewDialog1.Icon = CType(resources.GetObject("PrintPreviewDialog1.Icon"), System.Drawing.Icon)
+        Me.PrintPreviewDialog1.Name = "PrintPreviewDialog1"
+        Me.PrintPreviewDialog1.Visible = False
+        '
+        'PrintDocument1
+        '
+        Me.PrintDocument1.OriginAtMargins = True
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(76, 93)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(83, 30)
+        Me.Button1.TabIndex = 22
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'FrmItemOrderList
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -664,4 +692,7 @@ Partial Class FrmItemOrderList
     Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column4 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column5 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents PrintPreviewDialog1 As System.Windows.Forms.PrintPreviewDialog
+    Friend WithEvents PrintDocument1 As System.Drawing.Printing.PrintDocument
+    Friend WithEvents Button1 As System.Windows.Forms.Button
 End Class
