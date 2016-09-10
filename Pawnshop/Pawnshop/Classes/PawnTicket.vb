@@ -1,6 +1,10 @@
-﻿Public Class PawnTicket
+﻿' Changelog
+' v1.1
+'  - Include Interest Hashing
 
+Public Class PawnTicket
     Dim fillData As String = "tblPawn"
+    Dim fillData1 As String = "TBL_DAILYTIMELOG"
     Dim mySql As String = ""
     Dim ds As DataSet
 
@@ -35,6 +39,18 @@
     Private _renewDue As Double
     Private _redeemDue As Double
     Private _status As String
+    Private _TransType As String
+
+    Private _renewalCount As Integer = Nothing
+    Public Property RenewalCount() As Integer
+        Get
+            If _renewalCount = Nothing Then Return Nothing
+            Return _renewalCount
+        End Get
+        Set(ByVal value As Integer)
+            _renewalCount = value
+        End Set
+    End Property
 
 #End Region
 
@@ -289,7 +305,6 @@
             Return _serviceCharge
         End Get
     End Property
-
     Public Property RenewDue As Double
         Set(ByVal value As Double)
             _renewDue = value
@@ -325,7 +340,23 @@
         End Get
     End Property
 
-
+    Private _intHash As String
+    Public Property INT_Checksum() As String
+        Get
+            Return _intHash
+        End Get
+        Set(ByVal value As String)
+            _intHash = value
+        End Set
+    End Property
+    Public Property TransTypeS As String
+        Set(ByVal value As String)
+            _TransType = value
+        End Set
+        Get
+            Return _TransType
+        End Get
+    End Property
 #End Region
 
 #Region "Procedures and Functions"
@@ -371,6 +402,9 @@
                 .Item("EncoderID") = UserID
                 .Item("AdvInt") = _advanceInterest
                 .Item("EarlyRedeem") = _earlyRedeem
+                .Item("INT_CHECKSUM") = _intHash
+                'DBVersion 1.2.2.2
+                .Item("RENEWALCNT") = _renewalCount
             End With
             ds.Tables(fillData).Rows.Add(dsNewRow)
         Else
@@ -407,6 +441,8 @@
                 .Item("EncoderID") = UserID
                 .Item("AdvInt") = _advanceInterest
                 .Item("EarlyRedeem") = _earlyRedeem
+                .Item("INT_CHECKSUM") = _intHash
+                .Item("RENEWALCNT") = _renewalCount
             End With
         End If
 
@@ -417,120 +453,153 @@
         Dim mySql As String = "SELECT * FROM tblpawn WHERE " & col & " = " & id
         Dim ds As DataSet = LoadSQL(mySql)
 
-        With ds.Tables(0).Rows(0)
-            _pawnid = .Item("PawnID")
-            _pawnTicket = .Item("PawnTicket")
-            Dim tmpClient As New Client
-            tmpClient.LoadClient(.Item("ClientID"))
-            _client = tmpClient
-            _loanDate = .Item("LoanDate")
-            _matuDate = .Item("MatuDate")
-            _expiryDate = .Item("ExpiryDate")
-            _auctionDate = .Item("AuctionDate")
-            _itemType = .Item("ItemType")
-            _catID = .Item("CatID")
-            _description = IIf(IsDBNull(.Item("Description")), "", .Item("Description"))
-            _karat = .Item("Karat")
-            _grams = .Item("Grams")
-            _appraisal = .Item("Appraisal")
-            _principal = .Item("Principal")
-            _interest = .Item("Interest")
-            _netAmount = .Item("NetAmount")
-            _evat = .Item("Evat")
-            _appraiserID = .Item("AppraiserID")
-            _oldTicket = .Item("OldTicket")
-            _orNum = .Item("ORNum")
-            _orDate = .Item("ORDate")
-            _lessPrincipal = .Item("LessPrincipal")
-            _daysOverDue = .Item("DaysOverDue")
-            '_delayInt = .Item("DelayInt")
-            _penalty = .Item("Penalty")
-            _serviceCharge = .Item("ServiceCharge")
-            _renewDue = .Item("RenewDue")
-            _redeemDue = .Item("RedeemDue")
-            _status = .Item("Status")
-            _advanceInterest = .Item("AdvInt")
-            _earlyRedeem = .Item("EarlyRedeem")
-            If Not IsDBNull(.Item("PullOut")) Then _pullOut = .Item("PullOut")
-        End With
+        Try
+            With ds.Tables(0).Rows(0)
+                _pawnid = .Item("PawnID")
+                _pawnTicket = .Item("PawnTicket")
+                Dim tmpClient As New Client
+                tmpClient.LoadClient(.Item("ClientID"))
+                _client = tmpClient
+                _loanDate = .Item("LoanDate")
+                _matuDate = .Item("MatuDate")
+                _expiryDate = .Item("ExpiryDate")
+                _auctionDate = .Item("AuctionDate")
+                _itemType = .Item("ItemType")
+                _catID = .Item("CatID")
+                _description = IIf(IsDBNull(.Item("Description")), "", .Item("Description"))
+                _karat = .Item("Karat")
+                _grams = .Item("Grams")
+                _appraisal = .Item("Appraisal")
+                _principal = .Item("Principal")
+                _interest = .Item("Interest")
+                _netAmount = .Item("NetAmount")
+                _evat = .Item("Evat")
+                _appraiserID = .Item("AppraiserID")
+                _oldTicket = .Item("OldTicket")
+                _orNum = .Item("ORNum")
+                _orDate = .Item("ORDate")
+                _lessPrincipal = .Item("LessPrincipal")
+                _daysOverDue = .Item("DaysOverDue")
+                '_delayInt = .Item("DelayInt")
+                _penalty = .Item("Penalty")
+                _serviceCharge = .Item("ServiceCharge")
+                _renewDue = .Item("RenewDue")
+                _redeemDue = .Item("RedeemDue")
+                _status = .Item("Status")
+                _advanceInterest = .Item("AdvInt")
+                _earlyRedeem = .Item("EarlyRedeem")
+                If Not IsDBNull(.Item("PullOut")) Then _pullOut = .Item("PullOut")
+                _intHash = .Item("INT_CHECKSUM")
+                _renewalCount = .Item("RENEWALCNT")
+            End With
+        Catch ex As Exception
+            Dim str As String
+            str = "FAILED TO LOAD PAWN INFORMATION [DATASET]"
+            Log_Report(str + vbCrLf + ex.ToString)
+
+            MsgBox("Error found when loading Pawn Information" + vbCrLf + "Contact the IT Deptartment", _
+                   MsgBoxStyle.Critical, "ERROR [DATASET]")
+        End Try
     End Sub
 
     Public Sub LoadTicketInReader(reader As IDataReader)
-        With reader
-            _pawnid = .Item("PawnID")
-            _pawnTicket = .Item("PawnTicket")
-            Dim tmpClient As New Client
-            tmpClient.LoadClient(.Item("ClientID"))
-            _client = tmpClient
-            _loanDate = .Item("LoanDate")
-            _matuDate = .Item("MatuDate")
-            _expiryDate = .Item("ExpiryDate")
-            _auctionDate = .Item("AuctionDate")
-            _itemType = .Item("ItemType")
-            _catID = .Item("CatID")
-            If Not IsDBNull(.Item("Description")) Then _description = .Item("Description")
-            _karat = .Item("Karat")
-            _grams = .Item("Grams")
-            _appraisal = .Item("Appraisal")
-            _principal = .Item("Principal")
-            _interest = .Item("Interest")
-            _netAmount = .Item("NetAmount")
-            _evat = .Item("Evat")
-            _appraiserID = .Item("AppraiserID")
-            _oldTicket = .Item("OldTicket")
-            _orNum = .Item("ORNum")
-            _orDate = .Item("ORDate")
-            _lessPrincipal = .Item("LessPrincipal")
-            _daysOverDue = .Item("DaysOverDue")
-            '_delayInt = .Item("DelayInt")
-            _penalty = .Item("Penalty")
-            _serviceCharge = .Item("ServiceCharge")
-            _renewDue = .Item("RenewDue")
-            _redeemDue = .Item("RedeemDue")
-            _status = .Item("Status")
-            _advanceInterest = .Item("AdvInt")
-            _earlyRedeem = .Item("EarlyRedeem")
-            If Not IsDBNull(.Item("PullOut")) Then _pullOut = .Item("PullOut")
-        End With
+        Try
+            With reader
+                _pawnid = .Item("PawnID")
+                _pawnTicket = .Item("PawnTicket")
+                Dim tmpClient As New Client
+                tmpClient.LoadClient(.Item("ClientID"))
+                _client = tmpClient
+                _loanDate = .Item("LoanDate")
+                _matuDate = .Item("MatuDate")
+                _expiryDate = .Item("ExpiryDate")
+                _auctionDate = .Item("AuctionDate")
+                _itemType = .Item("ItemType")
+                _catID = .Item("CatID")
+                If Not IsDBNull(.Item("Description")) Then _description = .Item("Description")
+                _karat = .Item("Karat")
+                _grams = .Item("Grams")
+                _appraisal = .Item("Appraisal")
+                _principal = .Item("Principal")
+                _interest = .Item("Interest")
+                _netAmount = .Item("NetAmount")
+                _evat = .Item("Evat")
+                _appraiserID = .Item("AppraiserID")
+                _oldTicket = .Item("OldTicket")
+                _orNum = .Item("ORNum")
+                _orDate = .Item("ORDate")
+                _lessPrincipal = .Item("LessPrincipal")
+                _daysOverDue = .Item("DaysOverDue")
+                '_delayInt = .Item("DelayInt")
+                _penalty = .Item("Penalty")
+                _serviceCharge = .Item("ServiceCharge")
+                _renewDue = .Item("RenewDue")
+                _redeemDue = .Item("RedeemDue")
+                _status = .Item("Status")
+                _advanceInterest = .Item("AdvInt")
+                _earlyRedeem = .Item("EarlyRedeem")
+                If Not IsDBNull(.Item("PullOut")) Then _pullOut = .Item("PullOut")
+                _intHash = .Item("INT_CHECKSUM")
+                _renewalCount = .Item("RENEWALCNT")
+            End With
+        Catch ex As Exception
+            Dim str As String
+            str = "FAILED TO LOAD PAWN INFORMATION [DATA READER]"
+            Log_Report(str + vbCrLf + ex.ToString)
+
+            MsgBox("Error found when loading Pawn Information" + vbCrLf + "Contact the IT Deptartment", _
+                   MsgBoxStyle.Critical, "ERROR [DATA READER]")
+        End Try
     End Sub
 
     Public Sub LoadTicketInRow(ByVal dr As DataRow)
-        With dr
-            _pawnid = .Item("PawnID")
-            _pawnTicket = .Item("PawnTicket")
-            Dim tmpClient As New Client
-            tmpClient.LoadClient(.Item("ClientID"))
-            _client = tmpClient
-            _loanDate = .Item("LoanDate")
-            _matuDate = .Item("MatuDate")
-            _expiryDate = .Item("ExpiryDate")
-            _auctionDate = .Item("AuctionDate")
-            _itemType = .Item("ItemType")
-            _catID = .Item("CatID")
-            If Not IsDBNull(.Item("Description")) Then _description = .Item("Description")
-            _karat = .Item("Karat")
-            _grams = .Item("Grams")
-            _appraisal = .Item("Appraisal")
-            _principal = .Item("Principal")
-            _interest = .Item("Interest")
-            _netAmount = .Item("NetAmount")
-            _evat = .Item("Evat")
-            _appraiserID = .Item("AppraiserID")
-            _oldTicket = .Item("OldTicket")
-            _orNum = .Item("ORNum")
-            _orDate = .Item("ORDate")
-            _lessPrincipal = .Item("LessPrincipal")
-            _daysOverDue = .Item("DaysOverDue")
-            '_delayInt = .Item("DelayInt")
-            _penalty = .Item("Penalty")
-            _serviceCharge = .Item("ServiceCharge")
-            _renewDue = .Item("RenewDue")
-            _redeemDue = .Item("RedeemDue")
-            _status = .Item("Status")
-            _advanceInterest = .Item("AdvInt")
-            _earlyRedeem = .Item("EarlyRedeem")
-            If Not IsDBNull(.Item("PullOut")) Then _pullOut = .Item("PullOut")
-        End With
+        Try
+            With dr
+                _pawnid = .Item("PawnID")
+                _pawnTicket = .Item("PawnTicket")
+                Dim tmpClient As New Client
+                tmpClient.LoadClient(.Item("ClientID"))
+                _client = tmpClient
+                _loanDate = .Item("LoanDate")
+                _matuDate = .Item("MatuDate")
+                _expiryDate = .Item("ExpiryDate")
+                _auctionDate = .Item("AuctionDate")
+                _itemType = .Item("ItemType")
+                _catID = .Item("CatID")
+                If Not IsDBNull(.Item("Description")) Then _description = .Item("Description")
+                _karat = .Item("Karat")
+                _grams = .Item("Grams")
+                _appraisal = .Item("Appraisal")
+                _principal = .Item("Principal")
+                _interest = .Item("Interest")
+                _netAmount = .Item("NetAmount")
+                _evat = .Item("Evat")
+                _appraiserID = .Item("AppraiserID")
+                _oldTicket = .Item("OldTicket")
+                _orNum = .Item("ORNum")
+                _orDate = .Item("ORDate")
+                _lessPrincipal = .Item("LessPrincipal")
+                _daysOverDue = .Item("DaysOverDue")
+                '_delayInt = .Item("DelayInt")
+                _penalty = .Item("Penalty")
+                _serviceCharge = .Item("ServiceCharge")
+                _renewDue = .Item("RenewDue")
+                _redeemDue = .Item("RedeemDue")
+                _status = .Item("Status")
+                _advanceInterest = .Item("AdvInt")
+                _earlyRedeem = .Item("EarlyRedeem")
+                If Not IsDBNull(.Item("PullOut")) Then _pullOut = .Item("PullOut")
+                _intHash = .Item("INT_CHECKSUM")
+                _renewalCount = .Item("RENEWALCNT")
+            End With
+        Catch ex As Exception
+            Dim str As String
+            str = "FAILED TO LOAD PAWN INFORMATION [DATAROW]"
+            Log_Report(str + vbCrLf + ex.ToString)
+
+            MsgBox("Error found when loading Pawn Information" + vbCrLf + "Contact the IT Deptartment", _
+                   MsgBoxStyle.Critical, "ERROR [DATAROW]")
+        End Try
     End Sub
 
     Public Sub ChangeStatus(ByVal str As String)
@@ -548,15 +617,38 @@
 
     Public Sub VoidCancelTicket()
         Try
-            Dim curStatus As String = _status
+            Dim PtransID As Integer
+            Dim ModNAME As String = ""
+            If frmPawning.Label6.Text = "L" Then
+                ModNAME = "NEW LOANS"
+                PtransID = frmPawning.Label5.Text
+            ElseIf frmPawning.Label6.Text = "X" Then
+                ModNAME = "REDEMPTION"
+                PtransID = frmPawning.Label5.Text
+            ElseIf frmPawning.Label6.Text = "R" Then
+                ModNAME = "RENEWALS"
+                PtransID = frmPawning.Label5.Text
+            End If
 
-            If _status = "L" Then
+            ' Dim tranID As Integer = CInt(frmPawning.lvPawners.FocusedItem.Tag)
+
+            Dim curStatus As String = _status
+            Dim PTNum As String = String.Format("{0:000000}", Me._pawnTicket)
+            Dim PTtransid As Integer = CInt(frmPawning.lvPawners.FocusedItem.Tag)
+            If curStatus = "L" Then
                 ChangeStatus("V")
-                RemoveJournal("PT# " & _pawnTicket)
+                Dim mysql As String = "SELECT * FROM " & fillData & " WHERE PAWNID = '" & PtransID & "'"
+                Dim ds As DataSet = LoadSQL(mysql)
+                Dim tmpEncoderID As Integer
+                tmpEncoderID = ds.Tables(0).Rows(0).Item("ENCODERID")
+                TransactionVoidSave(ModNAME, tmpEncoderID, POSuser.UserID)
+                RemoveJournal(PtransID, , ModNAME)
+                RemoveDailyTimeLog(PTtransid, "1", ModNAME)
                 Exit Sub
             End If
 
-            If _status <> "X" Then
+
+            If curStatus <> "X" Then
                 ChangeStatus("V")
             End If
 
@@ -568,7 +660,7 @@
                 Dim st As String
                 If ds.Tables(fillData).Rows.Count = 0 Then
                     ChangeStatus("L")
-                    RemoveJournal("PT# " & _pawnTicket)
+                    RemoveJournal(PtransID, , ModNAME)
                     Exit Sub
                 Else
                     If IsDBNull(ds.Tables(0).Rows(0).Item("OldTicket")) Or ds.Tables(0).Rows(0).Item("OldTicket") = 0 Then
@@ -591,10 +683,27 @@
                     .Item("AdvInt") = 0
                 End With
                 database.SaveEntry(ds, False)
-                RemoveJournal("PT# " & _oldTicket)
+                Dim mysql2 As String = "SELECT * FROM " & fillData & " WHERE PAWNID = '" & PtransID & "'"
+                Dim ds2 As DataSet = LoadSQL(mysql2)
+                Dim tmpEncoderID As Integer
+                tmpEncoderID = ds2.Tables(0).Rows(0).Item("ENCODERID")
+                TransactionVoidSave(ModNAME, tmpEncoderID, POSuser.UserID)
+
+                RemoveJournal(PtransID, , ModNAME)
+                RemoveDailyTimeLog(PTtransid, "1", ModNAME)
             Else
                 ChangeStatus("L")
-                RemoveJournal("PT# " & _pawnTicket)
+
+                Dim mysql As String = "SELECT * FROM " & fillData & " WHERE PAWNID = '" & PtransID & "'"
+                Dim ds As DataSet = LoadSQL(mysql)
+                Dim tmpEncoderID As Integer
+                tmpEncoderID = ds.Tables(0).Rows(0).Item("ENCODERID")
+                TransactionVoidSave(ModNAME, tmpEncoderID, POSuser.UserID)
+
+
+                RemoveJournal(PtransID, , ModNAME)
+
+                RemoveDailyTimeLog(PTtransid, "1", ModNAME)
             End If
         Catch ex As Exception
             MsgBox(ex.Message, MsgBoxStyle.Critical, "VOID TRANSACTION")
@@ -618,6 +727,27 @@
         ds.Tables(fillData).Rows(0).Item("PullOut") = dt
         database.SaveEntry(ds, False)
     End Sub
+
+
+    Public Function LoadLastIDNumberPawn() As Single
+        Dim mySql As String = "SELECT * FROM TBLPAWN ORDER BY PAWNID DESC"
+        Dim ds As DataSet = LoadSQL(mySql)
+
+        If ds.Tables(0).Rows.Count = 0 Then
+            Return 0
+        End If
+        Return ds.Tables(0).Rows(0).Item("PAWNID")
+    End Function
+
+    Public Function LoadStatus() As String
+        Dim mysql1 As String = "SELECT PAWNID,STATUS FROM " & fillData & " WHERE PAWNID =" & frmPawning.Label5.Text
+
+        Dim ds1 As DataSet = LoadSQL(mysql1, fillData)
+        If ds1.Tables(0).Rows.Count = 0 Then
+            Return 0
+        End If
+        Return ds1.Tables(0).Rows(0).Item("STATUS")
+    End Function
 
 #End Region
 End Class

@@ -1,4 +1,6 @@
 ﻿' Changelog
+' v2 7/28/16
+'  - Added ExtractToExcel
 ' v1.4 2/17/16
 '  - Log Module
 ' v1.3 11/19/15
@@ -9,11 +11,17 @@
 '  - Added decimal . in DigitOnly
 '  - Added isMoney
 
+Imports Microsoft.Office.Interop
 Module mod_system
-
+    ''' <summary>
+    ''' This region declare the neccessary variable in this system.
+    ''' </summary>
+    ''' <remarks></remarks>
 #Region "Global Variables"
     Public DEV_MODE As Boolean = False
-    Public ADS_ESKIE As Boolean = True
+    Public PROTOTYPE As Boolean = False
+    Public ADS_ESKIE As Boolean = False
+    Public ADS_SHOW As Boolean = False
 
     Public CurrentDate As Date = Now
     Public POSuser As New ComputerUser
@@ -22,6 +30,7 @@ Module mod_system
     Public branchName As String = GetOption("BranchName")
     Public AREACODE As String = GetOption("BranchArea")
     Public REVOLVING_FUND As String = GetOption("RevolvingFund")
+    Public OTPDisable As Boolean = IIf(GetOption("OTP") = "YES", True, False)
 
     Friend isAuthorized As Boolean = False
     Public backupPath As String = "."
@@ -31,13 +40,23 @@ Module mod_system
     Friend InitialBal As Double = GetOption("CurrentBalance")
     Friend RepDep As Double = 0
     Friend DollarRate As Double = 48
+    Friend DollarAllRate As Double
     Friend RequirementLevel As Integer = 1
     Friend dailyID As Integer = 1
+
+    Friend TBLINT_HASH As String = ""
+    Friend PAWN_JE As Boolean = False
+    Friend DBVERSION As String = ""
 #End Region
 
 #Region "Store"
-    Private storeDB As String = "tblDaily"
-
+    Private storeDB As String = "tblDaily" 'declare storeDB as string and initialize by tblDaily.
+    ''' <summary>
+    ''' This function will open the store.
+    ''' if the store is open then this function select all data from storeDB. 
+    ''' </summary>
+    ''' <returns>return false if the store is not able to open.</returns>
+    ''' <remarks></remarks>
     Friend Function OpenStore() As Boolean
         If MaintainBal = 0 Then
             Dim ans As MsgBoxResult = _
@@ -79,14 +98,22 @@ Module mod_system
 
         Return True
     End Function
-
+    ''' <summary>
+    ''' This function select all data from tblDaily table.
+    ''' </summary>
+    ''' <returns>return ds after reading every transaction.</returns>
+    ''' <remarks></remarks>
     Friend Function LoadLastOpening() As DataSet
         Dim mySql As String = "SELECT * FROM tblDaily ORDER BY ID DESC"
         Dim ds As DataSet = LoadSQL(mySql)
 
         Return ds
     End Function
-
+    ''' <summary>
+    ''' This method will load all data from storeDB.
+    ''' all data will be show where status is = 1.
+    ''' </summary>
+    ''' <remarks></remarks>
     Friend Sub LoadCurrentDate()
         Dim mySql As String = "SELECT * FROM " & storeDB
         mySql &= String.Format(" WHERE Status = 1")
@@ -101,7 +128,12 @@ Module mod_system
             frmMain.dateSet = False
         End If
     End Sub
-
+    ''' <summary>
+    ''' This function will segregate all data from tblPawn
+    ''' where AuctionDate is = to the CurrentDate.
+    ''' </summary>
+    ''' <returns>return true if all data are shown.</returns>
+    ''' <remarks></remarks>
     Friend Function AutoSegregate() As Boolean
         Console.WriteLine("Entering segregation module")
         Dim mySql As String = "SELECT * FROM tblPawn WHERE AuctionDate < '" & CurrentDate.Date & "' AND (Status = 'L' OR Status = 'R')"
@@ -116,8 +148,8 @@ Module mod_system
             tmpPawnItem.Status = "S"
             tmpPawnItem.SaveTicket(False)
 
-            AddJournal(tmpPawnItem.Principal, "Debit", "Inventory Merchandise - Segregated", "Segregated - PT#" & tmpPawnItem.PawnTicket, False)
-            AddJournal(tmpPawnItem.Principal, "Credit", "Inventory Merchandise - Loan", "Segregated - PT#" & tmpPawnItem.PawnTicket, False)
+            AddJournal(tmpPawnItem.Principal, "Debit", "Inventory Merchandise - Segregated", "Segregated - PT#" & tmpPawnItem.PawnTicket, False, , , "Segregate", dailyID)
+            AddJournal(tmpPawnItem.Principal, "Credit", "Inventory Merchandise - Loan", "Segregated - PT#" & tmpPawnItem.PawnTicket, False, , , "Segregate", dailyID)
 
             Console.WriteLine("PT: " & tmpPawnItem.PawnTicket)
         Next
@@ -126,11 +158,39 @@ Module mod_system
         Return True
     End Function
 
+    ''' <summary>
+    ''' Check if ALL Journal Entry Account on the MODULE 
+    ''' is updated in the database
+    ''' </summary>
+    ''' <param name="sapAccnt">Array of Entries in String</param>
+    ''' <returns>Boolean</returns>
+    ''' <remarks></remarks>
+    Friend Function hasJE(ByVal sapAccnt() As String) As Boolean
+        Dim fillData As String = "tblCash"
+        Dim mySql As String = "SELECT * FROM " & fillData
+
+        For Each sap In sapAccnt
+            Dim final As String = mySql & String.Format(" WHERE SAPACCOUNT = '{0}'", sap)
+
+            Dim ds As DataSet = LoadSQL(final)
+            If ds.Tables(0).Rows.Count = 0 Then Return False
+        Next
+
+        Return True
+    End Function
+
+    ''' <summary>
+    ''' This method will select all data from storeDB.
+    ''' </summary>
+    ''' <param name="cc">cc is the parameter that hold nonmodifiable value.</param>
+    ''' <remarks></remarks>
     Friend Sub CloseStore(ByVal cc As Double)
         Dim mySql As String = "SELECT * FROM " & storeDB
         mySql &= String.Format(" WHERE currentDate = '{0}'", CurrentDate.ToString("MM/dd/yyyy"))
         Dim ds As DataSet = LoadSQL(mySql, storeDB)
 
+        'if dataset read data then then cc will hold cashcount in the currentdate
+        'the user information will be save.
         If ds.Tables(storeDB).Rows.Count = 1 Then
             With ds.Tables(storeDB).Rows(0)
                 .Item("CashCount") = cc
@@ -172,13 +232,13 @@ Module mod_system
                 'tmpOverShort = Math.Abs(tmpOverShort)
                 If AsPerComputation < cc Then
                     'Overage
-                    AddJournal(tmpOverShort, "Debit", "Revolving Fund", , "CASH COUNT", False)
-                    AddJournal(tmpOverShort, "Credit", "Cashier's Overage(Shortage)", , , False)
+                    AddJournal(tmpOverShort, "Debit", "Revolving Fund", , "CASH COUNT", False, , "CloseStore", dailyID)
+                    AddJournal(tmpOverShort, "Credit", "Cashier's Overage(Shortage)", , , False, , "CloseStore", dailyID)
                 Else
                     'Shortage
                     tmpOverShort = Math.Abs(tmpOverShort)
-                    AddJournal(tmpOverShort, "Debit", "Cashier's Overage(Shortage)", , , False)
-                    AddJournal(tmpOverShort, "Credit", "Revolving Fund", , "CASH COUNT", False)
+                    AddJournal(tmpOverShort, "Debit", "Cashier's Overage(Shortage)", , , False, , "CloseStore", dailyID)
+                    AddJournal(tmpOverShort, "Credit", "Revolving Fund", , "CASH COUNT", False, , "CloseStore", dailyID)
                 End If
             End If
 
@@ -188,8 +248,27 @@ Module mod_system
             MsgBox("Error in closing store" + vbCr + "Contact your IT Department", MsgBoxStyle.Critical)
         End If
     End Sub
+
+
+    Public Function LoadLastIDNumberDaily() As Single
+        Dim mySql As String = "SELECT * FROM TBLDAILY ORDER BY ID DESC"
+        Dim ds As DataSet = LoadSQL(mySql)
+
+        If ds.Tables(0).Rows.Count = 0 Then
+            Return 0
+        End If
+        Return ds.Tables(0).Rows(0).Item("ID")
+    End Function
 #End Region
 
+    ''' <summary>
+    ''' This function has two arguments.
+    ''' declaraton UseShellExecute as boolean and RedirectStandardOutput as boolean.
+    ''' </summary>
+    ''' <param name="app">app is the parameter that hold nonmodifiable value.</param>
+    ''' <param name="args">args is the parameter that hold nonmodifiable value.</param>
+    ''' <returns>return soutput after reading every transaction.</returns>
+    ''' <remarks></remarks>
     Public Function CommandPrompt(ByVal app As String, ByVal args As String) As String
         Dim oProcess As New Process()
         Dim oStartInfo As New ProcessStartInfo(app, args)
@@ -273,7 +352,12 @@ Module mod_system
 
         Return Not (Char.IsDigit(e.KeyChar))
     End Function
-
+    ''' <summary>
+    ''' this function check if the input is numeric or character.
+    ''' </summary>
+    ''' <param name="txt">txt here hold the numeric value.</param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     Friend Function checkNumeric(ByVal txt As TextBox) As Boolean
         If IsNumeric(txt.Text) Then
             Return True
@@ -339,25 +423,134 @@ Module mod_system
         Return lastOfMonth
     End Function
 
+    Friend Function GetSAPAccount(TransName As String) As String
+        Dim mySql As String, ds As DataSet
+        mySql = String.Format("SELECT * FROM TBLCASH WHERE TransName = '{0}'", TransName)
+
+        ds = LoadSQL(mySql)
+
+        Return ds.Tables(0).Rows(0).Item("SAPACCOUNT")
+    End Function
+
+    Friend Sub UpdateSAPAccount(TRANS As String, VALUE As String)
+        Dim mySql As String, fillData As String = "TBLCASH"
+        mySql = "SELECT * FROM " & fillData
+        mySql &= String.Format(" WHERE TRANSNAME = '{0}'", TRANS)
+        '"REMARKS LIKE '%{0}%'", srcStr)
+        Dim ds As DataSet = LoadSQL(mySql, fillData)
+        ds = LoadSQL(mySql, fillData)
+
+        ds.Tables(fillData).Rows(0).Item("SAPACCOUNT") = VALUE
+        database.SaveEntry(ds, False)
+        Console.WriteLine("SAP Account Changed")
+    End Sub
+
+    ''' <summary>
+    ''' Extract Data from the database
+    ''' </summary>
+    ''' <param name="headers">Array of HEADERS</param>
+    ''' <param name="mySql">SQL Statement</param>
+    ''' <param name="dest">Excel File Destination</param>
+    ''' <remarks></remarks>
+    Friend Sub ExtractToExcel(headers As String(), mySql As String, dest As String)
+        If dest = "" Then Exit Sub
+
+        Dim ds As DataSet = LoadSQL(mySql)
+
+        'Load Excel
+        Dim oXL As New Excel.Application
+        If oXL Is Nothing Then
+            MessageBox.Show("Excel is not properly installed!!")
+            Return
+        End If
+
+        Dim oWB As Excel.Workbook
+        Dim oSheet As Excel.Worksheet
+
+        oXL = CreateObject("Excel.Application")
+        oXL.Visible = False
+
+        oWB = oXL.Workbooks.Add
+        oSheet = oWB.ActiveSheet
+        oSheet.Name = ExtractDataFromDatabase.lbltransaction.Text
+
+        ' ADD BRANCHCODE
+        InsertArrayElement(headers, 0, "BRANCHCODE")
+
+        ' HEADERS
+        Dim cnt As Integer = 0
+        For Each hr In headers
+            cnt += 1 : oSheet.Cells(1, cnt).value = hr
+        Next
+
+        ' EXTRACTING
+        Console.Write("Extracting")
+        Dim rowCnt As Integer = 2
+        For Each dr As DataRow In ds.Tables(0).Rows
+            For colCnt As Integer = 0 To headers.Count - 1
+                If colCnt = 0 Then
+                    oSheet.Cells(rowCnt, colCnt + 1).value = BranchCode
+                Else
+                    oSheet.Cells(rowCnt, colCnt + 1).value = dr(colCnt - 1) 'dr(colCnt - 1) move the column by -1
+                End If
+            Next
+            rowCnt += 1
+
+            Console.Write(".")
+            Application.DoEvents()
+        Next
+
+        oWB.SaveAs(dest)
+        oSheet = Nothing
+        oWB.Close(False)
+        oWB = Nothing
+        oXL.Quit()
+        oXL = Nothing
+
+        Console.WriteLine("Data Extracted")
+    End Sub
+
+    Private Sub InsertArrayElement(Of T)( _
+          ByRef sourceArray() As T, _
+          ByVal insertIndex As Integer, _
+          ByVal newValue As T)
+
+        Dim newPosition As Integer
+        Dim counter As Integer
+
+        newPosition = insertIndex
+        If (newPosition < 0) Then newPosition = 0
+        If (newPosition > sourceArray.Length) Then _
+           newPosition = sourceArray.Length
+
+        Array.Resize(sourceArray, sourceArray.Length + 1)
+
+        For counter = sourceArray.Length - 2 To newPosition Step -1
+            sourceArray(counter + 1) = sourceArray(counter)
+        Next counter
+
+        sourceArray(newPosition) = newValue
+    End Sub
+
 #Region "Log Module"
-    Const LOG_FILE As String = "-log.txt"
+    Const LOG_FILE As String = "syslog.txt"
     Private Sub CreateLog()
-        Dim fsEsk As New System.IO.FileStream(Now.ToString("MMddyyyy") & LOG_FILE, IO.FileMode.CreateNew)
+        Dim fsEsk As New System.IO.FileStream(LOG_FILE, IO.FileMode.CreateNew)
         fsEsk.Close()
     End Sub
 
     Friend Sub Log_Report(ByVal str As String)
-        If Not System.IO.File.Exists(Now.ToString("MMddyyyy") & LOG_FILE) Then CreateLog()
+        If Not System.IO.File.Exists(LOG_FILE) Then CreateLog()
 
         Dim recorded_log As String = _
             String.Format("[{0}] " & str, Now.ToString("MM/dd/yyyy HH:mm:ss"))
 
-        Dim fs As New System.IO.FileStream(Now.ToString("MMddyyyy") & LOG_FILE, IO.FileMode.Append, IO.FileAccess.Write)
+        Dim fs As New System.IO.FileStream(LOG_FILE, IO.FileMode.Append, IO.FileAccess.Write)
         Dim fw As New System.IO.StreamWriter(fs)
         fw.WriteLine(recorded_log)
         fw.Close()
         fs.Close()
-        Console.WriteLine("Recored")
+        Console.WriteLine("Recorded")
     End Sub
 #End Region
 End Module

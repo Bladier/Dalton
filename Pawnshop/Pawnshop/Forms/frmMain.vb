@@ -1,5 +1,4 @@
-﻿
-Public Class frmMain
+﻿Public Class frmMain
 
     Friend dateSet As Boolean = False
     Friend doSegregate As Boolean = False
@@ -8,6 +7,7 @@ Public Class frmMain
         pButton.Enabled = Not st
 
         'File
+        ChangePasswordToolStrip.Enabled = Not st
         CloseOpenStore.Enabled = Not st
         UserManagementToolStripMenuItem.Enabled = Not st
         UpdateToolStripMenuItem.Enabled = Not st
@@ -23,10 +23,13 @@ Public Class frmMain
         ExpiryGeneratorToolStripMenuItem.Enabled = Not st
         JournalEntriesToolStripMenuItem.Enabled = Not st
         CashCountToolStripMenuItem.Enabled = Not st
+        BSPReportToolStripMenuItem.Enabled = Not st
         ItemPulloutToolStripMenuItem.Enabled = Not st
         ORManagerToolStripMenuItem.Enabled = Not st
+        AccountingExtractToolStripMenuItem.Enabled = Not st
         '-------------------------------------------------
         BackupToolStripMenuItem.Enabled = Not st
+        AuditConsoleToolStripMenuItem.Enabled = Not st
         ConsoleToolStripMenuItem.Enabled = Not st
 
         If st Then
@@ -39,16 +42,21 @@ Public Class frmMain
         ToolStripMenuItem2.Enabled = Not st 'Monthly Report
         SequenceToolStripMenuItem.Enabled = Not st 'Sequence Report
         CashInOutSummaryToolStripMenuItem.Enabled = Not st 'Cash InOut Summary
+        AuctionMonthlyJewelryReportToolStripMenuItem.Enabled = Not st 'Auction MOnthly
+        '-------------------------------------------------
         OutstandingToolStripMenuItem.Enabled = Not st
+        AuditReportToolStripMenuItem.Enabled = Not st
         LoanRegisterToolStripMenuItem.Enabled = Not st
         MoneyTransferToolStripMenuItem.Enabled = Not st
         InsuranceToolStripMenuItem.Enabled = Not st
+        DollarReportToolStripMenuItem.Enabled = Not st
+        CashInOutToolStripMenuItem.Enabled = Not st
         SegregatedListToolStripMenuItem.Enabled = Not st
         ItemPulloutToolStripMenuItem1.Enabled = Not st
+        '-------------------------------------------------
         HourlyReportToolStripMenuItem.Enabled = Not st
         HourlySummaryToolStripMenuItem.Enabled = Not st
         DailyCashCountToolStripMenuItem.Enabled = Not st
-        CashInOutToolStripMenuItem.Enabled = Not st
     End Sub
 
     Private Sub ExecuteSegregate()
@@ -56,7 +64,9 @@ Public Class frmMain
     End Sub
 
     Private Sub frmMain_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        Me.Text = My.Application.Info.Title & " | Version " & Me.GetType.Assembly.GetName.Version.ToString & IIf(mod_system.DEV_MODE, "<<DEVELOPER MODE>>", "")
+        'Generate_QR()
+        Me.Text = My.Application.Info.Title & " | Version " & Me.GetType.Assembly.GetName.Version.ToString & IIf(mod_system.DEV_MODE, " <<DEVELOPER MODE>>", "")
+        Me.Text &= IIf(mod_system.PROTOTYPE, " !!PROTOTYPE!!", "")
         If Not ConfiguringDB() Then MsgBox("DATABASE CONNECTION PROBLEM", MsgBoxStyle.Critical) : Exit Sub
 
         Patch_if_Patchable()
@@ -158,7 +168,8 @@ Public Class frmMain
             MsgBoxAuthoriation("You don't have access to Dollar Buying")
             Exit Sub
         End If
-        frmDollorSimple.Show()
+        'frmDollorSimple.Show()
+        frmmoneyexchange.Show()
     End Sub
 
     Private Sub btnCash_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCash.Click
@@ -290,7 +301,8 @@ Public Class frmMain
             Exit Sub
         End If
 
-        frmBackup.Show()
+        'frmBackup.Show()
+        frmBackUpDataSettings.Show()
     End Sub
 
     Private Sub UpdateToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles UpdateToolStripMenuItem.Click
@@ -354,12 +366,12 @@ Public Class frmMain
             pButton.Anchor = AnchorStyles.None
             pButton.Left = 543
         End If
-        
+
     End Sub
 
     Private Sub OutstandingToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles OutstandingToolStripMenuItem.Click
-        qryDate.FormType = qryDate.ReportType.OutStanding
-        qryDate.Show()
+        qryPullOut_List.FormType = qryPullOut_List.DailyReport.Outstanding
+        qryPullOut_List.Show()
     End Sub
 
     Private Sub RateToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles RateToolStripMenuItem.Click
@@ -377,7 +389,9 @@ Public Class frmMain
     End Sub
 
     Private Sub AboutUsToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles AboutUsToolStripMenuItem.Click
-        ab.Show()
+        'ab.Show()
+        ab2.TopMost = True
+        ab2.Show()
     End Sub
 
     Private Sub ORManagerToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles ORManagerToolStripMenuItem.Click
@@ -391,6 +405,7 @@ Public Class frmMain
     End Sub
 
     Private Sub ItemPulloutToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ItemPulloutToolStripMenuItem1.Click
+        qryPullOut_List.FormType = qryPullOut_List.DailyReport.Pullout
         qryPullOut_List.Show()
     End Sub
 
@@ -406,5 +421,70 @@ Public Class frmMain
     Private Sub HourlySummaryToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles HourlySummaryToolStripMenuItem.Click
         qryDate.FormType = qryDate.ReportType.HourlySummary
         qryDate.Show()
+    End Sub
+
+    Private Sub HourlyReportToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles HourlyReportToolStripMenuItem.Click
+        qryDate.FormType = qryDate.ReportType.Hourly
+        qryDate.Show()
+    End Sub
+
+    Private Sub BSPReportToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles BSPReportToolStripMenuItem.Click
+        If Not POSuser.canJournalEntryGenerate Then
+            MsgBoxAuthoriation("You don't have access to Journal Entry Generator")
+            Exit Sub
+        End If
+
+        frmExtractor.FormType = frmExtractor.ExtractType.MoneyTransferBSP
+        frmExtractor.Show()
+    End Sub
+
+    Private Sub DollarReportToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles DollarReportToolStripMenuItem.Click
+        qryDate.FormType = qryDate.ReportType.DollarDaily
+        qryDate.Show()
+    End Sub
+
+    Private Sub ChangelogToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles ChangelogToolStripMenuItem.Click
+        Dim changeLog As String = "changelog.txt"
+        System.Diagnostics.Process.Start("notepad.exe", changeLog)
+    End Sub
+
+    Private Sub AuctionMonthlyJewelryReportToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AuctionMonthlyJewelryReportToolStripMenuItem.Click
+        qryAuction.Show()
+    End Sub
+
+    Private Sub AuditReportToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles AuditReportToolStripMenuItem.Click
+        qryPullOut_List.FormType = qryPullOut_List.DailyReport.AuditReport
+        qryPullOut_List.Show()
+    End Sub
+
+    Private Sub ChangePasswordToolStripMenuItem1_Click(sender As System.Object, e As System.EventArgs) Handles ChangePasswordToolStrip.Click
+        frmChangePassword.Show()
+    End Sub
+
+    Private Sub VoidReportToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles VoidReportToolStripMenuItem.Click
+        qryDate.FormType = qryDate.ReportType.VoidReportDaily
+        qryDate.Show()
+
+    End Sub
+    Private Sub AuditConsoleToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AuditConsoleToolStripMenuItem.Click
+        If Not dateSet Then MsgBox("Please Open the Store" & vbCrLf & "File > Open Store", MsgBoxStyle.Critical, "Store Closed") : Exit Sub
+
+        AuditModule_Initialization()
+
+        If Not OTPDisable Then
+            diagOTPv2.GeneralOTP = AuditOTP
+            diagOTPv2.ShowDialog()
+            If Not diagOTPv2.isCorrect Then
+                Exit Sub
+            Else
+                frmAuditConsole.Show()
+            End If
+
+        End If
+
+    End Sub
+
+    Private Sub AccountingExtractToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AccountingExtractToolStripMenuItem.Click
+        ExtractDataFromDatabase.ShowDialog()
     End Sub
 End Class

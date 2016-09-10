@@ -1,7 +1,8 @@
 ﻿Public Class frmSettings
-
     Private locked As Boolean = IIf(GetOption("LOCKED") = "YES", True, False)
+
     Private Sub frmSettings_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        lblSAP01.Text = "SAP Code 01"
         ClearFields()
         PrinterSettings()
     End Sub
@@ -28,6 +29,7 @@
         txtArea.Text = GetOption("BranchArea")
         txtBal.Text = GetOption("MaintainingBalance")
         txtRevolving.Text = GetOption("RevolvingFund")
+        txtCashInBank.Text = GetSAPAccount("Cash in Bank")
 
         If locked Then
             txtCode.Enabled = False
@@ -59,7 +61,27 @@
         Console.WriteLine("Revolving Fund Added")
     End Sub
 
+    ' Please review this
+    Private Function CheckOTP() As Boolean
+        diagOTP.Show()
+        diagOTP.TopMost = True
+        Return False 'WHAT THE
+        Return True 'WHAT THE
+    End Function
+
     Private Sub btnUpdate_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnUpdate.Click
+        If Not locked Then
+            UpdateSetting()
+        Else
+            If Not OTPDisable Then
+                diagOTP.FormType = diagOTP.OTPType.Settings
+                If Not CheckOTP() Then Exit Sub
+            Else
+                UpdateSetting()
+            End If
+        End If
+    End Sub
+    Friend Sub UpdateSetting()
         'First
         If Not locked Then
             UpdateOptions("BranchCode", txtCode.Text)
@@ -74,6 +96,7 @@
         End If
         UpdateOptions("MaintainingBalance", txtBal.Text)
         MaintainBal = txtBal.Text
+        UpdateSAPAccount("Cash in Bank", txtCashInBank.Text)
 
         'Second
         UpdateOptions("PawnLastNum", txtPawnTicket.Text)
@@ -94,7 +117,6 @@
         End If
         Me.Close()
     End Sub
-
     Private Sub UpdateDaily()
         Dim fillData As String = "tblDaily"
         Dim mySql As String = "SELECT * FROM tblDaily WHERE ID = " & dailyID
@@ -103,7 +125,6 @@
         ds.Tables(fillData).Rows(0).Item("MaintainBal") = txtBal.Text
         SaveEntry(ds, False)
     End Sub
-
     Private Sub txtBal_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtBal.KeyPress
         DigitOnly(e)
     End Sub
@@ -119,4 +140,6 @@
     Private Sub txtInsurance_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs)
         DigitOnly(e)
     End Sub
+
+
 End Class
