@@ -82,9 +82,24 @@
     ''' <remarks></remarks>
     Private Sub btnVoid_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnVoid.Click
         If lvDollar.SelectedItems.Count = 0 Then Exit Sub
+        'If Not OTPDisable Then
+        '    diagOTP.FormType = diagOTP.OTPType.VoidMoneyExchange
+        '    If Not CheckOTP() Then Exit Sub
+        'Else
+        '    VoidMoneyExchange()
+        'End If
+
+        OTPVoiding_Initialization()
+
         If Not OTPDisable Then
-            diagOTP.FormType = diagOTP.OTPType.VoidMoneyExchange
-            If Not CheckOTP() Then Exit Sub
+            diagGeneralOTP.GeneralOTP = OtpSettings
+            diagGeneralOTP.TopMost = True
+            diagGeneralOTP.ShowDialog()
+            If Not diagGeneralOTP.isValid Then
+                Exit Sub
+            Else
+                VoidMoneyExchange()
+            End If
         Else
             VoidMoneyExchange()
         End If
@@ -106,7 +121,9 @@
         Dim ds As DataSet = LoadSQL(mysql)
         Dim tmpEncoderID As Integer
         tmpEncoderID = ds.Tables(0).Rows(0).Item("UserId")
-        TransactionVoidSave("DOLLAR BUYING", tmpEncoderID, POSuser.UserID, ans)
+
+        Dim NewOtp As New ClassOtp("VOID DOLLAR", diagGeneralOTP.txtPIN.Text, "DollarID# " & id)
+        TransactionVoidSave("DOLLAR BUYING", tmpEncoderID, POSuser.UserID, "DollarID# " & id & " " & ans)
         tmpLoad.VoidTransaction(ans)
 
         Dim amt As Double = tmpLoad.NetAmount
